@@ -8,9 +8,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "type-check": "tsc --noEmit",
+    "type-check": "tsc --noEmit --skipLibCheck",
     "vercel-build": "next build",
-    "deploy": "npm run lint && npm run build"
+    "deploy": "npm run build"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

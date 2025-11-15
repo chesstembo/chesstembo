@@ -1,0 +1,9 @@
+cdk/
+*.ts
+!src/**/*.ts
+!pages/**/*.ts
+!components/**/*.ts
+!lib/**/*.ts
+!types/**/*.ts
+!next.config.ts
+!next.config.js
