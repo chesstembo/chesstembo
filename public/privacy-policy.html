@@ -148,6 +148,14 @@
             border-radius: 0 var(--border-radius) var(--border-radius) 0;
         }
         
+        .advertising-box {
+            background-color: #e8f5e8;
+            border-left: 4px solid #4caf50;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        
         .contact-info {
             background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
             padding: 20px;
@@ -266,7 +274,7 @@
                 padding: 20px;
             }
             
-            .highlight-box, .warning-box {
+            .highlight-box, .warning-box, .advertising-box {
                 padding: 15px;
             }
             
@@ -351,6 +359,7 @@
     <div class="container">
         <div class="nav-links">
             <a href="#information-collected" class="nav-link">Information Collected</a>
+            <a href="#advertising" class="nav-link">Advertising</a>
             <a href="#information-use" class="nav-link">How We Use Data</a>
             <a href="#user-rights" class="nav-link">Your Rights</a>
             <a href="#contact" class="nav-link">Contact Us</a>
@@ -399,15 +408,53 @@
                 <p>We do not collect or upload this data.</p>
             </section>
         </div>
+
+        <div class="content-card">
+            <section id="advertising">
+                <h2><span class="section-icon"><i class="fas fa-ad"></i></span>2. Advertising & Third-Party Services</h2>
+                
+                <div class="advertising-box">
+                    <h3>Google AdMob</h3>
+                    <p>Tembo Chess uses <strong>Google AdMob</strong> to display advertisements. AdMob may collect:</p>
+                    <ul>
+                        <li>Device identifiers</li>
+                        <li>IP address</li>
+                        <li>App interactions</li>
+                        <li>Approximate location (not precise)</li>
+                    </ul>
+                    <p>This data is used solely for:</p>
+                    <ul>
+                        <li>Ad delivery and personalization</li>
+                        <li>Fraud prevention</li>
+                        <li>Analytics and performance measurement</li>
+                    </ul>
+                    <p><strong>Opt-out:</strong> Users may opt out of personalized ads using <strong>Google device settings</strong> or through AdMob's consent management platform.</p>
+                </div>
+                
+                <h3>2.1 Firebase Services</h3>
+                <p>We use Google Firebase for essential app functionality:</p>
+                <ul>
+                    <li><strong>Firebase Authentication</strong> - Secure user login</li>
+                    <li><strong>Firebase Firestore</strong> - Data storage</li>
+                    <li><strong>Firebase Analytics</strong> - App performance insights</li>
+                    <li><strong>Firebase Crashlytics</strong> - Error reporting</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    <p><strong>SDK Compliance:</strong> All Firebase SDKs are Google Play SDK-certified and comply with Google Play User Data Policy.</p>
+                </div>
+            </section>
+        </div>
         
         <div class="content-card">
             <section id="information-use">
-                <h2><span class="section-icon"><i class="fas fa-cogs"></i></span>2. How We Use Your Information</h2>
+                <h2><span class="section-icon"><i class="fas fa-cogs"></i></span>3. How We Use Your Information</h2>
                 <p>We use collected information for:</p>
                 <ul>
                     <li>Account login & syncing progress</li>
                     <li>Improving app performance</li>
                     <li>Maintaining leaderboards</li>
+                    <li>Displaying relevant advertisements</li>
                     <li>Ensuring fair use</li>
                     <li>Enhancing features based on aggregated analytics</li>
                 </ul>
@@ -415,9 +462,10 @@
                 <div class="highlight-box">
                     <p><strong>We do NOT:</strong></p>
                     <ul>
-                        <li>Sell your data</li>
-                        <li>Share data with third parties for advertising</li>
+                        <li>Sell your personal data</li>
+                        <li>Share data with third parties for advertising outside Google's ecosystem</li>
                         <li>Track you across the web</li>
+                        <li>Use background location tracking</li>
                     </ul>
                 </div>
             </section>
@@ -425,50 +473,52 @@
         
         <div class="content-card">
             <section id="legal-basis">
-                <h2><span class="section-icon"><i class="fas fa-balance-scale"></i></span>3. Legal Basis for Processing (GDPR)</h2>
+                <h2><span class="section-icon"><i class="fas fa-balance-scale"></i></span>4. Legal Basis for Processing (GDPR)</h2>
                 <p>We process your data based on:</p>
                 <ul>
-                    <li>Consent (when signing in)</li>
-                    <li>Legitimate interest (app analytics)</li>
+                    <li>Consent (when signing in and for personalized ads)</li>
+                    <li>Legitimate interest (app analytics and performance)</li>
                     <li>Contract (providing app functionality)</li>
                 </ul>
-                <p>You may withdraw consent any time by deleting your account or contacting us.</p>
+                <p>You may withdraw consent any time by deleting your account, adjusting ad preferences, or contacting us.</p>
             </section>
         </div>
         
         <div class="content-card">
             <section id="data-sharing">
-                <h2><span class="section-icon"><i class="fas fa-share-alt"></i></span>4. Data Sharing</h2>
-                <p>We do not sell or rent your information. Your data may be shared only with:</p>
+                <h2><span class="section-icon"><i class="fas fa-share-alt"></i></span>5. Data Sharing</h2>
+                <p>We do not sell or rent your personal information. Your data may be shared only with:</p>
                 
-                <h3>4.1 Firebase Services</h3>
+                <h3>5.1 Google Services</h3>
                 <p>Used for:</p>
                 <ul>
-                    <li>Authentication</li>
-                    <li>Analytics</li>
-                    <li>Crash reports</li>
+                    <li>Authentication (Firebase Auth)</li>
+                    <li>Analytics (Firebase Analytics)</li>
+                    <li>Crash reports (Firebase Crashlytics)</li>
+                    <li>Advertising (Google AdMob)</li>
                 </ul>
-                <p>Firebase follows strict Google security standards.</p>
+                <p>Google services follow strict security standards and data protection requirements.</p>
                 
-                <h3>4.2 Legal Requirements</h3>
+                <h3>5.2 Legal Requirements</h3>
                 <p>We may disclose data if required:</p>
                 <ul>
-                    <li>By law</li>
-                    <li>To protect users</li>
-                    <li>To enforce abuse prevention</li>
+                    <li>By law or legal process</li>
+                    <li>To protect user safety</li>
+                    <li>To enforce our Terms of Service</li>
+                    <li>To prevent fraud or abuse</li>
                 </ul>
-                <p>We never disclose puzzle progress or personal game data.</p>
             </section>
         </div>
         
         <div class="content-card">
             <section id="data-security">
-                <h2><span class="section-icon"><i class="fas fa-shield-alt"></i></span>5. Data Storage & Security</h2>
+                <h2><span class="section-icon"><i class="fas fa-shield-alt"></i></span>6. Data Storage & Security</h2>
                 <p>We apply industry-standard security practices:</p>
                 <ul>
                     <li>Encrypted communication (HTTPS)</li>
                     <li>Secure Firebase identity handling</li>
                     <li>No storage of passwords (Firebase manages this)</li>
+                    <li>Regular security updates</li>
                 </ul>
                 <p>Local puzzle packs remain only on your device unless you manually delete them.</p>
             </section>
@@ -476,22 +526,23 @@
         
         <div class="content-card">
             <section id="children-privacy">
-                <h2><span class="section-icon"><i class="fas fa-child"></i></span>6. Children's Privacy</h2>
+                <h2><span class="section-icon"><i class="fas fa-child"></i></span>7. Children's Privacy</h2>
                 <div class="warning-box">
-                    <p>Tembo Chess is not intended for children under 13. We do not knowingly collect personal information from children. If you believe a child has provided personal data, contact us immediately.</p>
+                    <p>Tembo Chess is rated for users aged 13 and above. We do not knowingly collect personal information from children under 13. If you believe a child has provided personal data, contact us immediately.</p>
                 </div>
             </section>
         </div>
         
         <div class="content-card">
             <section id="user-rights">
-                <h2><span class="section-icon"><i class="fas fa-user-check"></i></span>7. Your Rights</h2>
+                <h2><span class="section-icon"><i class="fas fa-user-check"></i></span>8. Your Rights</h2>
                 <p>Depending on your region, you have the right to:</p>
                 <ul>
                     <li>Request access to your data</li>
-                    <li>Request deletion</li>
+                    <li>Request deletion of your data</li>
                     <li>Correct inaccurate data</li>
-                    <li>Withdraw consent</li>
+                    <li>Withdraw consent for data processing</li>
+                    <li>Opt-out of personalized advertising</li>
                     <li>Request account deletion</li>
                 </ul>
                 
@@ -505,55 +556,60 @@
         
         <div class="content-card">
             <section id="data-retention">
-                <h2><span class="section-icon"><i class="fas fa-history"></i></span>8. Data Retention</h2>
+                <h2><span class="section-icon"><i class="fas fa-history"></i></span>9. Data Retention</h2>
                 <p>We retain:</p>
                 <ul>
                     <li>Account data only while your account is active</li>
                     <li>Analytics data in aggregated form</li>
+                    <li>Advertising data as required by Google AdMob policies</li>
                     <li>Crash logs temporarily for debugging</li>
                 </ul>
                 <p>You can delete your data by:</p>
                 <ul>
-                    <li>Removing your account</li>
-                    <li>Clearing app storage</li>
+                    <li>Removing your account via app settings</li>
+                    <li>Contacting us directly</li>
+                    <li>Clearing app storage from device settings</li>
                 </ul>
             </section>
         </div>
         
         <div class="content-card">
             <section id="third-party">
-                <h2><span class="section-icon"><i class="fas fa-external-link-alt"></i></span>9. Third-Party Services</h2>
-                <p>Tembo Chess uses:</p>
+                <h2><span class="section-icon"><i class="fas fa-external-link-alt"></i></span>10. Third-Party Services</h2>
+                <p>Tembo Chess uses these Google services:</p>
                 <ul>
                     <li>Firebase Authentication</li>
                     <li>Firebase Analytics</li>
                     <li>Firebase Crashlytics</li>
+                    <li>Google AdMob</li>
                 </ul>
                 <p>Links to their privacy terms:</p>
-                <p><a href="https://firebase.google.com/support/privacy" target="_blank"><i class="fas fa-link"></i> https://firebase.google.com/support/privacy</a></p>
+                <p><a href="https://firebase.google.com/support/privacy" target="_blank"><i class="fas fa-link"></i> Firebase Privacy & Security</a></p>
+                <p><a href="https://policies.google.com/privacy" target="_blank"><i class="fas fa-link"></i> Google Privacy Policy</a></p>
+                <p><a href="https://www.google.com/admob/" target="_blank"><i class="fas fa-link"></i> Google AdMob</a></p>
             </section>
         </div>
         
         <div class="content-card">
             <section id="policy-changes">
-                <h2><span class="section-icon"><i class="fas fa-sync-alt"></i></span>10. Changes to This Policy</h2>
-                <p>We may update this Privacy Policy occasionally. Updates will be posted publicly with a new "Last Updated" date.</p>
+                <h2><span class="section-icon"><i class="fas fa-sync-alt"></i></span>11. Changes to This Policy</h2>
+                <p>We may update this Privacy Policy occasionally. Updates will be posted publicly with a new "Last Updated" date. Continued use of Tembo Chess after changes constitutes acceptance.</p>
             </section>
         </div>
         
         <div class="content-card">
             <section id="contact">
-                <h2><span class="section-icon"><i class="fas fa-phone-alt"></i></span>11. Contact Us</h2>
+                <h2><span class="section-icon"><i class="fas fa-phone-alt"></i></span>12. Contact Us</h2>
                 <div class="contact-info">
-                    <p>For questions, requests, or complaints, contact:</p>
+                    <p>For questions, data requests, or complaints, contact:</p>
                     <p><a href="mailto:chesstembo@gmail.com"><i class="fas fa-envelope"></i> chesstembo@gmail.com</a></p>
-                    <p>We are happy to assist.</p>
+                    <p>We are happy to assist and typically respond within 2-3 business days.</p>
                 </div>
             </section>
         </div>
         
         <footer>
-            <p>END OF POLICY</p>
+            <p>END OF PRIVACY POLICY</p>
             <a href="#" class="back-to-top"><i class="fas fa-chevron-up"></i> Back to Top</a>
         </footer>
     </div>
