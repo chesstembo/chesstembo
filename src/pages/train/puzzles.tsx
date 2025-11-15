@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import useTrain from "../../hooks/useTrain";
 import AdSlot from "../../components/Ads/AdSlot";
-import AdblockDetector from "../../components/AdBlock/AdblockDetector";
+import AdblockDetector from "../../components/Adblock/AdblockDetector";
 
 const TrainBoard = dynamic(() => import("../../components/Train/TrainBoard"), {
   ssr: false,
@@ -25,6 +25,25 @@ const TrainBoard = dynamic(() => import("../../components/Train/TrainBoard"), {
     </Box>
   ),
 });
+
+interface Puzzle {
+  fen: string;
+  theme?: string;
+  themes?: string[];
+  rating?: number | string;
+  solution?: string[];
+  userSide?: 'white' | 'black';
+}
+
+interface UseTrainReturn {
+  currentPuzzle: Puzzle | null;
+  loading: boolean;
+  handleNextPuzzle: (setId?: string) => void;
+  handleSolvePuzzle: (correct: boolean) => Promise<void>;
+  puzzles: Puzzle[];
+  solvedCount: number;
+  totalPuzzles: number;
+}
 
 export default function PuzzlesPage() {
   const router = useRouter();
@@ -38,13 +57,13 @@ export default function PuzzlesPage() {
     puzzles,
     solvedCount,
     totalPuzzles,
-  } = useTrain(Array.isArray(setId) ? setId[0] : setId);
+  } = useTrain(Array.isArray(setId) ? setId[0] : setId) as UseTrainReturn;
 
   const handleSolve = async (correct: boolean) => {
     try {
       await handleSolvePuzzle(correct);
     } catch (error) {
-      // Silently handle error
+      console.error('Error solving puzzle:', error);
     }
   };
 
@@ -110,6 +129,14 @@ export default function PuzzlesPage() {
 
   const showHint = () => {
     alert(`Hint: Focus on ${puzzleTheme.replace(/_/g, " ")}!`);
+  };
+
+  const handleNext = () => {
+    try {
+      handleNextPuzzle(typeof setId === 'string' ? setId : undefined);
+    } catch (error) {
+      console.error('Error loading next puzzle:', error);
+    }
   };
 
   return (
@@ -180,7 +207,7 @@ export default function PuzzlesPage() {
             <Button 
               variant="contained" 
               color="success" 
-              onClick={() => handleNextPuzzle(setId as string)}
+              onClick={handleNext}
               disabled={loading}
               size="small"
             >
@@ -274,7 +301,7 @@ export default function PuzzlesPage() {
 
         <Box width="100%" mt={2}>
           <AdSlot id="train-bottom" />
-          <AdblockDetector />
+          <AdblockDetector onBlock={() => console.log('Adblock detected')} />
         </Box>
       </Box>
     </>

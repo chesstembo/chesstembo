@@ -1,6 +1,10 @@
 import React, { useEffect } from "react";
 
-export default function AdblockDetector({ onBlock }) {
+interface AdblockDetectorProps {
+  onBlock?: () => void;
+}
+
+export default function AdblockDetector({ onBlock }: AdblockDetectorProps) {
   useEffect(() => {
     const bait = document.createElement("div");
     bait.className = "adsbox";
