@@ -28,7 +28,7 @@ import {
   enginePlayNameAtom,
 } from "../states";
 import { useChessActions } from "@/hooks/useChessActions";
-import { logAnalyticsEvent } from "@/lib/firebaseAnalytics";
+import { logAnalyticsEvent } from "@/lib/firebaseClient";
 import { useEffect, useState } from "react";
 import { isEngineSupported } from "@/lib/engine/shared";
 import { Stockfish16_1 } from "@/lib/engine/stockfish16_1";
