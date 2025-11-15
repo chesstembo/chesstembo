@@ -1,0 +1,6178 @@
+[
+  {
+    "id": "0EnqC",
+    "fen": "b1r4r/5ppk/4p3/4B1Qp/1P1p1P1P/8/P2q2P1/2R2RK1 b - - 3 30",
+    "moves": [
+      "f7f6",
+      "g5h5",
+      "h7g8",
+      "c1c8"
+    ],
+    "rating": 1193,
+    "popularity": 100,
+    "plays": 187,
+    "gameUrl": "https://lichess.org/5Iz24LSj/black#60",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761045055,
+      "_nanoseconds": 20000000
+    }
+  },
+  {
+    "id": "0OTvx",
+    "fen": "r6r/1ppknQp1/p1np3p/4p2B/PP6/N1Pb3P/6P1/R1B1q1bK b - - 7 20",
+    "moves": [
+      "h8f8",
+      "h5g4",
+      "d3f5",
+      "g4f5",
+      "d7d8",
+      "f7f8"
+    ],
+    "rating": 1089,
+    "popularity": 93,
+    "plays": 295,
+    "gameUrl": "https://lichess.org/gmmOikgm/black#40",
+    "themes": [
+      "interference",
+      "long",
+      "mate",
+      "matein3",
+      "middlegame"
+    ],
+    "createdAt": {
+      "_seconds": 1761045182,
+      "_nanoseconds": 457000000
+    }
+  },
+  {
+    "id": "0bPIw",
+    "fen": "r3r1k1/1q3p2/p7/1p2p3/8/4B1Q1/PP2p3/1K1R3b b - - 3 31",
+    "moves": [
+      "g8f8",
+      "e3h6",
+      "f8e7",
+      "g3e5"
+    ],
+    "rating": 1212,
+    "popularity": 18,
+    "plays": 3,
+    "gameUrl": "https://lichess.org/tZuIwjJR/black#62",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761045345,
+      "_nanoseconds": 749000000
+    }
+  },
+  {
+    "id": "0kzam",
+    "fen": "r2q1r2/2ppbkpQ/pp2p3/4P3/8/2P5/PPB2PPP/R1B3K1 b - - 0 18",
+    "moves": [
+      "f8h8",
+      "c2g6",
+      "f7f8",
+      "h7h8"
+    ],
+    "rating": 1369,
+    "popularity": 96,
+    "plays": 26777,
+    "gameUrl": "https://lichess.org/d1AOtljB/black#36",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761045470,
+      "_nanoseconds": 33000000
+    }
+  },
+  {
+    "id": "157At",
+    "fen": "3qr1k1/p4pp1/b1N4p/2nB4/2P4P/P2n4/1rQ2PP1/1R4KR w - - 0 25",
+    "moves": [
+      "b1b2",
+      "e8e1",
+      "g1h2",
+      "d8h4"
+    ],
+    "rating": 1815,
+    "popularity": 90,
+    "plays": 318,
+    "gameUrl": "https://lichess.org/cNOtSGy7#49",
+    "themes": [
+      "interference",
+      "kingsideattack",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761045731,
+      "_nanoseconds": 707000000
+    }
+  },
+  {
+    "id": "1BtK6",
+    "fen": "r3r1k1/pp3pp1/7p/n7/1p4Q1/3B1N2/1qPK1PPP/3R3R w - - 2 20",
+    "moves": [
+      "d1b1",
+      "a5b3",
+      "d2d1",
+      "b2b1"
+    ],
+    "rating": 1824,
+    "popularity": 83,
+    "plays": 25,
+    "gameUrl": "https://lichess.org/3I6GsemU#39",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "pin",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761045817,
+      "_nanoseconds": 453000000
+    }
+  },
+  {
+    "id": "1CcsQ",
+    "fen": "r1bkr3/1pp4p/1pnb1Q2/4Np2/5P2/1B6/P1P1K1PP/RN5q b - - 2 17",
+    "moves": [
+      "d6e7",
+      "e5f7",
+      "d8d7",
+      "f6f5"
+    ],
+    "rating": 1464,
+    "popularity": 88,
+    "plays": 35,
+    "gameUrl": "https://lichess.org/psnByNJC/black#34",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761045827,
+      "_nanoseconds": 316000000
+    }
+  },
+  {
+    "id": "1DGtY",
+    "fen": "r2r4/1bqpkppQ/p1nNpb2/1p4p1/8/P1P2N2/1P3PPP/1B1RR1K1 b - - 5 19",
+    "moves": [
+      "d8h8",
+      "d6f5",
+      "e7f8",
+      "h7h8"
+    ],
+    "rating": 1378,
+    "popularity": 94,
+    "plays": 5362,
+    "gameUrl": "https://lichess.org/Mypp1FkQ/black#38",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "pin",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761045836,
+      "_nanoseconds": 333000000
+    }
+  },
+  {
+    "id": "1Fl8n",
+    "fen": "2krr3/Qpp2p2/3p2np/3P2p1/2P3P1/P2K1N1P/1qP3P1/3R3R w - - 1 25",
+    "moves": [
+      "d1b1",
+      "g6f4",
+      "d3d2",
+      "e8e2",
+      "d2d1",
+      "b2b1"
+    ],
+    "rating": 1381,
+    "popularity": 68,
+    "plays": 80,
+    "gameUrl": "https://lichess.org/ypGtJ8qd#49",
+    "themes": [
+      "interference",
+      "long",
+      "mate",
+      "matein3",
+      "middlegame"
+    ],
+    "createdAt": {
+      "_seconds": 1761045861,
+      "_nanoseconds": 315000000
+    }
+  },
+  {
+    "id": "1Qppl",
+    "fen": "r2q1r2/3bbkpQ/p2p4/1ppP4/5P1p/7P/PPP1B1P1/3R1RK1 b - - 2 20",
+    "moves": [
+      "f8h8",
+      "e2h5",
+      "f7f8",
+      "h7h8"
+    ],
+    "rating": 1185,
+    "popularity": 100,
+    "plays": 32,
+    "gameUrl": "https://lichess.org/li3qEvyx/black#40",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761046013,
+      "_nanoseconds": 536000000
+    }
+  },
+  {
+    "id": "293I0",
+    "fen": "r6r/ppp3kp/1b1pR3/3Pn2P/4P3/2P5/PP1N2P1/5R1K b - - 0 21",
+    "moves": [
+      "a8e8",
+      "h5h6",
+      "g7g8",
+      "e6e8"
+    ],
+    "rating": 1453,
+    "popularity": 89,
+    "plays": 2002,
+    "gameUrl": "https://lichess.org/N9fmHngV/black#42",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761046560,
+      "_nanoseconds": 102000000
+    }
+  },
+  {
+    "id": "2IPLK",
+    "fen": "2kr2r1/pp3p1p/4bp2/3p4/3q4/6Q1/PP3PPP/2R2RK1 b - - 3 18",
+    "moves": [
+      "c8d7",
+      "c1c7",
+      "d7e8",
+      "g3g8"
+    ],
+    "rating": 1869,
+    "popularity": 34,
+    "plays": 112,
+    "gameUrl": "https://lichess.org/MDSvejeu/black#36",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761046678,
+      "_nanoseconds": 641000000
+    }
+  },
+  {
+    "id": "2MgcP",
+    "fen": "3r3r/5p2/3Qp1kp/p2nPB2/1p1q4/6N1/PP3P2/4R1K1 b - - 2 30",
+    "moves": [
+      "g6g7",
+      "g3h5",
+      "g7g8",
+      "d6d8"
+    ],
+    "rating": 1167,
+    "popularity": 78,
+    "plays": 81,
+    "gameUrl": "https://lichess.org/yilzDClM/black#60",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761046730,
+      "_nanoseconds": 346000000
+    }
+  },
+  {
+    "id": "2Nqgv",
+    "fen": "3rk2r/ppp3pp/3bbn2/4N3/2P5/P1N1P2P/1P4P1/R3KB1R w KQk - 3 14",
+    "moves": [
+      "e5f3",
+      "d6g3",
+      "e1e2",
+      "e6c4"
+    ],
+    "rating": 916,
+    "popularity": 91,
+    "plays": 812,
+    "gameUrl": "https://lichess.org/SSZESkkH#27",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761046738,
+      "_nanoseconds": 959000000
+    }
+  },
+  {
+    "id": "2jD4q",
+    "fen": "r1b1k1nr/ppp2Npp/8/2bp4/2B1P3/2N5/PPQP1qPP/R1BK3R w kq - 0 9",
+    "moves": [
+      "h1f1",
+      "c8g4",
+      "c3e2",
+      "f2f1"
+    ],
+    "rating": 1602,
+    "popularity": 95,
+    "plays": 2796,
+    "gameUrl": "https://lichess.org/DjIt0klC#17",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "opening",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761047001,
+      "_nanoseconds": 805000000
+    }
+  },
+  {
+    "id": "35dlg",
+    "fen": "r1b1kb1r/4pp1p/p2p2p1/2pP4/2N2PP1/2q5/P5P1/R1BQKB1R w KQkq - 0 15",
+    "moves": [
+      "c1d2",
+      "c3g3",
+      "e1e2",
+      "c8g4"
+    ],
+    "rating": 1399,
+    "popularity": 91,
+    "plays": 3521,
+    "gameUrl": "https://lichess.org/r9krh7W3#29",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761047310,
+      "_nanoseconds": 385000000
+    }
+  },
+  {
+    "id": "3P5FF",
+    "fen": "r2q1r2/pb1nbkpQ/1p2p3/2ppp3/3PnP2/2P1P2R/PP1NB1PP/R1B3K1 b - - 2 14",
+    "moves": [
+      "f8h8",
+      "e2h5",
+      "f7f8",
+      "h7h8"
+    ],
+    "rating": 1153,
+    "popularity": 95,
+    "plays": 1035,
+    "gameUrl": "https://lichess.org/2aqDzSJh/black#28",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761047559,
+      "_nanoseconds": 49000000
+    }
+  },
+  {
+    "id": "3fF6F",
+    "fen": "r6r/p1ppkp2/1p2p2p/4PP2/2q1n3/5Q2/P1P3PP/3R1R1K b - - 0 25",
+    "moves": [
+      "e4g5",
+      "f5f6",
+      "e7f8",
+      "f3a8"
+    ],
+    "rating": 1315,
+    "popularity": 78,
+    "plays": 83,
+    "gameUrl": "https://lichess.org/t6YnLYhm/black#50",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761047762,
+      "_nanoseconds": 628000000
+    }
+  },
+  {
+    "id": "3o67z",
+    "fen": "3r3r/Qpkq2pp/p1pp4/3npnN1/2P5/7P/P1PB2P1/2KR4 b - - 0 23",
+    "moves": [
+      "d8a8",
+      "d2a5",
+      "d5b6",
+      "a5b6",
+      "c7c8",
+      "a7a8"
+    ],
+    "rating": 1739,
+    "popularity": 93,
+    "plays": 377,
+    "gameUrl": "https://lichess.org/0LtPBvsc/black#46",
+    "themes": [
+      "interference",
+      "long",
+      "mate",
+      "matein3",
+      "middlegame"
+    ],
+    "createdAt": {
+      "_seconds": 1761047877,
+      "_nanoseconds": 884000000
+    }
+  },
+  {
+    "id": "3qNfo",
+    "fen": "r5nQ/4kp1p/4p3/pp1pB3/3P4/PBq5/2P1KPbP/R6R w - - 0 19",
+    "moves": [
+      "h1g1",
+      "g2f3",
+      "e2f1",
+      "c3a1"
+    ],
+    "rating": 1950,
+    "popularity": 98,
+    "plays": 102,
+    "gameUrl": "https://lichess.org/oLbqVrsO#37",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761047903,
+      "_nanoseconds": 872000000
+    }
+  },
+  {
+    "id": "4FrK8",
+    "fen": "3rkbnr/ppp2ppp/4b3/4p3/1nP5/2N1PN2/PP3PPP/R1B1KB1R w KQk - 2 8",
+    "moves": [
+      "a1b1",
+      "b4c2",
+      "e1e2",
+      "e6c4"
+    ],
+    "rating": 1343,
+    "popularity": 83,
+    "plays": 2150,
+    "gameUrl": "https://lichess.org/2Y5BUdT1#15",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "opening",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761048221,
+      "_nanoseconds": 829000000
+    }
+  },
+  {
+    "id": "4o1Za",
+    "fen": "r6r/1b1pBkpQ/p3p2p/1pq1P3/8/2PB4/5PPP/2R2RK1 b - - 0 22",
+    "moves": [
+      "c5e7",
+      "d3g6",
+      "f7f8",
+      "h7h8"
+    ],
+    "rating": 1512,
+    "popularity": 88,
+    "plays": 208,
+    "gameUrl": "https://lichess.org/AjoQv03b/black#44",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761048659,
+      "_nanoseconds": 787000000
+    }
+  },
+  {
+    "id": "4pjpt",
+    "fen": "r4r2/4qkpQ/p2p1p1R/1pnPp3/4P3/2N2B2/PP6/1K6 b - - 0 25",
+    "moves": [
+      "f8h8",
+      "f3h5",
+      "f7f8",
+      "h7h8"
+    ],
+    "rating": 1784,
+    "popularity": 48,
+    "plays": 32,
+    "gameUrl": "https://lichess.org/KOgSh3jk/black#50",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "pin",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761048686,
+      "_nanoseconds": 58000000
+    }
+  },
+  {
+    "id": "4sIAE",
+    "fen": "r4r2/2k5/1p1pRqpQ/p1pP4/P1n5/2P2P1P/2B3P1/1R1K4 b - - 3 29",
+    "moves": [
+      "f6c3",
+      "e6e7",
+      "c7d8",
+      "h6f8"
+    ],
+    "rating": 2026,
+    "popularity": 87,
+    "plays": 109,
+    "gameUrl": "https://lichess.org/WdBvzS6w/black#58",
+    "themes": [
+      "interference",
+      "master",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761048711,
+      "_nanoseconds": 978000000
+    }
+  },
+  {
+    "id": "57UPA",
+    "fen": "r6r/pbppkpp1/1p2p2p/3PP1N1/1nP1N3/1P5R/5PPP/5RK1 b - - 0 20",
+    "moves": [
+      "h6g5",
+      "d5d6",
+      "c7d6",
+      "e5d6",
+      "e7f8",
+      "h3h8"
+    ],
+    "rating": 1506,
+    "popularity": 94,
+    "plays": 25324,
+    "gameUrl": "https://lichess.org/tqiTTRpD/black#40",
+    "themes": [
+      "interference",
+      "long",
+      "mate",
+      "matein3",
+      "middlegame"
+    ],
+    "createdAt": {
+      "_seconds": 1761048894,
+      "_nanoseconds": 983000000
+    }
+  },
+  {
+    "id": "5NCca",
+    "fen": "2k4r/1r4pp/p1Q1p3/q1p1P3/3b4/P2P4/1PR3RP/1K6 b - - 1 28",
+    "moves": [
+      "b7c7",
+      "c6a8",
+      "c8d7",
+      "g2g7"
+    ],
+    "rating": 1883,
+    "popularity": 87,
+    "plays": 252,
+    "gameUrl": "https://lichess.org/K8y0Xc92/black#56",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761049092,
+      "_nanoseconds": 480000000
+    }
+  },
+  {
+    "id": "5ZCrv",
+    "fen": "r2q1r2/1p1bnkpQ/p1pp1p1p/3P4/2P2P2/1PBB4/P5PP/4RRK1 b - - 3 22",
+    "moves": [
+      "f8h8",
+      "e1e7",
+      "d8e7",
+      "d3g6",
+      "f7f8",
+      "h7h8"
+    ],
+    "rating": 1879,
+    "popularity": 95,
+    "plays": 140,
+    "gameUrl": "https://lichess.org/UEbr6C8k/black#44",
+    "themes": [
+      "interference",
+      "long",
+      "mate",
+      "matein3",
+      "middlegame",
+      "sacrifice"
+    ],
+    "createdAt": {
+      "_seconds": 1761049233,
+      "_nanoseconds": 793000000
+    }
+  },
+  {
+    "id": "5hdZO",
+    "fen": "r6r/1kp1Qppp/1p6/PR1p4/4n3/4KN2/2P3PP/q7 b - - 3 26",
+    "moves": [
+      "h8e8",
+      "b5b6",
+      "b7c8",
+      "e7e8"
+    ],
+    "rating": 1354,
+    "popularity": 98,
+    "plays": 1976,
+    "gameUrl": "https://lichess.org/Wv0JTnif/black#52",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "pin",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761049337,
+      "_nanoseconds": 826000000
+    }
+  },
+  {
+    "id": "5qexR",
+    "fen": "r4r2/3q1kpQ/p2pR3/2pP1B2/1p3P2/4B3/PbP5/3K4 b - - 0 24",
+    "moves": [
+      "f8h8",
+      "f5g6",
+      "f7f8",
+      "h7h8"
+    ],
+    "rating": 1957,
+    "popularity": 45,
+    "plays": 73,
+    "gameUrl": "https://lichess.org/pDvmzDz2/black#48",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761049441,
+      "_nanoseconds": 895000000
+    }
+  },
+  {
+    "id": "5uIv7",
+    "fen": "5rk1/2p1q2p/1p2p1pb/1Bn1p3/7P/2N2Q2/PPP3P1/3R2KR w - - 0 22",
+    "moves": [
+      "f3c6",
+      "h6e3",
+      "g1h2",
+      "e7h4"
+    ],
+    "rating": 1206,
+    "popularity": 68,
+    "plays": 158,
+    "gameUrl": "https://lichess.org/kz9gwpPK#43",
+    "themes": [
+      "interference",
+      "kingsideattack",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761049492,
+      "_nanoseconds": 224000000
+    }
+  },
+  {
+    "id": "5uwAj",
+    "fen": "r2q1r2/pp2np1p/6p1/3P4/2P4k/5B1P/P4PP1/2B1R1K1 b - - 5 22",
+    "moves": [
+      "f7f5",
+      "g1h2",
+      "f5f4",
+      "e1e5",
+      "e7f5",
+      "c1f4",
+      "d8g5",
+      "g2g3",
+      "g5g3",
+      "f2g3",
+      "f5g3",
+      "f4g3"
+    ],
+    "rating": 2627,
+    "popularity": 90,
+    "plays": 2587,
+    "gameUrl": "https://lichess.org/y9Y3ZVhP/black#44",
+    "themes": [
+      "interference",
+      "mate",
+      "matein5",
+      "middlegame",
+      "verylong"
+    ],
+    "createdAt": {
+      "_seconds": 1761049492,
+      "_nanoseconds": 224000000
+    }
+  },
+  {
+    "id": "6HUyh",
+    "fen": "r1b2rk1/1p3ppp/p7/3pb3/6nq/P1NBP2P/1P1B1PP1/R2QR1K1 w - - 1 15",
+    "moves": [
+      "h3g4",
+      "h4h2",
+      "g1f1",
+      "h2h1",
+      "f1e2",
+      "c8g4",
+      "f2f3",
+      "h1g2"
+    ],
+    "rating": 1161,
+    "popularity": 99,
+    "plays": 825,
+    "gameUrl": "https://lichess.org/qVcG5Xu1#29",
+    "themes": [
+      "interference",
+      "kingsideattack",
+      "mate",
+      "matein4",
+      "opening",
+      "verylong"
+    ],
+    "createdAt": {
+      "_seconds": 1761049789,
+      "_nanoseconds": 829000000
+    }
+  },
+  {
+    "id": "6HfEh",
+    "fen": "3rkbnr/ppp2p1p/4b1p1/8/1nP5/2N1P3/PP3PPP/1RB1KBNR w Kk - 0 9",
+    "moves": [
+      "g1f3",
+      "b4c2",
+      "e1e2",
+      "e6c4"
+    ],
+    "rating": 1300,
+    "popularity": 96,
+    "plays": 2482,
+    "gameUrl": "https://lichess.org/Rvjjdog5#17",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "opening",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761049789,
+      "_nanoseconds": 829000000
+    }
+  },
+  {
+    "id": "6OGMA",
+    "fen": "r1bQNk1r/pp4pp/4q3/4p1B1/4P3/5N2/PPn1KPPP/7R b - - 0 19",
+    "moves": [
+      "e6e8",
+      "g5e7",
+      "f8f7",
+      "f3e5",
+      "f7e6",
+      "d8d6"
+    ],
+    "rating": 2082,
+    "popularity": 91,
+    "plays": 669,
+    "gameUrl": "https://lichess.org/2iiwbrWG/black#38",
+    "themes": [
+      "interference",
+      "long",
+      "mate",
+      "matein3",
+      "middlegame"
+    ],
+    "createdAt": {
+      "_seconds": 1761049868,
+      "_nanoseconds": 742000000
+    }
+  },
+  {
+    "id": "6SMj4",
+    "fen": "r1b1k1nN/ppp3pp/3p4/2b5/2B1P3/2N5/PPQP1qPP/R1BK3R w q - 0 10",
+    "moves": [
+      "h1f1",
+      "c8g4",
+      "c3e2",
+      "f2f1"
+    ],
+    "rating": 1571,
+    "popularity": 93,
+    "plays": 2265,
+    "gameUrl": "https://lichess.org/Ny85Bys9#19",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "opening",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761049920,
+      "_nanoseconds": 409000000
+    }
+  },
+  {
+    "id": "6X47l",
+    "fen": "1k1r3r/pp3ppp/8/8/3p4/1P2PBb1/P2BK1Pq/2RQ1R2 w - - 2 22",
+    "moves": [
+      "f1h1",
+      "d4d3",
+      "e2f1",
+      "h2h1"
+    ],
+    "rating": 1265,
+    "popularity": 77,
+    "plays": 386,
+    "gameUrl": "https://lichess.org/TcdQ4VAp#43",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761049971,
+      "_nanoseconds": 650000000
+    }
+  },
+  {
+    "id": "6fwKi",
+    "fen": "2R1b1kr/p4pp1/2n1p2p/2BpP3/6QP/2P2N2/5PPK/1q6 b - - 5 24",
+    "moves": [
+      "g8h7",
+      "f3g5",
+      "h6g5",
+      "g4h5",
+      "h7g8",
+      "c8e8"
+    ],
+    "rating": 1175,
+    "popularity": 86,
+    "plays": 45,
+    "gameUrl": "https://lichess.org/leej4YWo/black#48",
+    "themes": [
+      "interference",
+      "long",
+      "mate",
+      "matein3",
+      "middlegame",
+      "sacrifice"
+    ],
+    "createdAt": {
+      "_seconds": 1761050084,
+      "_nanoseconds": 392000000
+    }
+  },
+  {
+    "id": "6iLlC",
+    "fen": "r4q2/1ppb1kpQ/p1n1p3/6B1/1P6/P2B4/2P3PP/7K b - - 3 25",
+    "moves": [
+      "f8h8",
+      "d3g6",
+      "f7f8",
+      "h7h8"
+    ],
+    "rating": 1476,
+    "popularity": 100,
+    "plays": 923,
+    "gameUrl": "https://lichess.org/O4n4U4Nr/black#50",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761050116,
+      "_nanoseconds": 666000000
+    }
+  },
+  {
+    "id": "6pQrA",
+    "fen": "r2qr3/1b1nbkpQ/p3p3/1p1pPp2/5P2/1PN5/PB2B1PP/R2R2K1 b - - 3 25",
+    "moves": [
+      "e8h8",
+      "e2h5",
+      "f7f8",
+      "h7h8"
+    ],
+    "rating": 1033,
+    "popularity": 96,
+    "plays": 1272,
+    "gameUrl": "https://lichess.org/EQ3ajrVm/black#50",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761050203,
+      "_nanoseconds": 280000000
+    }
+  },
+  {
+    "id": "6qk0T",
+    "fen": "r2qkb1r/2pb3p/p1n1pp2/1p1pP1N1/3P1B2/2PB4/P1P2PPP/R2Q1RK1 b kq - 0 12",
+    "moves": [
+      "f6g5",
+      "d1h5",
+      "e8e7",
+      "f4g5"
+    ],
+    "rating": 1174,
+    "popularity": 96,
+    "plays": 4170,
+    "gameUrl": "https://lichess.org/sbDxIjUE/black#24",
+    "themes": [
+      "interference",
+      "intermezzo",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761050212,
+      "_nanoseconds": 347000000
+    }
+  },
+  {
+    "id": "6vOST",
+    "fen": "2kr4/1ppb1p1Q/4p3/p2p1n2/3P4/4PN2/2qNKP2/1R5R w - - 4 22",
+    "moves": [
+      "b1c1",
+      "d7b5",
+      "e2e1",
+      "c2c1"
+    ],
+    "rating": 1230,
+    "popularity": 96,
+    "plays": 632,
+    "gameUrl": "https://lichess.org/URbjQt71#43",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761050275,
+      "_nanoseconds": 683000000
+    }
+  },
+  {
+    "id": "6wVfe",
+    "fen": "1r5r/p1kp2pp/bp6/4R3/B7/2P5/P1P2bPP/1K1R4 b - - 0 20",
+    "moves": [
+      "h8e8",
+      "d1d7",
+      "c7c8",
+      "e5e8"
+    ],
+    "rating": 1209,
+    "popularity": 100,
+    "plays": 410,
+    "gameUrl": "https://lichess.org/BBtI1vqs/black#40",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761050293,
+      "_nanoseconds": 144000000
+    }
+  },
+  {
+    "id": "766Lw",
+    "fen": "rn1q3r/p2b1kpQ/2p1pb2/1p1nN1B1/3P4/P7/1P3PPP/RB3RK1 b - - 2 19",
+    "moves": [
+      "f6e5",
+      "b1g6",
+      "f7f8",
+      "h7h8"
+    ],
+    "rating": 1807,
+    "popularity": 87,
+    "plays": 685,
+    "gameUrl": "https://lichess.org/c7EI0R4j/black#38",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "opening",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761050409,
+      "_nanoseconds": 635000000
+    }
+  },
+  {
+    "id": "7YyqL",
+    "fen": "3r3r/pQ3pkp/3p2b1/q1p2PP1/4P3/2N2B2/PP1K4/n7 b - - 0 27",
+    "moves": [
+      "d8b8",
+      "f5f6",
+      "g7g8",
+      "b7b8",
+      "a5d8",
+      "b8d8"
+    ],
+    "rating": 981,
+    "popularity": 94,
+    "plays": 1339,
+    "gameUrl": "https://lichess.org/iMfYhlz1/black#54",
+    "themes": [
+      "interference",
+      "long",
+      "mate",
+      "matein3",
+      "middlegame"
+    ],
+    "createdAt": {
+      "_seconds": 1761050759,
+      "_nanoseconds": 626000000
+    }
+  },
+  {
+    "id": "7ZRUU",
+    "fen": "r6r/pp1Qkpp1/1np1pN2/4q1P1/2P5/8/PP3PP1/1K1R3R b - - 3 19",
+    "moves": [
+      "b6d7",
+      "d1d7",
+      "e7f8",
+      "h1h8"
+    ],
+    "rating": 1283,
+    "popularity": 94,
+    "plays": 3029,
+    "gameUrl": "https://lichess.org/YErABsG5/black#38",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761050768,
+      "_nanoseconds": 198000000
+    }
+  },
+  {
+    "id": "7sIfy",
+    "fen": "2k1r3/ppp5/4p2r/5bN1/3P1Q2/1Pq3P1/P4PKP/4R2R w - - 1 28",
+    "moves": [
+      "g5f7",
+      "f5h3",
+      "g2g1",
+      "c3e1"
+    ],
+    "rating": 1514,
+    "popularity": 98,
+    "plays": 3308,
+    "gameUrl": "https://lichess.org/XpyaKMey#55",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761050993,
+      "_nanoseconds": 366000000
+    }
+  },
+  {
+    "id": "85Myf",
+    "fen": "4rr1k/1b6/p1q3pR/1p4N1/1P3pP1/P1pPQ3/B1P2K2/8 b - - 0 35",
+    "moves": [
+      "h8g7",
+      "h6h7",
+      "g7f6",
+      "e3f4"
+    ],
+    "rating": 1798,
+    "popularity": 95,
+    "plays": 15616,
+    "gameUrl": "https://lichess.org/Y8fXgQzN/black#70",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761051160,
+      "_nanoseconds": 841000000
+    }
+  },
+  {
+    "id": "8V7H4",
+    "fen": "r6r/3kbBpp/p2p1q2/np1QP3/5P2/7P/P5P1/2R3K1 b - - 0 27",
+    "moves": [
+      "f6f4",
+      "e5e6",
+      "d7d8",
+      "d5a8"
+    ],
+    "rating": 1674,
+    "popularity": 94,
+    "plays": 11938,
+    "gameUrl": "https://lichess.org/uiKLZsHy/black#54",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761051491,
+      "_nanoseconds": 732000000
+    }
+  },
+  {
+    "id": "8mK4p",
+    "fen": "2rr4/pp1bbknQ/1qn1p1p1/3p2P1/3P1P2/2PB4/PP1N3P/R1B2R1K b - - 0 20",
+    "moves": [
+      "d8h8",
+      "d3g6",
+      "f7f8",
+      "h7h8"
+    ],
+    "rating": 1654,
+    "popularity": 94,
+    "plays": 1016,
+    "gameUrl": "https://lichess.org/KGlAhgOk/black#40",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761051719,
+      "_nanoseconds": 508000000
+    }
+  },
+  {
+    "id": "8mKfW",
+    "fen": "5r1k/p5pp/1p6/3Qpb2/4N2q/P4B2/6KP/R6R w - - 1 26",
+    "moves": [
+      "a1e1",
+      "f5h3",
+      "g2g1",
+      "h4e1"
+    ],
+    "rating": 1874,
+    "popularity": 85,
+    "plays": 1153,
+    "gameUrl": "https://lichess.org/wjr9LnKF#51",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761051719,
+      "_nanoseconds": 508000000
+    }
+  },
+  {
+    "id": "8r8uy",
+    "fen": "r1b1qr2/pp2bkpQ/4p3/3pP3/8/P7/1PB2PPP/RNB3K1 b - - 0 16",
+    "moves": [
+      "f8h8",
+      "c2g6",
+      "f7f8",
+      "h7h8"
+    ],
+    "rating": 1377,
+    "popularity": 95,
+    "plays": 23982,
+    "gameUrl": "https://lichess.org/0skR8s9P/black#32",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761051783,
+      "_nanoseconds": 564000000
+    }
+  },
+  {
+    "id": "95Vfy",
+    "fen": "5r1r/1Qpkq1p1/3pp3/4p2p/3nP3/PB1P4/1Pn3PP/2R3K1 b - - 3 26",
+    "moves": [
+      "f8b8",
+      "b3a4",
+      "d4c6",
+      "a4c6",
+      "d7d8",
+      "b7b8"
+    ],
+    "rating": 1747,
+    "popularity": 97,
+    "plays": 2890,
+    "gameUrl": "https://lichess.org/8YOzVnPI/black#52",
+    "themes": [
+      "interference",
+      "long",
+      "mate",
+      "matein3",
+      "middlegame"
+    ],
+    "createdAt": {
+      "_seconds": 1761051962,
+      "_nanoseconds": 572000000
+    }
+  },
+  {
+    "id": "96lC6",
+    "fen": "r6r/2N1nk1p/6pP/2b3B1/p1N5/8/3R1PP1/5K2 b - - 4 30",
+    "moves": [
+      "a8d8",
+      "c4e5",
+      "f7g8",
+      "d2d8"
+    ],
+    "rating": 1395,
+    "popularity": 94,
+    "plays": 13367,
+    "gameUrl": "https://lichess.org/0iuD7lKH/black#60",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761051981,
+      "_nanoseconds": 41000000
+    }
+  },
+  {
+    "id": "9Iqca",
+    "fen": "5rk1/5pb1/6p1/pp4Bp/2b1PN1P/2p2P2/2Q2KPq/1R1R4 w - - 0 32",
+    "moves": [
+      "d1h1",
+      "g7d4",
+      "f2e1",
+      "h2h1"
+    ],
+    "rating": 1237,
+    "popularity": 82,
+    "plays": 15,
+    "gameUrl": "https://lichess.org/aVabPu4c#63",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761052128,
+      "_nanoseconds": 757000000
+    }
+  },
+  {
+    "id": "9NHtm",
+    "fen": "r2qkb1r/pp1b3p/2n1pp2/2PpPnN1/3P1B2/P1P5/5PPP/RN1QKB1R b KQkq - 0 10",
+    "moves": [
+      "f6g5",
+      "d1h5",
+      "e8e7",
+      "f4g5"
+    ],
+    "rating": 1172,
+    "popularity": 88,
+    "plays": 727,
+    "gameUrl": "https://lichess.org/JzUh4b88/black#20",
+    "themes": [
+      "interference",
+      "intermezzo",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761052182,
+      "_nanoseconds": 565000000
+    }
+  },
+  {
+    "id": "9V4kO",
+    "fen": "2Q5/r3p1rk/p2p4/5p2/3q1P2/3B4/P1P2KPP/R6R w - - 0 25",
+    "moves": [
+      "f2e2",
+      "g7g2",
+      "e2d1",
+      "d4a1"
+    ],
+    "rating": 1267,
+    "popularity": 93,
+    "plays": 1209,
+    "gameUrl": "https://lichess.org/G1ubw5xz#49",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761052283,
+      "_nanoseconds": 470000000
+    }
+  },
+  {
+    "id": "9kepf",
+    "fen": "4r1k1/p1p2ppp/2p4q/8/2PP1n1P/2B2B2/PPQ2PP1/4r1KR w - - 1 22",
+    "moves": [
+      "c3e1",
+      "e8e1",
+      "g1h2",
+      "h6h4"
+    ],
+    "rating": 1308,
+    "popularity": 96,
+    "plays": 10815,
+    "gameUrl": "https://lichess.org/V99iyI4U#43",
+    "themes": [
+      "interference",
+      "kingsideattack",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761052469,
+      "_nanoseconds": 110000000
+    }
+  },
+  {
+    "id": "A8v3t",
+    "fen": "1r5r/3qkpQp/3pp3/8/8/5PP1/PPn2P1P/2B2K1R b - - 0 18",
+    "moves": [
+      "h8g8",
+      "c1g5",
+      "e7e8",
+      "g7g8"
+    ],
+    "rating": 1039,
+    "popularity": 85,
+    "plays": 120,
+    "gameUrl": "https://lichess.org/yqiayqBj/black#36",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761052761,
+      "_nanoseconds": 412000000
+    }
+  },
+  {
+    "id": "AGHIL",
+    "fen": "r3r1k1/p1Q1bppp/2n1p3/3b4/3P1B2/4PN1B/2qNKP2/R5R1 w - - 6 22",
+    "moves": [
+      "a1c1",
+      "d5c4",
+      "e2e1",
+      "c2c1"
+    ],
+    "rating": 1229,
+    "popularity": 90,
+    "plays": 656,
+    "gameUrl": "https://lichess.org/6iEO7mty#43",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761052854,
+      "_nanoseconds": 336000000
+    }
+  },
+  {
+    "id": "AU2nn",
+    "fen": "2r4r/3pkp2/4p3/4P1p1/PQpPqb2/7R/1B3RPP/7K b - - 2 32",
+    "moves": [
+      "d7d6",
+      "b4d6",
+      "e7e8",
+      "h3h8"
+    ],
+    "rating": 1430,
+    "popularity": 96,
+    "plays": 29145,
+    "gameUrl": "https://lichess.org/BQSIPLDr/black#64",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761053020,
+      "_nanoseconds": 456000000
+    }
+  },
+  {
+    "id": "AhKDb",
+    "fen": "1r2k2r/pp1npp1p/3p1bp1/2pP4/2P1q1P1/P3P2P/1P1B1P2/1R1QKB1R w Kk - 3 16",
+    "moves": [
+      "f2f3",
+      "f6h4",
+      "e1e2",
+      "e4c4"
+    ],
+    "rating": 1298,
+    "popularity": 96,
+    "plays": 13666,
+    "gameUrl": "https://lichess.org/jXOXkfHp#31",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761053193,
+      "_nanoseconds": 647000000
+    }
+  },
+  {
+    "id": "AmzYW",
+    "fen": "r1b1k3/1pp2p1p/1b6/pP2Pq2/P1B5/2PP1nB1/5PrP/RN1Q1K1R w q - 3 16",
+    "moves": [
+      "f1g2",
+      "f5h3",
+      "g2f3",
+      "h3h5",
+      "f3g2",
+      "c8h3",
+      "g2g1",
+      "h5d1"
+    ],
+    "rating": 2712,
+    "popularity": 91,
+    "plays": 1564,
+    "gameUrl": "https://lichess.org/WoUWdteN#31",
+    "themes": [
+      "interference",
+      "mate",
+      "matein4",
+      "middlegame",
+      "sacrifice",
+      "verylong"
+    ],
+    "createdAt": {
+      "_seconds": 1761053261,
+      "_nanoseconds": 164000000
+    }
+  },
+  {
+    "id": "Ao0ro",
+    "fen": "r3kbnr/ppq1nQpp/2pp4/4p3/2B1P3/8/PPPP1PPP/R1B2RK1 b kq - 0 11",
+    "moves": [
+      "e8d7",
+      "c4e6",
+      "d7d8",
+      "f7f8"
+    ],
+    "rating": 1409,
+    "popularity": 96,
+    "plays": 30074,
+    "gameUrl": "https://lichess.org/sYzeB2OE/black#22",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "opening",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761053270,
+      "_nanoseconds": 285000000
+    }
+  },
+  {
+    "id": "B9MBK",
+    "fen": "1rb1kbnr/5ppp/4p3/1Np1P3/Pn6/4BN2/1P3PPP/2KR3R b k - 2 16",
+    "moves": [
+      "g8h6",
+      "b5c7",
+      "e8e7",
+      "e3c5"
+    ],
+    "rating": 1613,
+    "popularity": 97,
+    "plays": 4312,
+    "gameUrl": "https://lichess.org/tcroUSOV/black#32",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761053543,
+      "_nanoseconds": 110000000
+    }
+  },
+  {
+    "id": "BFL8X",
+    "fen": "1r4k1/p1p3bp/3p4/4p3/8/1PNP1pP1/P1PK1P1r/R2QR2q w - - 2 23",
+    "moves": [
+      "e1h1",
+      "g7h6",
+      "d2e1",
+      "h2h1"
+    ],
+    "rating": 1701,
+    "popularity": 80,
+    "plays": 100,
+    "gameUrl": "https://lichess.org/NQ0bP8UP#45",
+    "themes": [
+      "interference",
+      "intermezzo",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761053621,
+      "_nanoseconds": 500000000
+    }
+  },
+  {
+    "id": "BLomd",
+    "fen": "r1bq1r2/1pp2B2/2np4/p1b1p2k/4P1nP/2PPNQ2/PP3PP1/R4RK1 b - - 0 16",
+    "moves": [
+      "h5h4",
+      "f3h3",
+      "h4g5",
+      "h3h5",
+      "g5f6",
+      "h5g6",
+      "f6e7",
+      "e3d5",
+      "e7d7",
+      "g6g4"
+    ],
+    "rating": 2233,
+    "popularity": 93,
+    "plays": 1135,
+    "gameUrl": "https://lichess.org/jAC9wU8E/black#32",
+    "themes": [
+      "interference",
+      "mate",
+      "matein5",
+      "middlegame",
+      "verylong"
+    ],
+    "createdAt": {
+      "_seconds": 1761054627,
+      "_nanoseconds": 166000000
+    }
+  },
+  {
+    "id": "BQ9IS",
+    "fen": "3r3r/1b3p1k/4pPp1/p3P1PB/2p3QP/p3K3/2q5/3R2R1 b - - 1 35",
+    "moves": [
+      "g6h5",
+      "g4h5",
+      "h7g8",
+      "d1d8"
+    ],
+    "rating": 1223,
+    "popularity": 94,
+    "plays": 705,
+    "gameUrl": "https://lichess.org/syeCZ759/black#70",
+    "themes": [
+      "interference",
+      "master",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761054679,
+      "_nanoseconds": 286000000
+    }
+  },
+  {
+    "id": "BRmYd",
+    "fen": "r6r/pkp2Rpp/1p2p2b/1N1p4/Q2P4/P7/1q4PP/5K2 b - - 1 27",
+    "moves": [
+      "h8f8",
+      "b5d6",
+      "b7b8",
+      "f7f8"
+    ],
+    "rating": 1588,
+    "popularity": 90,
+    "plays": 1012,
+    "gameUrl": "https://lichess.org/hObs1x6v/black#54",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "pin",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761054696,
+      "_nanoseconds": 833000000
+    }
+  },
+  {
+    "id": "BTDiU",
+    "fen": "r2r4/pb1qbkpQ/1p2pp1p/2p5/3p1P2/1P1BP3/PBPP2PP/R4RK1 b - - 5 19",
+    "moves": [
+      "d8h8",
+      "d3g6",
+      "f7f8",
+      "h7h8"
+    ],
+    "rating": 1508,
+    "popularity": 87,
+    "plays": 641,
+    "gameUrl": "https://lichess.org/NBzlHY3J/black#38",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761054716,
+      "_nanoseconds": 374000000
+    }
+  },
+  {
+    "id": "BW6ng",
+    "fen": "2r1qr2/1p2bkp1/p2p1pb1/2pP4/2P1P1Q1/PP2B2R/B5PP/6K1 b - - 6 32",
+    "moves": [
+      "f8h8",
+      "g4e6",
+      "f7f8",
+      "h3h8"
+    ],
+    "rating": 1132,
+    "popularity": 78,
+    "plays": 160,
+    "gameUrl": "https://lichess.org/fjz3hUnd/black#64",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761054760,
+      "_nanoseconds": 569000000
+    }
+  },
+  {
+    "id": "BinlL",
+    "fen": "2r2knQ/5p1R/3p2p1/3Pp1P1/1p2P3/5P2/1qPRK3/r7 b - - 1 38",
+    "moves": [
+      "b2c3",
+      "h8g7",
+      "f8e7",
+      "g7f7",
+      "e7d8",
+      "f7g8"
+    ],
+    "rating": 1067,
+    "popularity": 95,
+    "plays": 5787,
+    "gameUrl": "https://lichess.org/b5XgZyKO/black#76",
+    "themes": [
+      "interference",
+      "long",
+      "mate",
+      "matein3",
+      "middlegame"
+    ],
+    "createdAt": {
+      "_seconds": 1761054912,
+      "_nanoseconds": 147000000
+    }
+  },
+  {
+    "id": "BpNii",
+    "fen": "1r5r/2pk4/p1Ppbp2/Q3p1p1/P3P3/2BP2Pp/4q2P/1R2N2K b - - 0 32",
+    "moves": [
+      "d7e7",
+      "a5c7",
+      "e6d7",
+      "c7d7",
+      "e7f8",
+      "b1b8"
+    ],
+    "rating": 1968,
+    "popularity": 87,
+    "plays": 839,
+    "gameUrl": "https://lichess.org/78nAN7sy/black#64",
+    "themes": [
+      "interference",
+      "long",
+      "mate",
+      "matein3",
+      "middlegame"
+    ],
+    "createdAt": {
+      "_seconds": 1761054989,
+      "_nanoseconds": 346000000
+    }
+  },
+  {
+    "id": "CDL9J",
+    "fen": "r2qkbnr/p6p/2p1b1p1/P1p5/2P1p1P1/4P2P/R2B1P2/3QKBNR w Kkq - 1 20",
+    "moves": [
+      "f2f4",
+      "d8h4",
+      "e1e2",
+      "e6c4"
+    ],
+    "rating": 1842,
+    "popularity": 95,
+    "plays": 9032,
+    "gameUrl": "https://lichess.org/CCdAaCyj#39",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761055285,
+      "_nanoseconds": 676000000
+    }
+  },
+  {
+    "id": "CKDAc",
+    "fen": "7r/ppb2p2/1q2p1k1/3p1p1r/3P4/2P1QNP1/PP3PK1/R6R b - - 7 31",
+    "moves": [
+      "h5h1",
+      "e3g5",
+      "g6h7",
+      "a1h1"
+    ],
+    "rating": 1710,
+    "popularity": 88,
+    "plays": 61,
+    "gameUrl": "https://lichess.org/GJiqZgdJ/black#62",
+    "themes": [
+      "interference",
+      "intermezzo",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761055371,
+      "_nanoseconds": 152000000
+    }
+  },
+  {
+    "id": "CccIG",
+    "fen": "1nrqr3/p3bkpQ/1np1p3/1p6/2PP4/1P3BBP/P4PP1/R2R2K1 b - - 0 22",
+    "moves": [
+      "e8h8",
+      "f3h5",
+      "f7f8",
+      "h7h8"
+    ],
+    "rating": 1060,
+    "popularity": 97,
+    "plays": 873,
+    "gameUrl": "https://lichess.org/lRXy5QQp/black#44",
+    "themes": [
+      "interference",
+      "master",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761055598,
+      "_nanoseconds": 914000000
+    }
+  },
+  {
+    "id": "CeNdU",
+    "fen": "1qrr4/p3kp1Q/1pB1pp2/1P6/5b2/1P6/P4PP1/3R1R1K b - - 0 25",
+    "moves": [
+      "d8h8",
+      "d1d7",
+      "e7f8",
+      "h7h8"
+    ],
+    "rating": 948,
+    "popularity": 93,
+    "plays": 700,
+    "gameUrl": "https://lichess.org/agh6g6gT/black#50",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761055617,
+      "_nanoseconds": 242000000
+    }
+  },
+  {
+    "id": "CzJIY",
+    "fen": "3r1rk1/5ppp/4pn2/pp4q1/1Q6/PPP3BP/5PPK/3R3R w - - 0 22",
+    "moves": [
+      "b4a5",
+      "f6g4",
+      "h3g4",
+      "g5h6",
+      "g3h4",
+      "h6h4",
+      "h2g1",
+      "d8d1"
+    ],
+    "rating": 1836,
+    "popularity": 96,
+    "plays": 18073,
+    "gameUrl": "https://lichess.org/2wZCEwGv#43",
+    "themes": [
+      "interference",
+      "mate",
+      "matein4",
+      "middlegame",
+      "sacrifice",
+      "verylong"
+    ],
+    "createdAt": {
+      "_seconds": 1761055886,
+      "_nanoseconds": 576000000
+    }
+  },
+  {
+    "id": "DBdx5",
+    "fen": "r1bqkR2/p1p2pp1/1p1p4/3Pp1n1/4P1Q1/2PB4/PP1NKP2/7R b q - 0 19",
+    "moves": [
+      "e8f8",
+      "h1h8",
+      "f8e7",
+      "g4g5",
+      "f7f6",
+      "g5g7"
+    ],
+    "rating": 1407,
+    "popularity": 50,
+    "plays": 101,
+    "gameUrl": "https://lichess.org/uyc99Klj/black#38",
+    "themes": [
+      "interference",
+      "long",
+      "mate",
+      "matein3",
+      "middlegame"
+    ],
+    "createdAt": {
+      "_seconds": 1761056035,
+      "_nanoseconds": 579000000
+    }
+  },
+  {
+    "id": "DTvrH",
+    "fen": "r3k1nB/1pp5/p1nbp3/3p1bp1/P7/1P2P3/2PPBKPq/RN2QR2 w q - 1 14",
+    "moves": [
+      "f1h1",
+      "d6g3",
+      "f2f1",
+      "h2h1"
+    ],
+    "rating": 1500,
+    "popularity": 93,
+    "plays": 1264,
+    "gameUrl": "https://lichess.org/fwKop9D4#27",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761056271,
+      "_nanoseconds": 329000000
+    }
+  },
+  {
+    "id": "DW0td",
+    "fen": "4r1k1/6bp/6p1/2pR4/P1Q1N1nP/1P3K1q/5P2/4R3 w - - 4 29",
+    "moves": [
+      "e4g3",
+      "g4h2",
+      "f3f4",
+      "h3h4"
+    ],
+    "rating": 1966,
+    "popularity": 88,
+    "plays": 435,
+    "gameUrl": "https://lichess.org/YbN0GjOb#57",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761056298,
+      "_nanoseconds": 968000000
+    }
+  },
+  {
+    "id": "DiT4y",
+    "fen": "r3r3/pppqkpQ1/2npb3/2n3N1/2P5/1P2P2P/PB3PP1/R3K2R b KQ - 0 20",
+    "moves": [
+      "e8g8",
+      "b2f6",
+      "e7e8",
+      "g7g8"
+    ],
+    "rating": 1553,
+    "popularity": 94,
+    "plays": 1382,
+    "gameUrl": "https://lichess.org/9UbogfjM/black#40",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761056445,
+      "_nanoseconds": 910000000
+    }
+  },
+  {
+    "id": "DmUvo",
+    "fen": "r3rN2/Qppkn1p1/2bp1p1p/3q4/7P/2B1RP2/PPP3P1/1K2R3 b - - 10 21",
+    "moves": [
+      "e8f8",
+      "e3e7",
+      "d7d8",
+      "a7a8"
+    ],
+    "rating": 1001,
+    "popularity": 94,
+    "plays": 1086,
+    "gameUrl": "https://lichess.org/YxfAlO7t/black#42",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761056499,
+      "_nanoseconds": 932000000
+    }
+  },
+  {
+    "id": "DwXyK",
+    "fen": "r4kr1/pb3p1Q/1p5p/5B2/2pPp2B/q1P1P3/3K4/3R3R w - - 2 29",
+    "moves": [
+      "h1g1",
+      "a3b2",
+      "d2e1",
+      "g8g1"
+    ],
+    "rating": 1525,
+    "popularity": 95,
+    "plays": 16742,
+    "gameUrl": "https://lichess.org/eFxdBeHx#57",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761056624,
+      "_nanoseconds": 636000000
+    }
+  },
+  {
+    "id": "ES3yF",
+    "fen": "2kr2nR/5pp1/Q1p1p3/3pPn2/3P2q1/2P5/PP6/2KR4 b - - 0 21",
+    "moves": [
+      "c8d7",
+      "a6b7",
+      "d7e8",
+      "h8g8"
+    ],
+    "rating": 1371,
+    "popularity": 79,
+    "plays": 145,
+    "gameUrl": "https://lichess.org/n7vuCRNy/black#42",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761057043,
+      "_nanoseconds": 805000000
+    }
+  },
+  {
+    "id": "EVK0r",
+    "fen": "r2qkb1r/pp1b2pp/4p3/2p1Pn2/2Pp1B2/8/PP1NBPPP/R2Q1RK1 b kq - 5 12",
+    "moves": [
+      "g7g5",
+      "e2h5",
+      "e8e7",
+      "f4g5"
+    ],
+    "rating": 832,
+    "popularity": 82,
+    "plays": 162,
+    "gameUrl": "https://lichess.org/JaFCkMDg/black#24",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761057078,
+      "_nanoseconds": 996000000
+    }
+  },
+  {
+    "id": "Eebp4",
+    "fen": "r1bNk2r/pppp2p1/2n5/8/2B1n3/3p4/PPPNKbP1/R2Q3R w kq - 0 12",
+    "moves": [
+      "c4d3",
+      "c6d4",
+      "e2f1",
+      "h8h1"
+    ],
+    "rating": 1914,
+    "popularity": 94,
+    "plays": 13239,
+    "gameUrl": "https://lichess.org/19FtKFr3#23",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761057195,
+      "_nanoseconds": 197000000
+    }
+  },
+  {
+    "id": "EqycM",
+    "fen": "3r3r/Qnkqb2p/2pp2p1/1p2p2n/pP2P1b1/P1PPB1P1/2BN1P2/R3K1NR b KQ - 2 21",
+    "moves": [
+      "d8a8",
+      "e3b6",
+      "c7c8",
+      "a7a8"
+    ],
+    "rating": 1501,
+    "popularity": 89,
+    "plays": 1567,
+    "gameUrl": "https://lichess.org/z8BbgGYe/black#42",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761057360,
+      "_nanoseconds": 951000000
+    }
+  },
+  {
+    "id": "EwnlN",
+    "fen": "2kr3r/p1q2p2/2p2nnp/2P1p3/P3P3/1QN2P2/4BP2/R3K2R b KQ - 0 18",
+    "moves": [
+      "g6f4",
+      "e2a6",
+      "c8d7",
+      "b3f7"
+    ],
+    "rating": 1469,
+    "popularity": 93,
+    "plays": 5055,
+    "gameUrl": "https://lichess.org/ag66r6v2/black#36",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761057433,
+      "_nanoseconds": 33000000
+    }
+  },
+  {
+    "id": "F8EIa",
+    "fen": "r3k1n1/3p3r/n3p3/4qpBP/8/pP3PN1/P1Q5/1KRR4 b q - 0 27",
+    "moves": [
+      "a6b4",
+      "c2c8",
+      "a8c8",
+      "c1c8",
+      "e8f7",
+      "d1d7",
+      "g8e7",
+      "d7e7"
+    ],
+    "rating": 1426,
+    "popularity": 89,
+    "plays": 175,
+    "gameUrl": "https://lichess.org/LXxtRDMi/black#54",
+    "themes": [
+      "interference",
+      "mate",
+      "matein4",
+      "middlegame",
+      "sacrifice",
+      "verylong"
+    ],
+    "createdAt": {
+      "_seconds": 1761057579,
+      "_nanoseconds": 773000000
+    }
+  },
+  {
+    "id": "FEvO4",
+    "fen": "3r3k/1Q6/p6p/8/2B1pPqP/1P2p3/P3N1P1/b5KR w - - 0 33",
+    "moves": [
+      "b7e4",
+      "d8d1",
+      "g1h2",
+      "g4h4"
+    ],
+    "rating": 1446,
+    "popularity": 86,
+    "plays": 102,
+    "gameUrl": "https://lichess.org/sHVxqJ0c#65",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761057663,
+      "_nanoseconds": 552000000
+    }
+  },
+  {
+    "id": "FGZvw",
+    "fen": "r2qr3/ppp2kpQ/3p1b2/nP3N2/3P4/2P5/P4PPP/1R2R1K1 b - - 0 20",
+    "moves": [
+      "e8h8",
+      "f5h6",
+      "f7f8",
+      "h7h8"
+    ],
+    "rating": 1764,
+    "popularity": 86,
+    "plays": 114,
+    "gameUrl": "https://lichess.org/pELPStdf/black#40",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "pin",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761057688,
+      "_nanoseconds": 633000000
+    }
+  },
+  {
+    "id": "FMAED",
+    "fen": "r1b1k1nN/ppp3pp/8/2bp4/2B1P3/2N5/PPQP1qPP/R1BK3R w q - 0 10",
+    "moves": [
+      "h1f1",
+      "c8g4",
+      "c3e2",
+      "f2f1"
+    ],
+    "rating": 1545,
+    "popularity": 97,
+    "plays": 4577,
+    "gameUrl": "https://lichess.org/1vGmovmF#19",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "opening",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761057761,
+      "_nanoseconds": 423000000
+    }
+  },
+  {
+    "id": "Fma2E",
+    "fen": "rn1q3r/4ppkp/2p3p1/p2nP1QP/1p6/3B1P2/PPP1NP2/R3K2R b KQ - 0 16",
+    "moves": [
+      "e7e6",
+      "h5h6",
+      "g7g8",
+      "g5d8"
+    ],
+    "rating": 1387,
+    "popularity": 98,
+    "plays": 4650,
+    "gameUrl": "https://lichess.org/KWYwyEZx/black#32",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761058097,
+      "_nanoseconds": 92000000
+    }
+  },
+  {
+    "id": "Fpw6A",
+    "fen": "2r2rk1/1b3pp1/p2Pp3/8/6P1/1P2Q1B1/P2P3P/2R2RKq w - - 5 28",
+    "moves": [
+      "g1f2",
+      "h1g2",
+      "f2e1",
+      "c8c1"
+    ],
+    "rating": 1155,
+    "popularity": 95,
+    "plays": 1763,
+    "gameUrl": "https://lichess.org/Y7B78g6d#55",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761058140,
+      "_nanoseconds": 793000000
+    }
+  },
+  {
+    "id": "Frows",
+    "fen": "4k1Q1/p3b3/1n4p1/3pP3/1p1P1P1r/3q4/PPRB4/1K6 b - - 1 30",
+    "moves": [
+      "e8d7",
+      "e5e6",
+      "d7d6",
+      "d2b4"
+    ],
+    "rating": 1721,
+    "popularity": 88,
+    "plays": 921,
+    "gameUrl": "https://lichess.org/TLmDodK8/black#60",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761058158,
+      "_nanoseconds": 49000000
+    }
+  },
+  {
+    "id": "FtilY",
+    "fen": "r1b1k1nr/ppQ2ppp/3p4/2b5/2B1P3/2N5/PPPP1qPP/R1BK3R w kq - 0 10",
+    "moves": [
+      "h1f1",
+      "c8g4",
+      "c3e2",
+      "f2f1"
+    ],
+    "rating": 1588,
+    "popularity": 93,
+    "plays": 1841,
+    "gameUrl": "https://lichess.org/ZUgbJ9PV#19",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "opening",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761058189,
+      "_nanoseconds": 822000000
+    }
+  },
+  {
+    "id": "FyhNN",
+    "fen": "r2q1bnr/1p1b2k1/p1n1p2p/3pP2P/3P2Q1/p1P5/5PP1/RNB1K2R b KQ - 2 15",
+    "moves": [
+      "g7f7",
+      "g4g6",
+      "f7e7",
+      "c1a3",
+      "c6b4",
+      "a3b4"
+    ],
+    "rating": 1669,
+    "popularity": 94,
+    "plays": 1629,
+    "gameUrl": "https://lichess.org/9F6FMv5l/black#30",
+    "themes": [
+      "interference",
+      "long",
+      "mate",
+      "matein3",
+      "middlegame"
+    ],
+    "createdAt": {
+      "_seconds": 1761058247,
+      "_nanoseconds": 855000000
+    }
+  },
+  {
+    "id": "G9clr",
+    "fen": "r4rk1/1p6/p1p1p3/P1Pp3B/3P4/2P1p3/4K1q1/R2Q3R w - - 2 27",
+    "moves": [
+      "e2d3",
+      "g2e4",
+      "d3e2",
+      "f8f2",
+      "e2e1",
+      "e4h1"
+    ],
+    "rating": 1854,
+    "popularity": 83,
+    "plays": 116,
+    "gameUrl": "https://lichess.org/Fbi3aMGq#53",
+    "themes": [
+      "interference",
+      "long",
+      "mate",
+      "matein3",
+      "middlegame"
+    ],
+    "createdAt": {
+      "_seconds": 1761058387,
+      "_nanoseconds": 166000000
+    }
+  },
+  {
+    "id": "GGHPK",
+    "fen": "r3k2Q/p5p1/1p2p1P1/1qpbP3/4r3/P4R2/2P2B2/R5K1 b - - 9 33",
+    "moves": [
+      "e8d7",
+      "f3f7",
+      "d7c6",
+      "h8a8"
+    ],
+    "rating": 1767,
+    "popularity": 86,
+    "plays": 36,
+    "gameUrl": "https://lichess.org/QFoDxVdU/black#66",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761058471,
+      "_nanoseconds": 505000000
+    }
+  },
+  {
+    "id": "Gzazm",
+    "fen": "r2q1r2/pp3kpQ/5b1p/3p4/3P4/7P/PPB2PP1/4R1K1 b - - 3 21",
+    "moves": [
+      "f8h8",
+      "c2g6",
+      "f7f8",
+      "h7h8"
+    ],
+    "rating": 1743,
+    "popularity": 97,
+    "plays": 419,
+    "gameUrl": "https://lichess.org/oTrA2cVj/black#42",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761059105,
+      "_nanoseconds": 474000000
+    }
+  },
+  {
+    "id": "H82W7",
+    "fen": "rn1qkb1r/1p1b1p2/p1p1p1Q1/4P1p1/2PP4/3B4/PP3PPP/R1B1K2R b KQkq - 0 12",
+    "moves": [
+      "f7g6",
+      "d3g6",
+      "e8e7",
+      "c1g5"
+    ],
+    "rating": 541,
+    "popularity": 79,
+    "plays": 201,
+    "gameUrl": "https://lichess.org/8L2CNki5/black#24",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761059210,
+      "_nanoseconds": 349000000
+    }
+  },
+  {
+    "id": "HIaaE",
+    "fen": "r2qkbnr/1p1b1Np1/p1n1p2p/3pP3/3P4/p1PB4/5PPP/RNBQK2R b KQkq - 0 10",
+    "moves": [
+      "e8f7",
+      "d1h5",
+      "g7g6",
+      "h5g6",
+      "f7e7",
+      "c1a3",
+      "c6b4",
+      "a3b4"
+    ],
+    "rating": 2005,
+    "popularity": 91,
+    "plays": 557,
+    "gameUrl": "https://lichess.org/BvTDGM2P/black#20",
+    "themes": [
+      "interference",
+      "mate",
+      "matein4",
+      "opening",
+      "verylong"
+    ],
+    "createdAt": {
+      "_seconds": 1761059344,
+      "_nanoseconds": 32000000
+    }
+  },
+  {
+    "id": "Hjl1f",
+    "fen": "5r1r/4kppp/R1b1p3/2qpP1N1/2p5/2P2R2/1Q2K1nP/8 b - - 0 28",
+    "moves": [
+      "f8b8",
+      "f3f7",
+      "e7e8",
+      "b2b8"
+    ],
+    "rating": 1335,
+    "popularity": 95,
+    "plays": 24997,
+    "gameUrl": "https://lichess.org/GX1rSuBO/black#56",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761059674,
+      "_nanoseconds": 86000000
+    }
+  },
+  {
+    "id": "IMwW5",
+    "fen": "r3k2r/p2n1pp1/b2p4/2pPbB2/5N2/2N5/P1Q2PP1/2BKq3 w kq - 0 21",
+    "moves": [
+      "d1e1",
+      "h8h1",
+      "e1d2",
+      "e5f4"
+    ],
+    "rating": 1405,
+    "popularity": 87,
+    "plays": 973,
+    "gameUrl": "https://lichess.org/hNPd6a0U#41",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761060163,
+      "_nanoseconds": 335000000
+    }
+  },
+  {
+    "id": "IRdSJ",
+    "fen": "r1bqkbnr/1pp1p1pp/p1n2p2/3p4/3P1B2/3BPQ2/PPP2PPP/RN2K1NR b KQkq - 1 5",
+    "moves": [
+      "h7h5",
+      "d3g6",
+      "e8d7",
+      "f3d5"
+    ],
+    "rating": 1832,
+    "popularity": 94,
+    "plays": 82,
+    "gameUrl": "https://lichess.org/3bgT0H6Y/black#10",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "opening",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761060224,
+      "_nanoseconds": 544000000
+    }
+  },
+  {
+    "id": "IYZCp",
+    "fen": "4r2k/p6P/7Q/8/3qrp2/3B1N2/P3KPP1/R6R w - - 0 34",
+    "moves": [
+      "d3e4",
+      "e8e4",
+      "e2f1",
+      "d4a1",
+      "f3e1",
+      "a1e1"
+    ],
+    "rating": 1471,
+    "popularity": 96,
+    "plays": 26034,
+    "gameUrl": "https://lichess.org/oGqTqqdM#67",
+    "themes": [
+      "interference",
+      "long",
+      "mate",
+      "matein3",
+      "middlegame"
+    ],
+    "createdAt": {
+      "_seconds": 1761060319,
+      "_nanoseconds": 588000000
+    }
+  },
+  {
+    "id": "IbVjm",
+    "fen": "2rqr3/1b2bkpQ/p3nn2/1ppp4/3P4/1P1BP3/PBPN2PP/3R1RK1 b - - 0 17",
+    "moves": [
+      "e8h8",
+      "d3g6",
+      "f7f8",
+      "h7h8"
+    ],
+    "rating": 1451,
+    "popularity": 88,
+    "plays": 332,
+    "gameUrl": "https://lichess.org/AFHerFi6/black#34",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "pin",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761060355,
+      "_nanoseconds": 273000000
+    }
+  },
+  {
+    "id": "Ijln4",
+    "fen": "3r3r/p1p4k/6pp/5b2/1q3Q2/2N5/PPP2PPP/3RR1K1 b - - 0 20",
+    "moves": [
+      "b4f4",
+      "e1e7",
+      "h7g8",
+      "d1d8"
+    ],
+    "rating": 947,
+    "popularity": 90,
+    "plays": 1041,
+    "gameUrl": "https://lichess.org/viuaZKwc/black#40",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761060454,
+      "_nanoseconds": 596000000
+    }
+  },
+  {
+    "id": "Ik72g",
+    "fen": "rnbq3r/pp1k2Q1/2p5/3p1p2/3P1P1b/2NB4/PPP3PP/2KR3R b - - 2 16",
+    "moves": [
+      "d7d6",
+      "g7e5",
+      "d6d7",
+      "d3f5"
+    ],
+    "rating": 1453,
+    "popularity": 93,
+    "plays": 5400,
+    "gameUrl": "https://lichess.org/m4QwenJm/black#32",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761060463,
+      "_nanoseconds": 501000000
+    }
+  },
+  {
+    "id": "Ize1q",
+    "fen": "5Q2/2p4p/p5p1/1p1B2rk/8/P1N1PP2/1P3KPq/3R1R2 w - - 1 29",
+    "moves": [
+      "f1h1",
+      "g5g2",
+      "f2e1",
+      "h2h1"
+    ],
+    "rating": 1080,
+    "popularity": 95,
+    "plays": 3601,
+    "gameUrl": "https://lichess.org/ljRWSqtZ#57",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761060654,
+      "_nanoseconds": 235000000
+    }
+  },
+  {
+    "id": "J8tTg",
+    "fen": "r1k5/1pp2qb1/6n1/p4p2/QP5p/2r2N2/3R2PP/5RK1 b - - 1 34",
+    "moves": [
+      "c8b8",
+      "d2d8",
+      "b8a7",
+      "a4a5"
+    ],
+    "rating": 1023,
+    "popularity": 100,
+    "plays": 111,
+    "gameUrl": "https://lichess.org/fJGz41fC/black#68",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "queensideattack",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761060771,
+      "_nanoseconds": 468000000
+    }
+  },
+  {
+    "id": "JTbPB",
+    "fen": "r2q3r/pbp1BkpQ/1pn1p3/3pP3/3P4/P1PB4/2P2PPP/R3K2R b KQ - 0 14",
+    "moves": [
+      "d8e7",
+      "d3g6",
+      "f7f8",
+      "h7h8"
+    ],
+    "rating": 1490,
+    "popularity": 96,
+    "plays": 26294,
+    "gameUrl": "https://lichess.org/sWPiX9Tx/black#28",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761061030,
+      "_nanoseconds": 471000000
+    }
+  },
+  {
+    "id": "KHYeL",
+    "fen": "5rkr/p3qp2/2b3p1/4p2p/2B1P3/1P2R1RQ/2P3PK/8 b - - 3 32",
+    "moves": [
+      "c6d7",
+      "g3g6",
+      "g8h7",
+      "h3h5"
+    ],
+    "rating": 1391,
+    "popularity": 87,
+    "plays": 809,
+    "gameUrl": "https://lichess.org/9f5PRwo9/black#64",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "pin",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761061666,
+      "_nanoseconds": 931000000
+    }
+  },
+  {
+    "id": "KNZNP",
+    "fen": "r4r2/1bp1k1p1/1p1p3p/p2P2q1/2P1QR2/2P1P1P1/P3K1P1/7R b - - 0 26",
+    "moves": [
+      "e7d7",
+      "e4e6",
+      "d7d8",
+      "f4f8"
+    ],
+    "rating": 1200,
+    "popularity": 94,
+    "plays": 4150,
+    "gameUrl": "https://lichess.org/TgG0eGoo/black#52",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761061745,
+      "_nanoseconds": 935000000
+    }
+  },
+  {
+    "id": "KQrsJ",
+    "fen": "2r4r/1p1n1pk1/pq2p1p1/3pP1P1/1P1B4/P4QP1/5PK1/2R4R b - - 0 25",
+    "moves": [
+      "b6d4",
+      "f3f6",
+      "d7f6",
+      "g5f6",
+      "g7g8",
+      "c1c8"
+    ],
+    "rating": 2321,
+    "popularity": 84,
+    "plays": 800,
+    "gameUrl": "https://lichess.org/TlndMnfT/black#50",
+    "themes": [
+      "interference",
+      "long",
+      "mate",
+      "matein3",
+      "middlegame",
+      "sacrifice"
+    ],
+    "createdAt": {
+      "_seconds": 1761061780,
+      "_nanoseconds": 870000000
+    }
+  },
+  {
+    "id": "KqScW",
+    "fen": "rnb1kb1r/ppp3p1/3p4/8/4pPp1/1P2P1p1/PBPPB1P1/RN1Q1K2 w kq - 0 13",
+    "moves": [
+      "e2g4",
+      "h8h1",
+      "f1e2",
+      "c8g4"
+    ],
+    "rating": 1840,
+    "popularity": 83,
+    "plays": 113,
+    "gameUrl": "https://lichess.org/Iqyim7mH#25",
+    "themes": [
+      "interference",
+      "intermezzo",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761062104,
+      "_nanoseconds": 782000000
+    }
+  },
+  {
+    "id": "KvGo7",
+    "fen": "r2q1r2/1b1pbkpQ/p3p2p/1ppnP3/8/2PBP2P/PP1N1PP1/2R1K2R b K - 0 17",
+    "moves": [
+      "f8h8",
+      "d3g6",
+      "f7f8",
+      "h7h8"
+    ],
+    "rating": 1462,
+    "popularity": 93,
+    "plays": 2075,
+    "gameUrl": "https://lichess.org/0AAQDqT1/black#34",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761062169,
+      "_nanoseconds": 16000000
+    }
+  },
+  {
+    "id": "L6JAG",
+    "fen": "rn4k1/pbBp2pp/1p2p1r1/5p2/3P3q/2PBPP2/PP1NK3/R2Q1R2 w - - 5 17",
+    "moves": [
+      "f1h1",
+      "g6g2",
+      "e2f1",
+      "h4h1"
+    ],
+    "rating": 990,
+    "popularity": 94,
+    "plays": 659,
+    "gameUrl": "https://lichess.org/1rRJTR0b#33",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761062311,
+      "_nanoseconds": 529000000
+    }
+  },
+  {
+    "id": "LAoK0",
+    "fen": "r5r1/2Qnkq2/1p2pn1p/p7/2PP1B2/2PB1P2/P2K3P/4R1Nb b - - 1 21",
+    "moves": [
+      "a8c8",
+      "f4d6",
+      "e7e8",
+      "c7c8"
+    ],
+    "rating": 1508,
+    "popularity": 87,
+    "plays": 714,
+    "gameUrl": "https://lichess.org/ArosNXnk/black#42",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761062367,
+      "_nanoseconds": 447000000
+    }
+  },
+  {
+    "id": "LEv1T",
+    "fen": "r1bq3r/ppp3pk/2n4p/4b2Q/4N3/2P1B3/P1P2PPP/R4RK1 b - - 5 15",
+    "moves": [
+      "d8e8",
+      "e4g5",
+      "h7g8",
+      "h5e8"
+    ],
+    "rating": 1570,
+    "popularity": 87,
+    "plays": 168,
+    "gameUrl": "https://lichess.org/DOfxS9Ep/black#30",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "pin",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761062421,
+      "_nanoseconds": 165000000
+    }
+  },
+  {
+    "id": "LG9Jm",
+    "fen": "r1bq3r/4ppkp/p2p2p1/1ppn2QP/8/1P1P1N2/P1P1BPP1/2KR3R b - - 2 15",
+    "moves": [
+      "e7e6",
+      "h5h6",
+      "g7g8",
+      "g5d8"
+    ],
+    "rating": 1292,
+    "popularity": 93,
+    "plays": 10593,
+    "gameUrl": "https://lichess.org/pVZ9kJfd/black#30",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761062429,
+      "_nanoseconds": 572000000
+    }
+  },
+  {
+    "id": "LIBCz",
+    "fen": "r2q1bnr/1p1b2k1/p1n1p2p/3pP2P/3P4/p1P3Q1/5PP1/RNB1K2R b KQ - 2 15",
+    "moves": [
+      "g7f7",
+      "g3g6",
+      "f7e7",
+      "c1a3",
+      "c6b4",
+      "a3b4"
+    ],
+    "rating": 1735,
+    "popularity": 85,
+    "plays": 128,
+    "gameUrl": "https://lichess.org/hUD9b8Vx/black#30",
+    "themes": [
+      "interference",
+      "long",
+      "master",
+      "mate",
+      "matein3",
+      "middlegame"
+    ],
+    "createdAt": {
+      "_seconds": 1761062456,
+      "_nanoseconds": 749000000
+    }
+  },
+  {
+    "id": "MbwYU",
+    "fen": "2kr3r/1bpp2p1/1P2p3/1P4q1/5p2/3Q1PP1/1B2B1K1/3R3R w - - 0 31",
+    "moves": [
+      "g3g4",
+      "g5g4",
+      "g2f2",
+      "g4g3",
+      "f2f1",
+      "h8h1"
+    ],
+    "rating": 1596,
+    "popularity": 69,
+    "plays": 52,
+    "gameUrl": "https://lichess.org/9MhaWsKH#61",
+    "themes": [
+      "interference",
+      "long",
+      "mate",
+      "matein3",
+      "middlegame",
+      "pin"
+    ],
+    "createdAt": {
+      "_seconds": 1761063500,
+      "_nanoseconds": 643000000
+    }
+  },
+  {
+    "id": "MkESD",
+    "fen": "r2q1r2/p3bkpQ/2b1pp2/1p6/2pP4/2P1P1B1/4BPPP/RR4K1 b - - 0 20",
+    "moves": [
+      "f8h8",
+      "e2h5",
+      "f7f8",
+      "h7h8"
+    ],
+    "rating": 1015,
+    "popularity": 96,
+    "plays": 1047,
+    "gameUrl": "https://lichess.org/O48SAiKy/black#40",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761063608,
+      "_nanoseconds": 410000000
+    }
+  },
+  {
+    "id": "MkogV",
+    "fen": "2r4r/p1q4k/2n3pP/1p1b4/2pP4/2P2N2/PP2Q3/1K3R1R b - - 1 34",
+    "moves": [
+      "c8e8",
+      "f3g5",
+      "h7g8",
+      "e2e8"
+    ],
+    "rating": 1369,
+    "popularity": 81,
+    "plays": 478,
+    "gameUrl": "https://lichess.org/maMWrvyY/black#68",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761063616,
+      "_nanoseconds": 945000000
+    }
+  },
+  {
+    "id": "NI3os",
+    "fen": "r1b1kb1r/pp3pp1/4pn2/1Np1n3/8/4B1P1/PPP3BP/R2R2K1 b kq - 1 14",
+    "moves": [
+      "a8b8",
+      "b5c7",
+      "e8e7",
+      "e3c5"
+    ],
+    "rating": 1355,
+    "popularity": 98,
+    "plays": 810,
+    "gameUrl": "https://lichess.org/nnaHXK9y/black#28",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761064026,
+      "_nanoseconds": 702000000
+    }
+  },
+  {
+    "id": "NUkt4",
+    "fen": "r2r4/ppqbbknQ/2n1p3/3pP3/2pP1B2/2P3P1/PP1NBP2/R3K2R b KQ - 1 19",
+    "moves": [
+      "d8h8",
+      "e2h5",
+      "f7f8",
+      "h7h8"
+    ],
+    "rating": 1160,
+    "popularity": 94,
+    "plays": 484,
+    "gameUrl": "https://lichess.org/X1WGiSJx/black#38",
+    "themes": [
+      "interference",
+      "master",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761064181,
+      "_nanoseconds": 132000000
+    }
+  },
+  {
+    "id": "NyokT",
+    "fen": "6k1/p1qn2pp/2p5/3p4/PP6/4P2r/1P2BrK1/2RQ3R w - - 0 26",
+    "moves": [
+      "g2f2",
+      "c7g3",
+      "f2f1",
+      "h3h1"
+    ],
+    "rating": 1092,
+    "popularity": 93,
+    "plays": 873,
+    "gameUrl": "https://lichess.org/7nzYbnVl#51",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761064546,
+      "_nanoseconds": 944000000
+    }
+  },
+  {
+    "id": "NzS81",
+    "fen": "3rqr2/1p1b1kpQ/p2Ppb1p/n2n4/8/PP3N2/5PPP/RBB1R1K1 b - - 0 22",
+    "moves": [
+      "f8h8",
+      "b1g6",
+      "f7f8",
+      "h7h8"
+    ],
+    "rating": 1629,
+    "popularity": 86,
+    "plays": 115,
+    "gameUrl": "https://lichess.org/QXbgQ9Ll/black#44",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761064555,
+      "_nanoseconds": 641000000
+    }
+  },
+  {
+    "id": "OKVzd",
+    "fen": "3r2k1/pp3p1p/5p2/5b2/1b6/4PQ2/PPq1BPPP/R4KNR w - - 7 17",
+    "moves": [
+      "a1d1",
+      "d8d1",
+      "e2d1",
+      "f5d3",
+      "g1e2",
+      "c2d1"
+    ],
+    "rating": 1571,
+    "popularity": 96,
+    "plays": 5773,
+    "gameUrl": "https://lichess.org/SYntsTDD#33",
+    "themes": [
+      "interference",
+      "intermezzo",
+      "long",
+      "mate",
+      "matein3",
+      "middlegame"
+    ],
+    "createdAt": {
+      "_seconds": 1761064823,
+      "_nanoseconds": 158000000
+    }
+  },
+  {
+    "id": "OWM78",
+    "fen": "r6k/1p1b2pp/1p2p1pP/1Pp1P3/3pN3/5P1Q/8/r1K2B1R w - - 3 31",
+    "moves": [
+      "c1d2",
+      "a8a2",
+      "d2d3",
+      "d7b5"
+    ],
+    "rating": 1714,
+    "popularity": 90,
+    "plays": 265,
+    "gameUrl": "https://lichess.org/hzV0Has3#61",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761064976,
+      "_nanoseconds": 995000000
+    }
+  },
+  {
+    "id": "P02xn",
+    "fen": "r3qr2/1p1b1knQ/p2bp3/2pp1nP1/3P1P1B/P1N1P2R/1PP4P/R5K1 b - - 6 24",
+    "moves": [
+      "f8h8",
+      "g5g6",
+      "f7f8",
+      "h7h8"
+    ],
+    "rating": 1082,
+    "popularity": 94,
+    "plays": 2393,
+    "gameUrl": "https://lichess.org/NgAyIeC2/black#48",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761065356,
+      "_nanoseconds": 624000000
+    }
+  },
+  {
+    "id": "P7kf9",
+    "fen": "r2qkb1r/pppb2pp/3p4/3Ppp2/8/2P1B1P1/PP2BP1P/RN3RK1 b kq - 2 13",
+    "moves": [
+      "g7g5",
+      "e2h5",
+      "e8e7",
+      "e3g5"
+    ],
+    "rating": 881,
+    "popularity": 98,
+    "plays": 1820,
+    "gameUrl": "https://lichess.org/L4Nnqq4W/black#26",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761065455,
+      "_nanoseconds": 68000000
+    }
+  },
+  {
+    "id": "PA0u9",
+    "fen": "2r4r/p2kbppp/1p2p3/3pP3/3Q1Pq1/4B3/PP1N1K1P/R6R w - - 4 17",
+    "moves": [
+      "a1c1",
+      "e7h4",
+      "f2f1",
+      "c8c1"
+    ],
+    "rating": 1666,
+    "popularity": 82,
+    "plays": 135,
+    "gameUrl": "https://lichess.org/SK49fwrr#33",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761065481,
+      "_nanoseconds": 872000000
+    }
+  },
+  {
+    "id": "PKJve",
+    "fen": "rnb1k2r/pp3ppp/8/qNbPp3/4P1n1/5N2/PP4PP/R1BQKB1R w KQkq - 7 11",
+    "moves": [
+      "c1d2",
+      "c5f2",
+      "e1e2",
+      "a5b5"
+    ],
+    "rating": 1595,
+    "popularity": 85,
+    "plays": 290,
+    "gameUrl": "https://lichess.org/nOJbpXQB#21",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761065604,
+      "_nanoseconds": 593000000
+    }
+  },
+  {
+    "id": "PQv3H",
+    "fen": "r6Q/2p1kpp1/pb1p3p/1p6/1P6/P4b2/1qB2PPP/4R1K1 b - - 3 24",
+    "moves": [
+      "e7d7",
+      "c2f5",
+      "d7c6",
+      "h8a8"
+    ],
+    "rating": 1505,
+    "popularity": 54,
+    "plays": 7,
+    "gameUrl": "https://lichess.org/JSJ0x1hT/black#48",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761065698,
+      "_nanoseconds": 365000000
+    }
+  },
+  {
+    "id": "PVmSz",
+    "fen": "q3r3/1b1knQpB/2pB1b1p/1pP5/1P1P4/8/5PPP/1R4K1 b - - 0 31",
+    "moves": [
+      "e8f8",
+      "h7f5",
+      "d7d8",
+      "f7f8"
+    ],
+    "rating": 1616,
+    "popularity": 92,
+    "plays": 417,
+    "gameUrl": "https://lichess.org/fKqUGQi1/black#62",
+    "themes": [
+      "interference",
+      "master",
+      "mate",
+      "matein2",
+      "middlegame",
+      "pin",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761065763,
+      "_nanoseconds": 747000000
+    }
+  },
+  {
+    "id": "PjbMD",
+    "fen": "r2q2k1/1p1n2p1/pn1p2B1/2pP3Q/3b1P2/1PR4P/P6K/5R2 b - - 0 26",
+    "moves": [
+      "d4c3",
+      "h5h7",
+      "g8f8",
+      "h7h8",
+      "f8e7",
+      "f1e1",
+      "d7e5",
+      "h8g7"
+    ],
+    "rating": 2215,
+    "popularity": 92,
+    "plays": 1097,
+    "gameUrl": "https://lichess.org/4xz3FbPo/black#52",
+    "themes": [
+      "interference",
+      "kingsideattack",
+      "mate",
+      "matein4",
+      "middlegame",
+      "verylong"
+    ],
+    "createdAt": {
+      "_seconds": 1761065932,
+      "_nanoseconds": 72000000
+    }
+  },
+  {
+    "id": "Pkux5",
+    "fen": "3qkb1r/pQB1pppp/5n2/3p1b2/8/4P3/PP3PPP/n2K1BNR b k - 0 12",
+    "moves": [
+      "d8c8",
+      "f1b5",
+      "f6d7",
+      "b7c8"
+    ],
+    "rating": 1503,
+    "popularity": 90,
+    "plays": 230,
+    "gameUrl": "https://lichess.org/suPntBJA/black#24",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "opening",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761065948,
+      "_nanoseconds": 976000000
+    }
+  },
+  {
+    "id": "Pw4LW",
+    "fen": "3r3r/Qpkbnppp/3p1q2/3P4/5P2/1B3PR1/PP1B3P/7K b - - 0 23",
+    "moves": [
+      "d8a8",
+      "d2a5",
+      "c7c8",
+      "a7a8"
+    ],
+    "rating": 1062,
+    "popularity": 86,
+    "plays": 119,
+    "gameUrl": "https://lichess.org/Et8VWt4A/black#46",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761066089,
+      "_nanoseconds": 418000000
+    }
+  },
+  {
+    "id": "Px9An",
+    "fen": "r1bk1b1r/1p3ppp/p3p3/1B1pP3/3q4/1Q2B3/P4PPP/1N3RK1 b - - 1 14",
+    "moves": [
+      "d4b4",
+      "e3b6",
+      "d8e7",
+      "b3b4"
+    ],
+    "rating": 1080,
+    "popularity": 91,
+    "plays": 1490,
+    "gameUrl": "https://lichess.org/V79vxlsw/black#28",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761066097,
+      "_nanoseconds": 508000000
+    }
+  },
+  {
+    "id": "QKqAs",
+    "fen": "4r1k1/5ppp/8/8/2p5/P1BprP1P/3R1KPq/1R1Q4 w - - 5 30",
+    "moves": [
+      "d1h1",
+      "e3e2",
+      "d2e2",
+      "e8e2",
+      "f2f1",
+      "h2h1"
+    ],
+    "rating": 1447,
+    "popularity": 87,
+    "plays": 1060,
+    "gameUrl": "https://lichess.org/k2o1gtNY#59",
+    "themes": [
+      "interference",
+      "long",
+      "mate",
+      "matein3",
+      "middlegame"
+    ],
+    "createdAt": {
+      "_seconds": 1761066399,
+      "_nanoseconds": 759000000
+    }
+  },
+  {
+    "id": "QPbSM",
+    "fen": "r2qkb1r/1ppb3p/p5B1/4p1pQ/3n4/3P4/PPP2PPP/RNB1K2R b KQkq - 0 13",
+    "moves": [
+      "h7g6",
+      "h5g6",
+      "e8e7",
+      "c1g5"
+    ],
+    "rating": 1656,
+    "popularity": 86,
+    "plays": 731,
+    "gameUrl": "https://lichess.org/0HYWIp9d/black#26",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "opening",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761066462,
+      "_nanoseconds": 189000000
+    }
+  },
+  {
+    "id": "QXg1i",
+    "fen": "rn2kbnr/pQ3p1p/8/2p1p3/8/3PB1P1/PPP1qP2/R5K1 b kq - 0 16",
+    "moves": [
+      "g8f6",
+      "b7c8",
+      "e8e7",
+      "e3c5"
+    ],
+    "rating": 1858,
+    "popularity": 91,
+    "plays": 1586,
+    "gameUrl": "https://lichess.org/607rBffD/black#32",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761066572,
+      "_nanoseconds": 32000000
+    }
+  },
+  {
+    "id": "QwAIA",
+    "fen": "5r1q/1b2kpb1/p2p2p1/1p2p1P1/1N1pP1Q1/3P1B1r/PPP2R1P/5R1K b - - 6 26",
+    "moves": [
+      "b7c8",
+      "b4c6",
+      "e7e8",
+      "g4c8"
+    ],
+    "rating": 1711,
+    "popularity": 94,
+    "plays": 52,
+    "gameUrl": "https://lichess.org/QqLU0qau/black#52",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761066873,
+      "_nanoseconds": 144000000
+    }
+  },
+  {
+    "id": "Qzmwr",
+    "fen": "r6r/4b1k1/3p4/3PpP2/ppnq4/8/PPP3Q1/1K2R2R b - - 0 31",
+    "moves": [
+      "g7f7",
+      "g2g6",
+      "f7f8",
+      "h1h8"
+    ],
+    "rating": 1067,
+    "popularity": 82,
+    "plays": 246,
+    "gameUrl": "https://lichess.org/HvNgSVEl/black#62",
+    "themes": [
+      "interference",
+      "master",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761066919,
+      "_nanoseconds": 216000000
+    }
+  },
+  {
+    "id": "R2i6v",
+    "fen": "2k2r2/p7/Ppp1p3/2b5/3qp3/3B1Q2/2P1KPP1/R6R w - - 0 34",
+    "moves": [
+      "f3e4",
+      "f8f2",
+      "e2d1",
+      "d4a1"
+    ],
+    "rating": 1744,
+    "popularity": 89,
+    "plays": 1801,
+    "gameUrl": "https://lichess.org/7pF3nvdC#67",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761066954,
+      "_nanoseconds": 823000000
+    }
+  },
+  {
+    "id": "R8SMs",
+    "fen": "rn2k2r/pp3pbp/2ppbqp1/8/2PP2P1/2N1PP2/PP5P/R1BQKB1R w KQkq - 0 11",
+    "moves": [
+      "c1d2",
+      "f6h4",
+      "e1e2",
+      "e6c4"
+    ],
+    "rating": 1164,
+    "popularity": 92,
+    "plays": 780,
+    "gameUrl": "https://lichess.org/LSTnl0zx#21",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "opening",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761067036,
+      "_nanoseconds": 109000000
+    }
+  },
+  {
+    "id": "REDP0",
+    "fen": "r6r/pQpk1Bp1/2nb4/3P4/4p1p1/2P3Pq/PP3P1P/R1B2NK1 b - - 0 18",
+    "moves": [
+      "c6e5",
+      "f7e6",
+      "d7e8",
+      "b7a8",
+      "e8e7",
+      "c1g5"
+    ],
+    "rating": 1705,
+    "popularity": 94,
+    "plays": 3049,
+    "gameUrl": "https://lichess.org/PyKwC1vE/black#36",
+    "themes": [
+      "interference",
+      "long",
+      "mate",
+      "matein3",
+      "middlegame"
+    ],
+    "createdAt": {
+      "_seconds": 1761067109,
+      "_nanoseconds": 419000000
+    }
+  },
+  {
+    "id": "RF8Wd",
+    "fen": "r1b1kb1r/pp3ppp/2n1p1n1/1Np5/2P1P3/4BN2/PPP2PPP/3RK2R b Kkq - 2 9",
+    "moves": [
+      "a8b8",
+      "b5c7",
+      "e8e7",
+      "e3c5",
+      "e7f6",
+      "c7e8"
+    ],
+    "rating": 1691,
+    "popularity": 89,
+    "plays": 1284,
+    "gameUrl": "https://lichess.org/DcQ8e4xH/black#18",
+    "themes": [
+      "interference",
+      "long",
+      "mate",
+      "matein3",
+      "middlegame"
+    ],
+    "createdAt": {
+      "_seconds": 1761067118,
+      "_nanoseconds": 206000000
+    }
+  },
+  {
+    "id": "RNLXa",
+    "fen": "r1bk3r/pppp1Qpp/2n5/2b1p3/2BP4/6P1/PPP2K1P/RNB3Nq b - - 0 10",
+    "moves": [
+      "h8f8",
+      "c1g5",
+      "c6e7",
+      "f7f8"
+    ],
+    "rating": 1578,
+    "popularity": 84,
+    "plays": 416,
+    "gameUrl": "https://lichess.org/kSKuIWag/black#20",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "opening",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761067229,
+      "_nanoseconds": 163000000
+    }
+  },
+  {
+    "id": "RSS7C",
+    "fen": "r1bk3r/ppqp1Qpp/2nbp3/2p5/4N3/3P4/PPP2PP1/R1B2R1K b - - 5 15",
+    "moves": [
+      "h8f8",
+      "c1g5",
+      "c6e7",
+      "f7f8"
+    ],
+    "rating": 1741,
+    "popularity": 82,
+    "plays": 16,
+    "gameUrl": "https://lichess.org/NJHgKleV/black#30",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "opening",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761067291,
+      "_nanoseconds": 265000000
+    }
+  },
+  {
+    "id": "Rbzqx",
+    "fen": "r3r2k/5p1p/p3bN2/1pp2pP1/5P1P/2PP4/qPKQ4/5RR1 w - - 2 32",
+    "moves": [
+      "f1a1",
+      "e6b3",
+      "c2c1",
+      "a2a1"
+    ],
+    "rating": 1491,
+    "popularity": 95,
+    "plays": 13676,
+    "gameUrl": "https://lichess.org/ko14L4GB#63",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761067413,
+      "_nanoseconds": 874000000
+    }
+  },
+  {
+    "id": "Rt9Hg",
+    "fen": "r3kb1r/ppQ1pppp/5n2/8/3q2b1/2N5/PPP3PP/R3KBNR b KQkq - 0 9",
+    "moves": [
+      "a8c8",
+      "f1b5",
+      "f6d7",
+      "c7c8"
+    ],
+    "rating": 1506,
+    "popularity": 92,
+    "plays": 955,
+    "gameUrl": "https://lichess.org/Y05ETzNQ/black#18",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "opening",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761067629,
+      "_nanoseconds": 453000000
+    }
+  },
+  {
+    "id": "RtdAV",
+    "fen": "2r3k1/5ppp/1R3n2/1N1pN2q/1b1PP3/1P2P3/4K1PP/3Q3R w - - 1 23",
+    "moves": [
+      "e2f2",
+      "f6e4",
+      "f2g1",
+      "h5d1"
+    ],
+    "rating": 1303,
+    "popularity": 94,
+    "plays": 570,
+    "gameUrl": "https://lichess.org/hVXQpQZl#45",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761067686,
+      "_nanoseconds": 221000000
+    }
+  },
+  {
+    "id": "SGh9p",
+    "fen": "r6r/p7/b1p1pPk1/8/6RQ/Pn3qP1/1P3P1P/5RK1 b - - 2 28",
+    "moves": [
+      "g6f7",
+      "g4g7",
+      "f7f8",
+      "h4h8"
+    ],
+    "rating": 1031,
+    "popularity": 89,
+    "plays": 240,
+    "gameUrl": "https://lichess.org/KY79wpzo/black#56",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761068116,
+      "_nanoseconds": 418000000
+    }
+  },
+  {
+    "id": "SVA2u",
+    "fen": "2rR2kr/5pp1/p3p3/1p2P1Qp/8/2q1B2P/P1b2PP1/3R2K1 b - - 2 31",
+    "moves": [
+      "c8d8",
+      "d1d8",
+      "g8h7",
+      "g5h5"
+    ],
+    "rating": 1480,
+    "popularity": 88,
+    "plays": 2428,
+    "gameUrl": "https://lichess.org/sVVJzTvO/black#62",
+    "themes": [
+      "interference",
+      "kingsideattack",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761068307,
+      "_nanoseconds": 855000000
+    }
+  },
+  {
+    "id": "SVNwi",
+    "fen": "r1b1kb1r/pp3ppp/2n1pn2/1Np5/2P1P3/4B3/PPP2PPP/3RK1NR b Kkq - 2 8",
+    "moves": [
+      "a8b8",
+      "b5c7",
+      "e8e7",
+      "e3c5"
+    ],
+    "rating": 1358,
+    "popularity": 90,
+    "plays": 855,
+    "gameUrl": "https://lichess.org/fIqD0lOw/black#16",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "opening",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761068307,
+      "_nanoseconds": 855000000
+    }
+  },
+  {
+    "id": "SbbdJ",
+    "fen": "3N1rk1/2p4p/pp4qb/3P4/2P5/1QB1pK1P/P7/3R2R1 w - - 1 33",
+    "moves": [
+      "f3e2",
+      "f8f2",
+      "e2e1",
+      "g6g1"
+    ],
+    "rating": 996,
+    "popularity": 91,
+    "plays": 3247,
+    "gameUrl": "https://lichess.org/SHzmPhpV#65",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761068389,
+      "_nanoseconds": 191000000
+    }
+  },
+  {
+    "id": "SfqAl",
+    "fen": "r2q1r2/5kpQ/p3p3/3pP3/2p5/b1P4P/2B2PP1/5RK1 b - - 0 27",
+    "moves": [
+      "f8h8",
+      "c2g6",
+      "f7f8",
+      "h7h8",
+      "f8e7",
+      "h8g7"
+    ],
+    "rating": 1756,
+    "popularity": 52,
+    "plays": 132,
+    "gameUrl": "https://lichess.org/SICJYQ8D/black#54",
+    "themes": [
+      "interference",
+      "long",
+      "mate",
+      "matein3",
+      "middlegame"
+    ],
+    "createdAt": {
+      "_seconds": 1761068442,
+      "_nanoseconds": 363000000
+    }
+  },
+  {
+    "id": "SqUE6",
+    "fen": "r1bq3r/ppp3kp/3p1p2/2bPp2Q/8/3P4/PPP2PPP/R1B1K2R b KQ - 0 12",
+    "moves": [
+      "d8e8",
+      "c1h6",
+      "g7g8",
+      "h5e8"
+    ],
+    "rating": 1549,
+    "popularity": 90,
+    "plays": 392,
+    "gameUrl": "https://lichess.org/8ekgVD19/black#24",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761068581,
+      "_nanoseconds": 422000000
+    }
+  },
+  {
+    "id": "TI9aE",
+    "fen": "3r3r/1Qpk1pp1/1b1p3p/1p1Pn3/4P3/3q2P1/PPR2P1P/2R3K1 b - - 6 23",
+    "moves": [
+      "d8b8",
+      "c2c7",
+      "b6c7",
+      "c1c7",
+      "d7e8",
+      "b7b8"
+    ],
+    "rating": 1990,
+    "popularity": 71,
+    "plays": 21,
+    "gameUrl": "https://lichess.org/zKWAvuj6/black#46",
+    "themes": [
+      "interference",
+      "long",
+      "mate",
+      "matein3",
+      "middlegame"
+    ],
+    "createdAt": {
+      "_seconds": 1761068930,
+      "_nanoseconds": 134000000
+    }
+  },
+  {
+    "id": "TLgLX",
+    "fen": "r1b2rk1/1ppp1pB1/8/p1bN3Q/2B5/P1Pp4/1P2qPP1/R4K1R w - - 1 17",
+    "moves": [
+      "f1g1",
+      "c5f2",
+      "g1h2",
+      "e2h5"
+    ],
+    "rating": 1987,
+    "popularity": 95,
+    "plays": 13448,
+    "gameUrl": "https://lichess.org/zgPpsTVb#33",
+    "themes": [
+      "interference",
+      "kingsideattack",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761068973,
+      "_nanoseconds": 72000000
+    }
+  },
+  {
+    "id": "TP7Cm",
+    "fen": "r4rk1/p2p2p1/1p2pp2/2b2q2/2P5/2NnP1R1/PP2K1Q1/7R b - - 3 20",
+    "moves": [
+      "g8f7",
+      "g3g7",
+      "f7e8",
+      "g2a8"
+    ],
+    "rating": 1359,
+    "popularity": 95,
+    "plays": 13264,
+    "gameUrl": "https://lichess.org/bWtMXZeP/black#40",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761069017,
+      "_nanoseconds": 977000000
+    }
+  },
+  {
+    "id": "TTYnr",
+    "fen": "2rqr3/3bk1pQ/p3pbBp/1p1n4/3N4/P1P5/1P1B2PP/4RRK1 b - - 5 23",
+    "moves": [
+      "e8h8",
+      "d4f5",
+      "e7f8",
+      "h7h8"
+    ],
+    "rating": 1780,
+    "popularity": 93,
+    "plays": 1858,
+    "gameUrl": "https://lichess.org/rnQPUehG/black#46",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "pin",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761069076,
+      "_nanoseconds": 989000000
+    }
+  },
+  {
+    "id": "TXIBH",
+    "fen": "r1b1k2r/ppp2ppp/3p4/3P4/5qP1/2N5/PPPK1bP1/R1BQ1B1R w kq - 0 13",
+    "moves": [
+      "d2d3",
+      "f4d4",
+      "d3e2",
+      "c8g4"
+    ],
+    "rating": 1401,
+    "popularity": 93,
+    "plays": 3912,
+    "gameUrl": "https://lichess.org/c0EJ011R#25",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "opening",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761069122,
+      "_nanoseconds": 323000000
+    }
+  },
+  {
+    "id": "TeKme",
+    "fen": "2k4r/1pp1b1p1/p1n1p3/5p2/1P1P1Pp1/P1B1P3/4BKPq/R2Q1R2 w - - 2 20",
+    "moves": [
+      "f1h1",
+      "e7h4",
+      "f2f1",
+      "h2h1"
+    ],
+    "rating": 1871,
+    "popularity": 81,
+    "plays": 239,
+    "gameUrl": "https://lichess.org/opY1owgj#39",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761069210,
+      "_nanoseconds": 579000000
+    }
+  },
+  {
+    "id": "TjYQp",
+    "fen": "r1k3r1/1bq4N/2nRp3/1QP2p2/p3B1P1/2P2NK1/PP3P2/7R w - - 0 31",
+    "moves": [
+      "e4c6",
+      "g8g4",
+      "g3h2",
+      "c7h7",
+      "f3h4",
+      "h7h4"
+    ],
+    "rating": 1835,
+    "popularity": 87,
+    "plays": 497,
+    "gameUrl": "https://lichess.org/kGQJwCPR#61",
+    "themes": [
+      "interference",
+      "long",
+      "mate",
+      "matein3",
+      "middlegame",
+      "pin"
+    ],
+    "createdAt": {
+      "_seconds": 1761069272,
+      "_nanoseconds": 396000000
+    }
+  },
+  {
+    "id": "ToqEe",
+    "fen": "1rb1r1k1/p1p2ppp/1p1b4/8/8/P3PB1P/1PPBKPPq/R2QR3 w - - 0 18",
+    "moves": [
+      "e1h1",
+      "c8a6",
+      "c2c4",
+      "a6c4",
+      "e2e1",
+      "h2h1"
+    ],
+    "rating": 1303,
+    "popularity": 92,
+    "plays": 1407,
+    "gameUrl": "https://lichess.org/iRjoBbJs#35",
+    "themes": [
+      "interference",
+      "long",
+      "mate",
+      "matein3",
+      "middlegame"
+    ],
+    "createdAt": {
+      "_seconds": 1761069339,
+      "_nanoseconds": 205000000
+    }
+  },
+  {
+    "id": "TrLG0",
+    "fen": "rn2k1nr/ppp2pp1/3bpqbp/3p4/3P1NPP/2N2P2/PPP1P3/R1BQKB1R w KQkq - 4 8",
+    "moves": [
+      "f4g6",
+      "d6g3",
+      "e1d2",
+      "f6d4"
+    ],
+    "rating": 1852,
+    "popularity": 93,
+    "plays": 6424,
+    "gameUrl": "https://lichess.org/R53YPnic#15",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "opening",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761069364,
+      "_nanoseconds": 485000000
+    }
+  },
+  {
+    "id": "U2ZSL",
+    "fen": "1rb4r/p1q2pkp/4p1p1/2p1P1QP/3p4/PP1P2R1/2P3P1/R5K1 b - - 0 27",
+    "moves": [
+      "c7d8",
+      "h5h6",
+      "g7g8",
+      "g5d8"
+    ],
+    "rating": 1336,
+    "popularity": 91,
+    "plays": 3250,
+    "gameUrl": "https://lichess.org/avLl4eQ3/black#54",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761069509,
+      "_nanoseconds": 610000000
+    }
+  },
+  {
+    "id": "Uq6oJ",
+    "fen": "r2q1b1r/pk2pppp/3N1n2/Q2Pn3/8/5P2/PP2BP1P/4K2R b K - 1 20",
+    "moves": [
+      "e7d6",
+      "e2a6",
+      "b7b8",
+      "a5d8"
+    ],
+    "rating": 1725,
+    "popularity": 95,
+    "plays": 17353,
+    "gameUrl": "https://lichess.org/d9V8t3DU/black#40",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761070135,
+      "_nanoseconds": 34000000
+    }
+  },
+  {
+    "id": "VE8HL",
+    "fen": "r1bq3r/4ppkp/p2p2p1/2n3QP/2nNP1P1/2N2P2/P1B5/2KR3R b - - 1 20",
+    "moves": [
+      "e7e5",
+      "h5h6",
+      "g7g8",
+      "g5d8"
+    ],
+    "rating": 1371,
+    "popularity": 94,
+    "plays": 15324,
+    "gameUrl": "https://lichess.org/YOR3ddKO/black#40",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761070451,
+      "_nanoseconds": 843000000
+    }
+  },
+  {
+    "id": "VRIWP",
+    "fen": "1nk3rr/RQp2p2/3p2q1/1P2p2p/1P2P3/3P4/3N2P1/2B3bK b - - 1 28",
+    "moves": [
+      "c8d7",
+      "b7c7",
+      "d7e8",
+      "c7b8"
+    ],
+    "rating": 912,
+    "popularity": 85,
+    "plays": 44,
+    "gameUrl": "https://lichess.org/ZrkmfzK6/black#56",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761070622,
+      "_nanoseconds": 511000000
+    }
+  },
+  {
+    "id": "VUpb6",
+    "fen": "r1bq3r/pp4pk/1bpp3p/1n5Q/3PP3/P1P2N2/1P3PPP/R1B1K2R b KQ - 3 15",
+    "moves": [
+      "d8e8",
+      "f3g5",
+      "h7g8",
+      "h5e8"
+    ],
+    "rating": 1188,
+    "popularity": 97,
+    "plays": 2458,
+    "gameUrl": "https://lichess.org/dpIN9geK/black#30",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "pin",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761070657,
+      "_nanoseconds": 652000000
+    }
+  },
+  {
+    "id": "VgnI9",
+    "fen": "r1bqk1Q1/ppp1pr2/8/3p4/3n4/3B1p1P/PPP2PP1/RN2K2R b KQq - 1 14",
+    "moves": [
+      "f7f8",
+      "d3g6",
+      "e8d7",
+      "g8d5"
+    ],
+    "rating": 1464,
+    "popularity": 85,
+    "plays": 101,
+    "gameUrl": "https://lichess.org/LxN1tudH/black#28",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761070804,
+      "_nanoseconds": 579000000
+    }
+  },
+  {
+    "id": "ViyAD",
+    "fen": "r1b3k1/pp1r1ppp/5q2/3Q4/2N1P2P/P7/1P4P1/R1B3KR w - - 1 22",
+    "moves": [
+      "d5e5",
+      "d7d1",
+      "g1h2",
+      "f6h4"
+    ],
+    "rating": 1406,
+    "popularity": 97,
+    "plays": 3965,
+    "gameUrl": "https://lichess.org/Z7vETSna#43",
+    "themes": [
+      "interference",
+      "kingsideattack",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761070830,
+      "_nanoseconds": 713000000
+    }
+  },
+  {
+    "id": "VmkoT",
+    "fen": "2bb2rk/8/2pR1r2/1p6/3p3R/2p4P/P1B2PP1/6K1 b - - 1 38",
+    "moves": [
+      "h8g7",
+      "h4h7",
+      "g7f8",
+      "d6d8"
+    ],
+    "rating": 1656,
+    "popularity": 87,
+    "plays": 110,
+    "gameUrl": "https://lichess.org/JUEBczuf/black#76",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761070880,
+      "_nanoseconds": 471000000
+    }
+  },
+  {
+    "id": "VxFir",
+    "fen": "r2qr3/pp1bkp2/2pp3R/5P2/2B1P3/2N5/PPP5/2K3R1 b - - 2 21",
+    "moves": [
+      "e8h8",
+      "f5f6",
+      "e7f8",
+      "h6h8"
+    ],
+    "rating": 1297,
+    "popularity": 93,
+    "plays": 9618,
+    "gameUrl": "https://lichess.org/SDRyAtdC/black#42",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761070999,
+      "_nanoseconds": 872000000
+    }
+  },
+  {
+    "id": "W30x3",
+    "fen": "rnbqkbnr/ppp1p2p/5p2/3p4/3P4/3BPQ2/PPPB1PPP/RN2K2R b KQkq - 0 6",
+    "moves": [
+      "h7h5",
+      "d3g6",
+      "e8d7",
+      "f3d5"
+    ],
+    "rating": 1590,
+    "popularity": 96,
+    "plays": 1914,
+    "gameUrl": "https://lichess.org/Rv2FSJOS/black#12",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "opening",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761071076,
+      "_nanoseconds": 407000000
+    }
+  },
+  {
+    "id": "WQLgo",
+    "fen": "r1bq3r/1pppn1pk/p2b3p/n3p2Q/4P3/2NP3N/PPP2PPP/R1B2RK1 b - - 3 11",
+    "moves": [
+      "d8e8",
+      "h3g5",
+      "h7g8",
+      "h5e8"
+    ],
+    "rating": 1312,
+    "popularity": 90,
+    "plays": 215,
+    "gameUrl": "https://lichess.org/dbdPBwhA/black#22",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "opening",
+      "pin",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761071359,
+      "_nanoseconds": 216000000
+    }
+  },
+  {
+    "id": "WbZma",
+    "fen": "3qkb1r/pp1b2pp/1n2pB2/2rp4/1Q2p3/4P3/PP2BPPP/1K1R2NR b k - 0 15",
+    "moves": [
+      "g7f6",
+      "e2h5",
+      "e8e7",
+      "b4c5"
+    ],
+    "rating": 1060,
+    "popularity": 100,
+    "plays": 326,
+    "gameUrl": "https://lichess.org/wq256Bzr/black#30",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "opening",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761071502,
+      "_nanoseconds": 373000000
+    }
+  },
+  {
+    "id": "X0bBy",
+    "fen": "r2q1r2/pbp1bkpQ/1p2p3/4P3/8/2PBP3/P4PPP/R4RK1 b - - 0 15",
+    "moves": [
+      "f8h8",
+      "d3g6",
+      "f7f8",
+      "h7h8"
+    ],
+    "rating": 1435,
+    "popularity": 96,
+    "plays": 12230,
+    "gameUrl": "https://lichess.org/Q1xN5tUw/black#30",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761071801,
+      "_nanoseconds": 984000000
+    }
+  },
+  {
+    "id": "X0cwQ",
+    "fen": "r4rk1/ppp3bp/4p3/6P1/1PPp4/4B2Q/1PqNK1P1/R6R w - - 0 24",
+    "moves": [
+      "a1c1",
+      "d4d3",
+      "e2e1",
+      "c2c1"
+    ],
+    "rating": 1155,
+    "popularity": 93,
+    "plays": 963,
+    "gameUrl": "https://lichess.org/wS6wF7pw#47",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761071801,
+      "_nanoseconds": 984000000
+    }
+  },
+  {
+    "id": "X0uEh",
+    "fen": "3r3r/2p2kp1/p3p2p/2b1PP2/6P1/1Qpb1q2/PP4RP/3R3K b - - 0 22",
+    "moves": [
+      "d3e4",
+      "b3e6",
+      "f7f8",
+      "d1d8"
+    ],
+    "rating": 989,
+    "popularity": 86,
+    "plays": 330,
+    "gameUrl": "https://lichess.org/KL04Uy4e/black#44",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761071801,
+      "_nanoseconds": 984000000
+    }
+  },
+  {
+    "id": "XBE5O",
+    "fen": "r1bqrk1Q/1pppnp2/p7/2b1n1N1/2B1P3/2N5/PP3PPP/R4RK1 b - - 6 14",
+    "moves": [
+      "e7g8",
+      "g5h7",
+      "f8e7",
+      "h8e5"
+    ],
+    "rating": 1808,
+    "popularity": 95,
+    "plays": 1164,
+    "gameUrl": "https://lichess.org/sJUieZMh/black#28",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761071927,
+      "_nanoseconds": 407000000
+    }
+  },
+  {
+    "id": "XqrFB",
+    "fen": "r6r/kp5p/2p5/3bR3/1Q3p2/5P2/PPq3PP/R5K1 b - - 4 32",
+    "moves": [
+      "h8e8",
+      "b4a5",
+      "a7b8",
+      "e5e8"
+    ],
+    "rating": 1282,
+    "popularity": 72,
+    "plays": 83,
+    "gameUrl": "https://lichess.org/p7GxaFOb/black#64",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761072449,
+      "_nanoseconds": 804000000
+    }
+  },
+  {
+    "id": "Xxbdd",
+    "fen": "rnr4k/p4ppb/7p/3q4/1Q1N4/4B1P1/PP1KPP1P/3R3R w - - 0 23",
+    "moves": [
+      "b4b5",
+      "c8c2",
+      "d2e1",
+      "d5h1"
+    ],
+    "rating": 1658,
+    "popularity": 96,
+    "plays": 17537,
+    "gameUrl": "https://lichess.org/3xfAN6c0#45",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "pin",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761072528,
+      "_nanoseconds": 993000000
+    }
+  },
+  {
+    "id": "YBBFm",
+    "fen": "4r1k1/p4p2/1p4pb/3P4/N1P1p3/1N2K1Pb/PP3Pq1/3R3Q w - - 2 33",
+    "moves": [
+      "e3e2",
+      "h3g4",
+      "e2e1",
+      "g2h1"
+    ],
+    "rating": 1378,
+    "popularity": 75,
+    "plays": 42,
+    "gameUrl": "https://lichess.org/vwssqwDN#65",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761072706,
+      "_nanoseconds": 680000000
+    }
+  },
+  {
+    "id": "YGTmO",
+    "fen": "rb3rk1/p4p2/b1p1pB2/3p4/3P4/2N4P/PPP1KPq1/R2Q2R1 w - - 2 19",
+    "moves": [
+      "e2d2",
+      "b8f4",
+      "d2e1",
+      "g2g1"
+    ],
+    "rating": 1029,
+    "popularity": 100,
+    "plays": 377,
+    "gameUrl": "https://lichess.org/PO81bTFj#37",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "pin",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761072764,
+      "_nanoseconds": 31000000
+    }
+  },
+  {
+    "id": "YQH3P",
+    "fen": "r6r/pppknQpp/1b1p4/3PP1q1/8/2N5/PP3PPP/R3K2R b KQ - 0 13",
+    "moves": [
+      "h8f8",
+      "e5e6",
+      "d7d8",
+      "f7f8"
+    ],
+    "rating": 1378,
+    "popularity": 94,
+    "plays": 4069,
+    "gameUrl": "https://lichess.org/ZkKk9Vot/black#26",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761072884,
+      "_nanoseconds": 252000000
+    }
+  },
+  {
+    "id": "YXsGf",
+    "fen": "2b2rrk/p1p2p2/1p1p3p/3Pp1q1/2P1P3/2PBQRP1/P3K3/7R b - - 0 31",
+    "moves": [
+      "c8g4",
+      "h1h6",
+      "h8g7",
+      "e3g5"
+    ],
+    "rating": 1537,
+    "popularity": 56,
+    "plays": 64,
+    "gameUrl": "https://lichess.org/CYydiRYe/black#62",
+    "themes": [
+      "interference",
+      "kingsideattack",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761072982,
+      "_nanoseconds": 882000000
+    }
+  },
+  {
+    "id": "YZ61N",
+    "fen": "3rr3/1Qpkqppb/4p2p/2P5/3P2P1/4nPB1/1K2N2P/3R1R2 b - - 0 32",
+    "moves": [
+      "d8b8",
+      "c5c6",
+      "d7d8",
+      "b7b8"
+    ],
+    "rating": 1345,
+    "popularity": 96,
+    "plays": 6617,
+    "gameUrl": "https://lichess.org/kOAAdGnX/black#64",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761073001,
+      "_nanoseconds": 852000000
+    }
+  },
+  {
+    "id": "Ym0jd",
+    "fen": "r1b2rk1/ppp2ppp/8/3pb3/6P1/2NBP3/PPPB1PPq/R2QR1K1 w - - 1 13",
+    "moves": [
+      "g1f1",
+      "h2h1",
+      "f1e2",
+      "c8g4",
+      "f2f3",
+      "h1g2"
+    ],
+    "rating": 1198,
+    "popularity": 65,
+    "plays": 39,
+    "gameUrl": "https://lichess.org/pH3ngGAt#25",
+    "themes": [
+      "interference",
+      "long",
+      "mate",
+      "matein3",
+      "opening"
+    ],
+    "createdAt": {
+      "_seconds": 1761073159,
+      "_nanoseconds": 464000000
+    }
+  },
+  {
+    "id": "Ypi4v",
+    "fen": "2kr1bnr/pp2p1pp/2p1b3/4Pp2/1nP5/2N2N2/PP3PPP/R1B1KB1R w KQ - 5 10",
+    "moves": [
+      "a1b1",
+      "b4c2",
+      "e1e2",
+      "e6c4"
+    ],
+    "rating": 1269,
+    "popularity": 95,
+    "plays": 15533,
+    "gameUrl": "https://lichess.org/GM5LtxtF#19",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "opening",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761073203,
+      "_nanoseconds": 431000000
+    }
+  },
+  {
+    "id": "Z5RXR",
+    "fen": "rnbqkb1r/ppp1p3/5p2/3p4/3P1p1p/3BPQ2/PPP3PP/RN2K1NR b KQkq - 0 10",
+    "moves": [
+      "f4e3",
+      "d3g6",
+      "e8d7",
+      "f3d5"
+    ],
+    "rating": 1598,
+    "popularity": 94,
+    "plays": 14907,
+    "gameUrl": "https://lichess.org/ubhqLtvz/black#20",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "opening",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761073394,
+      "_nanoseconds": 641000000
+    }
+  },
+  {
+    "id": "ZflkR",
+    "fen": "r1bq1r2/pp1pbkpQ/4p2p/3nP3/8/2PB2P1/PP1N1PP1/R3K2R b KQ - 0 15",
+    "moves": [
+      "f8h8",
+      "d3g6",
+      "f7f8",
+      "h7h8"
+    ],
+    "rating": 1485,
+    "popularity": 95,
+    "plays": 21411,
+    "gameUrl": "https://lichess.org/7Bl8ykpT/black#30",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761073836,
+      "_nanoseconds": 986000000
+    }
+  },
+  {
+    "id": "Zg5wl",
+    "fen": "7N/p5pp/4k3/2b1p3/5r1P/1RNb4/P1nP1PP1/2B3KR w - - 1 25",
+    "moves": [
+      "c3b5",
+      "c5f2",
+      "g1h2",
+      "f4h4"
+    ],
+    "rating": 1033,
+    "popularity": 77,
+    "plays": 96,
+    "gameUrl": "https://lichess.org/yWcvUfef#49",
+    "themes": [
+      "interference",
+      "kingsideattack",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761073836,
+      "_nanoseconds": 986000000
+    }
+  },
+  {
+    "id": "ZiqVn",
+    "fen": "r2q1r2/2p2kpQ/p4b1p/1p1p1N2/8/1BP5/PP3PKP/4R3 b - - 0 24",
+    "moves": [
+      "f8h8",
+      "f5h6",
+      "f7f8",
+      "h7h8"
+    ],
+    "rating": 1946,
+    "popularity": 88,
+    "plays": 1355,
+    "gameUrl": "https://lichess.org/q7c4MUNQ/black#48",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "pin",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761073878,
+      "_nanoseconds": 481000000
+    }
+  },
+  {
+    "id": "ZljDG",
+    "fen": "2r1k2r/5ppp/p3p3/1pP1b3/7P/2PB2P1/qP1Q1P2/2KR4 b k - 0 19",
+    "moves": [
+      "c8c5",
+      "d3b5",
+      "e8e7",
+      "d2g5",
+      "f7f6",
+      "g5g7"
+    ],
+    "rating": 1888,
+    "popularity": 88,
+    "plays": 82,
+    "gameUrl": "https://lichess.org/IDRB0JJI/black#38",
+    "themes": [
+      "interference",
+      "long",
+      "mate",
+      "matein3",
+      "middlegame"
+    ],
+    "createdAt": {
+      "_seconds": 1761073922,
+      "_nanoseconds": 568000000
+    }
+  },
+  {
+    "id": "a49Ky",
+    "fen": "r3qr2/3p1kpQ/1p1Ppp2/p5P1/P1PnN3/7R/5P1P/5RK1 b - - 0 27",
+    "moves": [
+      "f8h8",
+      "g5g6",
+      "f7f8",
+      "h7h8"
+    ],
+    "rating": 1325,
+    "popularity": 89,
+    "plays": 456,
+    "gameUrl": "https://lichess.org/kaC7Jtnv/black#54",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761074140,
+      "_nanoseconds": 476000000
+    }
+  },
+  {
+    "id": "aCa3Z",
+    "fen": "rr6/4knQp/4p2P/8/4q3/1P1RP3/PK1R2P1/8 b - - 9 36",
+    "moves": [
+      "b8g8",
+      "d3d7",
+      "e7e8",
+      "g7g8"
+    ],
+    "rating": 981,
+    "popularity": 83,
+    "plays": 115,
+    "gameUrl": "https://lichess.org/BlMppyOQ/black#72",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761074243,
+      "_nanoseconds": 869000000
+    }
+  },
+  {
+    "id": "adyUK",
+    "fen": "3r3r/Qpkqb1pp/1npp4/B3p3/4P2P/8/PPP2PP1/2KR3R b - - 3 17",
+    "moves": [
+      "d8a8",
+      "a5b6",
+      "c7c8",
+      "a7a8"
+    ],
+    "rating": 1717,
+    "popularity": 78,
+    "plays": 82,
+    "gameUrl": "https://lichess.org/HuvhYmaX/black#34",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761074593,
+      "_nanoseconds": 763000000
+    }
+  },
+  {
+    "id": "ayoYA",
+    "fen": "r4r2/p4kpQ/4pppR/3p4/4qP2/8/3n1KPP/2R5 b - - 1 34",
+    "moves": [
+      "f8h8",
+      "c1c7",
+      "f7e8",
+      "h7h8"
+    ],
+    "rating": 1362,
+    "popularity": 95,
+    "plays": 25983,
+    "gameUrl": "https://lichess.org/FVEOb6uB/black#68",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "pin",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761074847,
+      "_nanoseconds": 374000000
+    }
+  },
+  {
+    "id": "b3lHF",
+    "fen": "1r4kr/QN3ppp/8/4b3/3p1qP1/P4B2/2P1P1K1/1R5R w - - 1 26",
+    "moves": [
+      "b7c5",
+      "f4g3",
+      "g2f1",
+      "b8b1"
+    ],
+    "rating": 1088,
+    "popularity": 96,
+    "plays": 3970,
+    "gameUrl": "https://lichess.org/61KxuOcp#51",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761074905,
+      "_nanoseconds": 144000000
+    }
+  },
+  {
+    "id": "bEKvz",
+    "fen": "r3kr2/p1p2B1p/1p1p1Q2/3P4/4P3/3Pq1Pb/PP5P/5R1K b - - 0 24",
+    "moves": [
+      "e8d7",
+      "f7e6",
+      "h3e6",
+      "f6e6",
+      "d7d8",
+      "f1f8"
+    ],
+    "rating": 1604,
+    "popularity": 96,
+    "plays": 13222,
+    "gameUrl": "https://lichess.org/R5riTGeV/black#48",
+    "themes": [
+      "interference",
+      "long",
+      "mate",
+      "matein3",
+      "middlegame"
+    ],
+    "createdAt": {
+      "_seconds": 1761075033,
+      "_nanoseconds": 858000000
+    }
+  },
+  {
+    "id": "bZeNb",
+    "fen": "6rr/1Rpkb3/4p2p/p2nP3/3P4/P2Q1N2/q2B1PPP/6K1 b - - 0 28",
+    "moves": [
+      "g8b8",
+      "d3b5",
+      "d7d8",
+      "b7b8"
+    ],
+    "rating": 1222,
+    "popularity": 68,
+    "plays": 78,
+    "gameUrl": "https://lichess.org/WVqmFlJJ/black#56",
+    "themes": [
+      "interference",
+      "master",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761075288,
+      "_nanoseconds": 422000000
+    }
+  },
+  {
+    "id": "baRIt",
+    "fen": "2rqr1k1/p2b1ppQ/1p1bp3/n5p1/3PB3/PP6/5PPP/R1B1R1K1 b - - 1 21",
+    "moves": [
+      "g8f8",
+      "h7h8",
+      "f8e7",
+      "c1g5",
+      "f7f6",
+      "h8g7"
+    ],
+    "rating": 1346,
+    "popularity": 72,
+    "plays": 246,
+    "gameUrl": "https://lichess.org/6K6828uv/black#42",
+    "themes": [
+      "interference",
+      "long",
+      "mate",
+      "matein3",
+      "middlegame"
+    ],
+    "createdAt": {
+      "_seconds": 1761075306,
+      "_nanoseconds": 521000000
+    }
+  },
+  {
+    "id": "bcrky",
+    "fen": "rnbk2nr/ppp2Bpp/2Np4/2bQ1qp1/8/2P2N2/PP3PPP/4RK1R b - - 1 14",
+    "moves": [
+      "b7c6",
+      "e1e8",
+      "d8d7",
+      "d5f5"
+    ],
+    "rating": 1882,
+    "popularity": 49,
+    "plays": 39,
+    "gameUrl": "https://lichess.org/zKjkA2sl/black#28",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761075330,
+      "_nanoseconds": 909000000
+    }
+  },
+  {
+    "id": "biMPe",
+    "fen": "2k2bnr/1ppr1ppp/p3b3/8/1nP1P3/2N2N2/PP3PPP/R1B1KB1R w KQ - 0 11",
+    "moves": [
+      "a1b1",
+      "b4c2",
+      "e1e2",
+      "e6c4"
+    ],
+    "rating": 1301,
+    "popularity": 90,
+    "plays": 3390,
+    "gameUrl": "https://lichess.org/1q1YRPGE#21",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "opening",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761075400,
+      "_nanoseconds": 575000000
+    }
+  },
+  {
+    "id": "bjFMU",
+    "fen": "r6r/1p2b1k1/p3R1n1/2qp1Q1p/5PnP/1PP1B1P1/6B1/1R4K1 b - - 4 31",
+    "moves": [
+      "g4e3",
+      "e6g6",
+      "g7h7",
+      "f5h5"
+    ],
+    "rating": 1940,
+    "popularity": 87,
+    "plays": 125,
+    "gameUrl": "https://lichess.org/ayzWDAjb/black#62",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761075409,
+      "_nanoseconds": 390000000
+    }
+  },
+  {
+    "id": "bo5EV",
+    "fen": "3r3r/Qpkbqp2/p1pp1n2/8/4P2p/2P2PPp/P1P2B1N/R3R1K1 b - - 3 22",
+    "moves": [
+      "d8a8",
+      "f2b6",
+      "c7c8",
+      "a7a8"
+    ],
+    "rating": 1545,
+    "popularity": 94,
+    "plays": 2751,
+    "gameUrl": "https://lichess.org/g1PrBpTC/black#44",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761075472,
+      "_nanoseconds": 237000000
+    }
+  },
+  {
+    "id": "bvcNg",
+    "fen": "rnbqkb1r/ppp1p2N/5np1/3p4/8/3B1Q2/PPP2PPP/RNB1K2R b KQkq - 0 7",
+    "moves": [
+      "f6h7",
+      "d3g6",
+      "e8d7",
+      "f3d5"
+    ],
+    "rating": 1459,
+    "popularity": 77,
+    "plays": 158,
+    "gameUrl": "https://lichess.org/bHGFBL7B/black#14",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "opening",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761075569,
+      "_nanoseconds": 571000000
+    }
+  },
+  {
+    "id": "c8kBC",
+    "fen": "r6r/4Rp1k/p3bPp1/8/4Q3/5PPp/PP3q1P/6RK b - - 4 35",
+    "moves": [
+      "a8e8",
+      "e4h4",
+      "h7g8",
+      "e7e8"
+    ],
+    "rating": 1245,
+    "popularity": 96,
+    "plays": 15926,
+    "gameUrl": "https://lichess.org/AiGUrQbH/black#70",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761075740,
+      "_nanoseconds": 42000000
+    }
+  },
+  {
+    "id": "cE21u",
+    "fen": "r2q1r2/pp2np1p/6p1/3P4/2P4k/5B1P/P4PP1/2B1R1K1 b - - 9 24",
+    "moves": [
+      "f7f5",
+      "g1h2",
+      "f5f4",
+      "e1e5",
+      "e7f5",
+      "c1f4",
+      "d8g5",
+      "g2g3",
+      "g5g3",
+      "f2g3",
+      "f5g3",
+      "f4g3"
+    ],
+    "rating": 2697,
+    "popularity": 92,
+    "plays": 6708,
+    "gameUrl": "https://lichess.org/EWCKgEXX/black#48",
+    "themes": [
+      "interference",
+      "master",
+      "mastervsmaster",
+      "mate",
+      "matein5",
+      "middlegame",
+      "verylong"
+    ],
+    "createdAt": {
+      "_seconds": 1761075803,
+      "_nanoseconds": 903000000
+    }
+  },
+  {
+    "id": "cT8y6",
+    "fen": "2r4r/1p1pkpb1/p3p2p/3nP1p1/B7/5N1P/PPR2PP1/3R2K1 b - - 1 21",
+    "moves": [
+      "d5b4",
+      "d1d7",
+      "e7f8",
+      "c2c8"
+    ],
+    "rating": 1288,
+    "popularity": 84,
+    "plays": 805,
+    "gameUrl": "https://lichess.org/0gnIwGPG/black#42",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761076000,
+      "_nanoseconds": 463000000
+    }
+  },
+  {
+    "id": "cezry",
+    "fen": "r1bq1r2/1p1nbkpQ/p1n1pp1p/3pP3/3P3N/4B3/PPB2PPP/RN3RK1 b - - 3 14",
+    "moves": [
+      "f8h8",
+      "c2g6",
+      "f7f8",
+      "h7h8"
+    ],
+    "rating": 1642,
+    "popularity": 96,
+    "plays": 16010,
+    "gameUrl": "https://lichess.org/NIUrxQj6/black#28",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "opening",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761076135,
+      "_nanoseconds": 834000000
+    }
+  },
+  {
+    "id": "cfVBp",
+    "fen": "r1b3kr/1p3pp1/p1p1p3/6Qp/1BPqBP2/8/P5PP/3R1R1K b - - 0 21",
+    "moves": [
+      "d4e4",
+      "d1d8",
+      "g8h7",
+      "g5h5"
+    ],
+    "rating": 1495,
+    "popularity": 94,
+    "plays": 10944,
+    "gameUrl": "https://lichess.org/Pgds18A4/black#42",
+    "themes": [
+      "interference",
+      "kingsideattack",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761076145,
+      "_nanoseconds": 83000000
+    }
+  },
+  {
+    "id": "cgv4N",
+    "fen": "1br4r/pp3ppk/4p2p/5q2/3R3R/2P1Q3/PP3PPP/2B3K1 b - - 12 25",
+    "moves": [
+      "c8d8",
+      "h4h6",
+      "g7h6",
+      "e3h6",
+      "h7g8",
+      "d4d8"
+    ],
+    "rating": 1397,
+    "popularity": 94,
+    "plays": 23683,
+    "gameUrl": "https://lichess.org/TMFArqqz/black#50",
+    "themes": [
+      "interference",
+      "long",
+      "mate",
+      "matein3",
+      "middlegame",
+      "sacrifice"
+    ],
+    "createdAt": {
+      "_seconds": 1761076162,
+      "_nanoseconds": 666000000
+    }
+  },
+  {
+    "id": "cqhsC",
+    "fen": "3k4/Q1p2ppp/1n5q/7r/5Pb1/2NPB3/PPP3P1/R4RK1 w - - 1 23",
+    "moves": [
+      "e3b6",
+      "h5h1",
+      "g1f2",
+      "h6f4",
+      "f2e1",
+      "h1f1"
+    ],
+    "rating": 2283,
+    "popularity": 93,
+    "plays": 4353,
+    "gameUrl": "https://lichess.org/9N2SlPhE#45",
+    "themes": [
+      "interference",
+      "kingsideattack",
+      "long",
+      "mate",
+      "matein3",
+      "middlegame"
+    ],
+    "createdAt": {
+      "_seconds": 1761076336,
+      "_nanoseconds": 139000000
+    }
+  },
+  {
+    "id": "csPLN",
+    "fen": "r3r3/7k/1PNBp2p/2Pp4/3Pbp2/4P3/7P/R4RK1 w - - 0 35",
+    "moves": [
+      "b6b7",
+      "e8g8",
+      "g1f2",
+      "g8g2",
+      "f2e1",
+      "a8a1"
+    ],
+    "rating": 1553,
+    "popularity": 80,
+    "plays": 73,
+    "gameUrl": "https://lichess.org/R0axOi5v#69",
+    "themes": [
+      "interference",
+      "long",
+      "mate",
+      "matein3",
+      "middlegame"
+    ],
+    "createdAt": {
+      "_seconds": 1761076354,
+      "_nanoseconds": 120000000
+    }
+  },
+  {
+    "id": "d0gPY",
+    "fen": "7r/p4pk1/1bb5/2p5/6p1/4PNP1/P1Q2PK1/1R3R2 w - - 0 28",
+    "moves": [
+      "f1h1",
+      "c6f3",
+      "g2f1",
+      "h8h1"
+    ],
+    "rating": 1394,
+    "popularity": 91,
+    "plays": 1376,
+    "gameUrl": "https://lichess.org/KC3tbWuP#55",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761076461,
+      "_nanoseconds": 905000000
+    }
+  },
+  {
+    "id": "d8upF",
+    "fen": "4rr2/1p5k/pPp4p/P1PqPpn1/6pN/3P2P1/1Q1R1P1P/4RK2 w - - 3 31",
+    "moves": [
+      "b2c2",
+      "d5h1",
+      "f1e2",
+      "e8e5",
+      "e2d1",
+      "h1e1"
+    ],
+    "rating": 1362,
+    "popularity": 93,
+    "plays": 1466,
+    "gameUrl": "https://lichess.org/5RuV3YDE#61",
+    "themes": [
+      "interference",
+      "long",
+      "mate",
+      "matein3",
+      "middlegame"
+    ],
+    "createdAt": {
+      "_seconds": 1761076566,
+      "_nanoseconds": 974000000
+    }
+  },
+  {
+    "id": "dGdi8",
+    "fen": "r4rk1/pp2R3/3B3p/3P1p1q/3b2p1/3P1BP1/P5K1/1R1Q4 w - - 2 25",
+    "moves": [
+      "d1h1",
+      "g4f3",
+      "g2f1",
+      "h5h1"
+    ],
+    "rating": 1251,
+    "popularity": 33,
+    "plays": 18,
+    "gameUrl": "https://lichess.org/M6rtkPdn#49",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761076668,
+      "_nanoseconds": 746000000
+    }
+  },
+  {
+    "id": "dMoM4",
+    "fen": "rn3b2/3knQ2/2p2p2/1p6/p2qPB2/P2p4/BP1K1PP1/3N4 b - - 5 23",
+    "moves": [
+      "b8a6",
+      "a2e6",
+      "d7d8",
+      "f7f8"
+    ],
+    "rating": 1703,
+    "popularity": 95,
+    "plays": 16567,
+    "gameUrl": "https://lichess.org/RrcLWXvU/black#46",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761076739,
+      "_nanoseconds": 128000000
+    }
+  },
+  {
+    "id": "dPBtH",
+    "fen": "r2qr3/1bpnbkpQ/p3p2p/1p2P3/2p2B2/4P3/PP2BPPP/3R1RK1 b - - 2 16",
+    "moves": [
+      "e8h8",
+      "e2h5",
+      "f7f8",
+      "h7h8"
+    ],
+    "rating": 1002,
+    "popularity": 94,
+    "plays": 285,
+    "gameUrl": "https://lichess.org/hAPxK0nv/black#32",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761076773,
+      "_nanoseconds": 993000000
+    }
+  },
+  {
+    "id": "dSSDF",
+    "fen": "7k/rpr5/8/1N1Bp2p/5pp1/3K1P2/5nPP/R6R w - - 2 39",
+    "moves": [
+      "d3e2",
+      "c7c2",
+      "e2f1",
+      "a7a1"
+    ],
+    "rating": 1419,
+    "popularity": 97,
+    "plays": 10753,
+    "gameUrl": "https://lichess.org/Xr2AXAFD#77",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761076817,
+      "_nanoseconds": 873000000
+    }
+  },
+  {
+    "id": "dSfiQ",
+    "fen": "r1bb3r/pp3Bpk/1n3p1p/4B3/7N/6P1/PPP2P1P/2KRR3 b - - 0 20",
+    "moves": [
+      "f6e5",
+      "f7g6",
+      "h7g8",
+      "d1d8"
+    ],
+    "rating": 997,
+    "popularity": 79,
+    "plays": 48,
+    "gameUrl": "https://lichess.org/25lxGURc/black#40",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761076817,
+      "_nanoseconds": 873000000
+    }
+  },
+  {
+    "id": "dVD5S",
+    "fen": "1rr1k3/4Rpp1/5n1p/2B1N3/p7/1b6/5PPP/2R3K1 b - - 3 28",
+    "moves": [
+      "e8d8",
+      "c1d1",
+      "f6d5",
+      "e5f7"
+    ],
+    "rating": 2159,
+    "popularity": 88,
+    "plays": 367,
+    "gameUrl": "https://lichess.org/o02orhVG/black#56",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "pin",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761076843,
+      "_nanoseconds": 920000000
+    }
+  },
+  {
+    "id": "dXz9I",
+    "fen": "r2qkbnr/pp1b1Np1/2n1p2p/3pP3/3P4/p2B4/2P2PPP/RNBQK2R b KQkq - 0 9",
+    "moves": [
+      "e8f7",
+      "d1h5",
+      "g7g6",
+      "h5g6",
+      "f7e7",
+      "c1a3",
+      "c6b4",
+      "a3b4"
+    ],
+    "rating": 1835,
+    "popularity": 100,
+    "plays": 184,
+    "gameUrl": "https://lichess.org/InBW0jjO/black#18",
+    "themes": [
+      "interference",
+      "mate",
+      "matein4",
+      "opening",
+      "verylong"
+    ],
+    "createdAt": {
+      "_seconds": 1761076877,
+      "_nanoseconds": 642000000
+    }
+  },
+  {
+    "id": "dYRSW",
+    "fen": "r2r1k2/p4ppQ/4p2p/8/P1bnNq2/1Pb5/2BN1PPP/3RK2R w K - 1 22",
+    "moves": [
+      "e4c3",
+      "f4e5",
+      "d2e4",
+      "d4c2"
+    ],
+    "rating": 2383,
+    "popularity": 93,
+    "plays": 962,
+    "gameUrl": "https://lichess.org/80TCIAVU#43",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761076886,
+      "_nanoseconds": 156000000
+    }
+  },
+  {
+    "id": "deFS3",
+    "fen": "4r1k1/5pb1/p2p2p1/3P2q1/3P1n2/P1P2B2/2Q2PPK/R6R w - - 4 29",
+    "moves": [
+      "a1e1",
+      "g5h4",
+      "h2g1",
+      "e8e1"
+    ],
+    "rating": 1330,
+    "popularity": 92,
+    "plays": 109,
+    "gameUrl": "https://lichess.org/4w1CHVkU#57",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761076956,
+      "_nanoseconds": 891000000
+    }
+  },
+  {
+    "id": "dfbrx",
+    "fen": "r1bq3r/4ppkp/p2p2p1/2pP2QP/1p6/3P1B2/PPP2PP1/R3K2R b KQ - 2 16",
+    "moves": [
+      "e7e5",
+      "h5h6",
+      "g7g8",
+      "g5d8"
+    ],
+    "rating": 1206,
+    "popularity": 86,
+    "plays": 47,
+    "gameUrl": "https://lichess.org/OSp1uhwt/black#32",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761076975,
+      "_nanoseconds": 374000000
+    }
+  },
+  {
+    "id": "dhHIP",
+    "fen": "6k1/p1p2rR1/1p5p/n2P1r2/4qP2/P1Q5/1B4PP/6K1 b - - 0 25",
+    "moves": [
+      "g8f8",
+      "g7g8",
+      "f8e7",
+      "c3c7"
+    ],
+    "rating": 1877,
+    "popularity": 73,
+    "plays": 109,
+    "gameUrl": "https://lichess.org/hWnoZRqz/black#50",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761076992,
+      "_nanoseconds": 557000000
+    }
+  },
+  {
+    "id": "dsOTG",
+    "fen": "1k1r1r2/ppp4p/2n3p1/4p3/3pQ1B1/6qP/P1PK2P1/1R3R2 w - - 6 27",
+    "moves": [
+      "e4c6",
+      "g3e3",
+      "d2d1",
+      "f8f1"
+    ],
+    "rating": 1296,
+    "popularity": 99,
+    "plays": 1439,
+    "gameUrl": "https://lichess.org/FQU6UQxN#53",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761077129,
+      "_nanoseconds": 208000000
+    }
+  },
+  {
+    "id": "e2B7a",
+    "fen": "r1b2k1N/pppp2pp/8/4p1n1/3nq3/1B4P1/PPPP1K1P/R1BQ3R w - - 5 15",
+    "moves": [
+      "d2d3",
+      "g5h3",
+      "f2f1",
+      "e4h1"
+    ],
+    "rating": 1527,
+    "popularity": 91,
+    "plays": 3190,
+    "gameUrl": "https://lichess.org/526vdNxe#29",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761077252,
+      "_nanoseconds": 728000000
+    }
+  },
+  {
+    "id": "e2rt4",
+    "fen": "r5k1/2p3q1/2Np3r/2pPp3/P1P2p2/1P3P2/4Q1K1/4R2R w - - 0 38",
+    "moves": [
+      "g2f2",
+      "g7g3",
+      "f2f1",
+      "h6h1"
+    ],
+    "rating": 1311,
+    "popularity": 78,
+    "plays": 1190,
+    "gameUrl": "https://lichess.org/u3mMyKzt#75",
+    "themes": [
+      "interference",
+      "master",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761077262,
+      "_nanoseconds": 104000000
+    }
+  },
+  {
+    "id": "eCHIT",
+    "fen": "r2r4/1b2kpQ1/pq2p3/1p4nB/5N2/8/PP4PP/R2R3K b - - 3 29",
+    "moves": [
+      "d8g8",
+      "f4g6",
+      "e7e8",
+      "g7g8"
+    ],
+    "rating": 1353,
+    "popularity": 83,
+    "plays": 278,
+    "gameUrl": "https://lichess.org/hfCNs1Vg/black#58",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "pin",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761077376,
+      "_nanoseconds": 993000000
+    }
+  },
+  {
+    "id": "eFxwj",
+    "fen": "r1bq3r/3p1pkp/pnpPN1p1/8/5B1Q/1P6/P4PPP/R4RK1 b - - 0 20",
+    "moves": [
+      "d7e6",
+      "f4h6",
+      "g7g8",
+      "h4d8"
+    ],
+    "rating": 1889,
+    "popularity": 80,
+    "plays": 400,
+    "gameUrl": "https://lichess.org/aMYo9NqZ/black#40",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761077423,
+      "_nanoseconds": 884000000
+    }
+  },
+  {
+    "id": "eG5lf",
+    "fen": "1n4rq/3k4/2p1p3/3b1p2/3P1Q1p/3B2P1/5P1P/R5K1 b - - 1 33",
+    "moves": [
+      "h4g3",
+      "a1a7",
+      "d7e8",
+      "f4b8"
+    ],
+    "rating": 1324,
+    "popularity": 85,
+    "plays": 29,
+    "gameUrl": "https://lichess.org/uFsLh1xm/black#66",
+    "themes": [
+      "interference",
+      "mate",
+      "matein2",
+      "middlegame",
+      "short"
+    ],
+    "createdAt": {
+      "_seconds": 1761077423,
+      "_nanoseconds": 884000000
+    }
+  }
+]

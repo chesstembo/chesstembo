@@ -1,0 +1,82 @@
+{
+  "openings": [
+    {
+      "id": "ruy-lopez",
+      "name": "Ruy Lopez",
+      "eco": "C60-C99",
+      "description": "One of the oldest and most classic openings. White aims to control the center and prepare kingside castling while putting pressure on Black's e5 pawn.",
+      "moves": "1.e4 e5 2.Nf3 Nc6 3.Bb5",
+      "difficulty": "intermediate",
+      "popularity": 95,
+      "variations": [
+        {
+          "name": "Main Line",
+          "moves": "1.e4 e5 2.Nf3 Nc6 3.Bb5 a6 4.Ba4 Nf6 5.O-O Be7 6.Re1 b5 7.Bb3 d6 8.c3 O-O 9.h3",
+          "description": "The main line of the Ruy Lopez leads to rich strategic positions."
+        },
+        {
+          "name": "Exchange Variation",
+          "moves": "1.e4 e5 2.Nf3 Nc6 3.Bb5 a6 4.Bxc6",
+          "description": "White exchanges bishop for knight, simplifying the position."
+        },
+        {
+          "name": "Berlin Defense",
+          "moves": "1.e4 e5 2.Nf3 Nc6 3.Bb5 Nf6",
+          "description": "A solid defense that often leads to endgame positions."
+        }
+      ],
+      "keyIdeas": [
+        "Control the center with pawns and pieces",
+        "Put pressure on e5 pawn",
+        "Prepare kingside castling",
+        "Develop knights before bishops in most cases"
+      ],
+      "commonTraps": [
+        {
+          "name": "Noah's Ark Trap",
+          "moves": "1.e4 e5 2.Nf3 Nc6 3.Bb5 a6 4.Ba4 Nf6 5.O-O Nxe4 6.d4 b5 7.Bb3 d5 8.dxe5 Be6 9.c3 Be7 10.Nbd2 O-O 11.Qe2",
+          "description": "White sacrifices a pawn to gain strong attacking chances."
+        }
+      ]
+    },
+    {
+      "id": "sicilian-defense",
+      "name": "Sicilian Defense",
+      "eco": "B20-B99",
+      "description": "The most popular and best-scoring response to 1.e4. Leads to asymmetric positions and rich tactical play with chances for both sides.",
+      "moves": "1.e4 c5",
+      "difficulty": "advanced",
+      "popularity": 98,
+      "variations": [
+        {
+          "name": "Open Sicilian",
+          "moves": "1.e4 c5 2.Nf3 d6 3.d4 cxd4 4.Nxd4 Nf6 5.Nc3",
+          "description": "The main line of the Sicilian Defense."
+        },
+        {
+          "name": "Dragon Variation",
+          "moves": "1.e4 c5 2.Nf3 d6 3.d4 cxd4 4.Nxd4 Nf6 5.Nc3 g6",
+          "description": "Characterized by Black's fianchettoed bishop."
+        },
+        {
+          "name": "Najdorf Variation",
+          "moves": "1.e4 c5 2.Nf3 d6 3.d4 cxd4 4.Nxd4 Nf6 5.Nc3 a6",
+          "description": "One of the most analyzed and complex variations."
+        }
+      ],
+      "keyIdeas": [
+        "Control d4 square with c5 pawn",
+        "Attack on queenside with pawns",
+        "Quick development of pieces",
+        "Asymmetric pawn structure leads to imbalanced positions"
+      ],
+      "commonTraps": [
+        {
+          "name": "Sicilian Trap",
+          "moves": "1.e4 c5 2.Nf3 d6 3.d4 cxd4 4.Qxd4 Nc6 5.Bb5 Bd7 6.Bxc6 Bxc6 7.Nc3 Nf6 8.Bg5 e6 9.O-O-O Be7 10.Rhe1 O-O",
+          "description": "Early queen development can lead to tactical opportunities."
+        }
+      ]
+    }
+  ]
+}

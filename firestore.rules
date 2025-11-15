@@ -1,0 +1,86 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // 👤 User profiles and data
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+      allow read: if request.auth != null; // For leaderboards
+    }
+
+    // Opening theory database
+    match /openings/{openingId} {
+      allow read: if true; // Public read access
+      allow write: if request.auth != null; // Only authenticated users can write
+    }
+
+    // User progress data - only for authenticated non-anonymous users
+    match /users/{userId}/puzzleHistory/{puzzleId} {
+      allow read, write: if request.auth != null && 
+                          request.auth.uid == userId && 
+                          !isAnonymousUser(request.auth);
+    }
+    
+    match /users/{userId}/openingProgress/{openingId} {
+      allow read, write: if request.auth != null && 
+                          request.auth.uid == userId && 
+                          !isAnonymousUser(request.auth);
+    }
+    
+    match /users/{userId}/stats/{statId} {
+      allow read, write: if request.auth != null && 
+                          request.auth.uid == userId && 
+                          !isAnonymousUser(request.auth);
+    }
+
+    // Active online games - allow creation but will be auto-deleted if both players are anonymous
+    match /games/{gameId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null;
+      allow update: if request.auth != null && 
+        (resource.data.white == request.auth.uid || 
+         resource.data.black == request.auth.uid);
+      allow delete: if request.auth != null; // Allow deletion for cleanup
+    }
+
+    // Matchmaking queue - auto-clean anonymous requests
+    match /match_requests/{requestId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null;
+      allow update: if request.auth != null && resource.data.userId == request.auth.uid;
+      allow delete: if request.auth != null && (resource.data.userId == request.auth.uid || isAnonymousUser(request.auth));
+    }
+
+    // Leaderboards (read-only) - no anonymous data
+    match /leaderboards/{leaderboardId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // Completed online games archive - no anonymous games
+    match /onlineGames/{gameId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && !isAnonymousUser(request.auth);
+    }
+
+    // User-specific game storage (private) - no anonymous storage
+    match /artifacts/{appId}/users/{userId}/games/{gameId} {
+      allow read, write: if request.auth != null && 
+                          request.auth.uid == userId && 
+                          !isAnonymousUser(request.auth);
+    }
+
+    // Helper function to check if user is anonymous
+    function isAnonymousUser(auth) {
+      return auth.token.firebase.sign_in_provider == "anonymous";
+    }
+
+    // Helper function to check if game should be preserved (at least one registered user)
+    function shouldPreserveGame(gameData) {
+      // Check if game has at least one non-anonymous user
+      let whiteIsRegistered = exists(/databases/$(database)/documents/users/$(gameData.white));
+      let blackIsRegistered = exists(/databases/$(database)/documents/users/$(gameData.black));
+      return whiteIsRegistered || blackIsRegistered;
+    }
+  }
+}

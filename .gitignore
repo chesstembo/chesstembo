@@ -1,0 +1,80 @@
+# dependencies
+node_modules/
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# next.js
+/.next/
+/out/
+.next/
+scripts
+scripts/*
+# production builds
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# local env files
+.env*.local
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env
+
+# typescript
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+
+# CDK assets
+.cdk.staging
+cdk.out
+cdk.context.json
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+
+# Logs
+logs
+*.log
+firebase-debug.log
+firestore-debug.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# Firebase
+serviceAccountKey.json
+.firebase/
+firebase-debug.log
+firestore-debug.log
+
+# Temporary folders
+tmp/
+temp/
+
+# Sensitive files
+serviceAccountKey.json
+firebase-debug.log
+firestore-debug.log

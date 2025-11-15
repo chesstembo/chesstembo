@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Tembo Chess</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1a2530 100%);
+            color: white;
+            padding: 25px 0;
+            text-align: center;
+            margin-bottom: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .last-updated {
+            font-style: italic;
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+        
+        .content-card {
+            background-color: white;
+            box-shadow: var(--box-shadow);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: var(--transition);
+        }
+        
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin: 20px 0 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--secondary-color);
+            font-size: 1.6rem;
+        }
+        
+        h3 {
+            color: var(--secondary-color);
+            margin: 18px 0 10px;
+            font-size: 1.3rem;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 5px;
+        }
+        
+        li::before {
+            content: "•";
+            color: var(--secondary-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        .highlight-box {
+            background-color: var(--light-color);
+            border-left: 4px solid var(--secondary-color);
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        
+        .warning-box {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        
+        .contact-info {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin: 20px 0;
+            text-align: center;
+            border: 1px solid #90caf9;
+        }
+        
+        .contact-info a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+        
+        .contact-info a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .back-to-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #2980b9 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: var(--transition);
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(52, 152, 219, 0.3);
+        }
+        
+        .back-to-top:hover {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #2c3e50 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(52, 152, 219, 0.4);
+        }
+        
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+            justify-content: center;
+        }
+        
+        .nav-link {
+            padding: 8px 15px;
+            background-color: var(--light-color);
+            border-radius: 50px;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            transition: var(--transition);
+            border: 1px solid #ddd;
+        }
+        
+        .nav-link:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .section-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        /* Mobile-specific styles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            header {
+                padding: 20px 0;
+                margin-bottom: 20px;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.4rem;
+            }
+            
+            h3 {
+                font-size: 1.2rem;
+            }
+            
+            .content-card {
+                padding: 20px;
+            }
+            
+            .highlight-box, .warning-box {
+                padding: 15px;
+            }
+            
+            .nav-links {
+                gap: 8px;
+            }
+            
+            .nav-link {
+                padding: 6px 12px;
+                font-size: 0.85rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            
+            header {
+                padding: 15px 0;
+            }
+            
+            h1 {
+                font-size: 1.6rem;
+            }
+            
+            h2 {
+                font-size: 1.3rem;
+            }
+            
+            h3 {
+                font-size: 1.1rem;
+            }
+            
+            .content-card {
+                padding: 15px;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-link {
+                width: 100%;
+                text-align: center;
+            }
+            
+            ul, ol {
+                margin-left: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-chess-knight"></i>
+            </div>
+            <h1>Terms of Service</h1>
+            <p class="last-updated">Last updated: <span id="current-date">{{TODAY}}</span></p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="nav-links">
+            <a href="#acceptance" class="nav-link">Acceptance</a>
+            <a href="#accounts" class="nav-link">Accounts</a>
+            <a href="#usage" class="nav-link">Usage</a>
+            <a href="#rights" class="nav-link">Your Rights</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+        
+        <div class="content-card">
+            <section id="acceptance">
+                <h2><span class="section-icon"><i class="fas fa-check-circle"></i></span>1. Acceptance of Terms</h2>
+                <p>By accessing or using Tembo Chess ("the App"), you agree to be bound by these Terms of Service and our Privacy Policy. If you disagree with any part, you may not use our service.</p>
+            </section>
+        </div>
+        
+        <div class="content-card">
+            <section id="accounts">
+                <h2><span class="section-icon"><i class="fas fa-user"></i></span>2. User Accounts</h2>
+                
+                <h3>2.1 Account Creation</h3>
+                <p>When you create an account with us, you must provide accurate information. You are responsible for maintaining your account's security.</p>
+                
+                <h3>2.2 Account Responsibility</h3>
+                <p>You are responsible for all activities under your account. Notify us immediately of any unauthorized use.</p>
+                
+                <h3>2.3 Account Termination</h3>
+                <p>We reserve the right to suspend or terminate accounts that violate these terms.</p>
+            </section>
+        </div>
+        
+        <div class="content-card">
+            <section id="usage">
+                <h2><span class="section-icon"><i class="fas fa-play-circle"></i></span>3. Acceptable Use</h2>
+                
+                <h3>3.1 Permitted Use</h3>
+                <p>You may use Tembo Chess for personal, non-commercial chess training purposes.</p>
+                
+                <h3>3.2 Prohibited Activities</h3>
+                <p>You agree not to:</p>
+                <ul>
+                    <li>Use cheats, exploits, or automation software</li>
+                    <li>Create multiple accounts to manipulate leaderboards</li>
+                    <li>Attempt to access others' accounts</li>
+                    <li>Reverse engineer or modify the App</li>
+                    <li>Use the service for any illegal purpose</li>
+                </ul>
+                
+                <div class="warning-box">
+                    <p><strong>Violation of these terms may result in account suspension or termination.</strong></p>
+                </div>
+            </section>
+        </div>
+        
+        <div class="content-card">
+            <section id="intellectual-property">
+                <h2><span class="section-icon"><i class="fas fa-copyright"></i></span>4. Intellectual Property</h2>
+                <p>Tembo Chess, including all content, features, and functionality, is owned by Tembo Chess / Tembo inc and protected by international copyright laws.</p>
+                
+                <h3>4.1 License Grant</h3>
+                <p>We grant you a limited, non-exclusive, non-transferable license to use the App for personal purposes.</p>
+                
+                <h3>4.2 Restrictions</h3>
+                <p>You may not copy, modify, distribute, or resell any part of Tembo Chess.</p>
+            </section>
+        </div>
+        
+        <div class="content-card">
+            <section id="user-content">
+                <h2><span class="section-icon"><i class="fas fa-upload"></i></span>5. User Content</h2>
+                <p>By using Tembo Chess, you grant us permission to store and process your:</p>
+                <ul>
+                    <li>Puzzle progress and statistics</li>
+                    <li>Training history</li>
+                    <li>Leaderboard rankings</li>
+                </ul>
+                <p>This data is used solely to provide and improve the service.</p>
+            </section>
+        </div>
+        
+        <div class="content-card">
+            <section id="termination">
+                <h2><span class="section-icon"><i class="fas fa-ban"></i></span>6. Termination</h2>
+                <p>We may terminate or suspend your account immediately for:</p>
+                <ul>
+                    <li>Violations of these Terms</li>
+                    <li>Requests by law enforcement</li>
+                    <li>Unexpected technical issues</li>
+                </ul>
+                <p>Upon termination, your right to use the App will cease immediately.</p>
+            </section>
+        </div>
+        
+        <div class="content-card">
+            <section id="limitation">
+                <h2><span class="section-icon"><i class="fas fa-exclamation-triangle"></i></span>7. Limitation of Liability</h2>
+                <p>Tembo Chess is provided "as is" without warranties of any kind. We are not liable for:</p>
+                <ul>
+                    <li>Service interruptions</li>
+                    <li>Data loss</li>
+                    <li>Indirect or consequential damages</li>
+                </ul>
+            </section>
+        </div>
+        
+        <div class="content-card">
+            <section id="changes">
+                <h2><span class="section-icon"><i class="fas fa-sync-alt"></i></span>8. Changes to Terms</h2>
+                <p>We reserve the right to modify these terms at any time. Continued use after changes constitutes acceptance.</p>
+            </section>
+        </div>
+        
+        <div class="content-card">
+            <section id="rights">
+                <h2><span class="section-icon"><i class="fas fa-shield-alt"></i></span>9. Your Rights</h2>
+                <p>You have the right to:</p>
+                <ul>
+                    <li>Access your personal data</li>
+                    <li>Request data deletion</li>
+                    <li>Opt-out of communications</li>
+                    <li>Close your account</li>
+                </ul>
+            </section>
+        </div>
+        
+        <div class="content-card">
+            <section id="contact">
+                <h2><span class="section-icon"><i class="fas fa-phone-alt"></i></span>10. Contact Information</h2>
+                <div class="contact-info">
+                    <p>For questions about these Terms, contact us at:</p>
+                    <p><a href="mailto:chesstembo@gmail.com"><i class="fas fa-envelope"></i> chesstembo@gmail.com</a></p>
+                    <p>We typically respond within 2-3 business days.</p>
+                </div>
+            </section>
+        </div>
+        
+        <footer>
+            <p>END OF TERMS OF SERVICE</p>
+            <a href="#" class="back-to-top"><i class="fas fa-chevron-up"></i> Back to Top</a>
+        </footer>
+    </div>
+
+    <script>
+        // Set current date
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date();
+            const formattedDate = today.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            
+            document.getElementById('current-date').textContent = formattedDate;
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Back to top button
+        document.querySelector('.back-to-top').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
