@@ -5,7 +5,8 @@ import {
   Box, Typography, Paper, Button, CircularProgress, 
   Tabs, Tab, Card, CardContent, Chip, Grid,
   List, ListItem, ListItemText, Divider, Alert,
-  ListItemButton, LinearProgress
+  ListItemButton, LinearProgress, useTheme,
+  useMediaQuery, AppBar, Toolbar, IconButton
 } from "@mui/material";
 import Head from "next/head";
 import { Chess } from "chess.js";
@@ -19,11 +20,16 @@ import MemoryTest from "../../../components/Openings/MemoryTest";
 import TrapTest from "../../../components/Openings/TrapTest";
 import OpeningExplorer from "../../../components/Openings/OpeningExplorer";
 import ProgressTracker from "../../../components/Openings/ProgressTracker";
+import { ArrowBack, Menu, NavigateBefore, NavigateNext } from "@mui/icons-material";
 
 // Dynamically import chessboard to avoid SSR issues
 const Chessboard = dynamic(() => import("react-chessboard").then(mod => mod.Chessboard), {
   ssr: false,
-  loading: () => <Box height="400px" display="flex" alignItems="center" justifyContent="center"><CircularProgress /></Box>
+  loading: () => (
+    <Box height="300px" display="flex" alignItems="center" justifyContent="center">
+      <CircularProgress />
+    </Box>
+  )
 });
 
 type ActiveMode = 'study' | 'practice' | 'memory-test' | 'trap-test' | 'explorer' | 'progress';
@@ -42,8 +48,13 @@ export default function OpeningDetailPage() {
   const [activeMode, setActiveMode] = useState<ActiveMode>('study');
   const [selectedVariation, setSelectedVariation] = useState<Variation | null>(null);
   const [userProgress, setUserProgress] = useState<any>(null);
+  const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
 
-  // Memoized move parsing function - STABLE
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isSmallMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+  // Memoized move parsing function
   const parseMoves = useCallback((movesString: string): string[] => {
     if (!movesString) return [];
     
@@ -55,7 +66,7 @@ export default function OpeningDetailPage() {
     return cleanMoves;
   }, []);
 
-  // Optimized board position update - STABLE
+  // Optimized board position update
   const updateBoardPosition = useCallback((moves: string) => {
     try {
       const game = new Chess();
@@ -84,7 +95,7 @@ export default function OpeningDetailPage() {
     }
   }, [parseMoves]);
 
-  // Helper function to load full opening data - STABLE
+  // Helper function to load full opening data
   const loadFullOpeningData = useCallback(async (openingId: string): Promise<Opening | null> => {
     try {
       const ecoData = await ECODataProcessor.loadAllECOData();
@@ -95,7 +106,7 @@ export default function OpeningDetailPage() {
     }
   }, []);
 
-  // Load user progress - STABLE
+  // Load user progress
   const loadUserProgress = useCallback(async (openingId: string) => {
     if (!user) return;
     
@@ -107,24 +118,19 @@ export default function OpeningDetailPage() {
     }
   }, [user]);
 
-  // Main loading function - STABLE with minimal dependencies
+  // Main loading function
   const loadOpening = useCallback(async (openingId: string) => {
     setLoading(true);
     setError(null);
     
     try {
-      // Decode URL parameter if needed
       const decodedId = decodeURIComponent(openingId);
-      
-      // Initialize index once
       const index = ECODataIndex.getInstance();
       await index.initialize();
       
-      // Search for the opening in our index first
       const indexOpening = index.getOpeningById(decodedId);
       
       if (indexOpening) {
-        // Show basic info immediately
         const tempOpening: Opening = {
           id: indexOpening.id,
           name: indexOpening.name,
@@ -147,12 +153,10 @@ export default function OpeningDetailPage() {
         setCurrentVariation(tempOpening.variations[0]);
         updateBoardPosition(indexOpening.moves);
         
-        // Load user progress in parallel
         if (user) {
           loadUserProgress(decodedId);
         }
         
-        // Load full data in background
         setTimeout(async () => {
           try {
             const fullOpening = await loadFullOpeningData(decodedId);
@@ -169,14 +173,12 @@ export default function OpeningDetailPage() {
         return;
       }
 
-      // Fallback: try to load full data directly
       const fullOpening = await loadFullOpeningData(decodedId);
       if (fullOpening) {
         setOpening(fullOpening);
         setCurrentVariation(fullOpening.variations[0]);
         updateBoardPosition(fullOpening.moves);
         
-        // Load user progress
         if (user) {
           loadUserProgress(decodedId);
         }
@@ -185,7 +187,6 @@ export default function OpeningDetailPage() {
         return;
       }
 
-      // Final fallback
       setError("Opening not found");
     } catch (err) {
       console.error("Error loading opening:", err);
@@ -195,25 +196,25 @@ export default function OpeningDetailPage() {
     }
   }, [loadFullOpeningData, updateBoardPosition, user, loadUserProgress]);
 
-  // Load opening when ID changes - FIXED DEPENDENCIES
   useEffect(() => {
     if (id && typeof id === 'string') {
       loadOpening(id);
     }
-  }, [id]); // Only depend on id
+  }, [id]);
 
-  // Load user progress when opening changes - SEPARATE EFFECT
   useEffect(() => {
     if (user && opening?.id) {
       loadUserProgress(opening.id);
     }
   }, [user, opening?.id, loadUserProgress]);
 
-  // STABLE EVENT HANDLERS
   const handleVariationSelect = useCallback((variation: Variation) => {
     setCurrentVariation(variation);
     updateBoardPosition(variation.moves);
-  }, [updateBoardPosition]);
+    if (isMobile) {
+      setMobileDrawerOpen(false);
+    }
+  }, [updateBoardPosition, isMobile]);
 
   const handleResetBoard = useCallback(() => {
     if (opening) {
@@ -248,7 +249,6 @@ export default function OpeningDetailPage() {
     setActiveMode('study');
     setSelectedVariation(null);
     
-    // Reload user progress when returning from practice
     if (user && opening?.id) {
       loadUserProgress(opening.id);
     }
@@ -257,7 +257,6 @@ export default function OpeningDetailPage() {
   const handlePracticeComplete = useCallback((score: number, variation: Variation, timeSpent: number, completed: boolean) => {
     console.log(`Practice completed with score: ${score}%`);
     
-    // Reload user progress to show updated stats
     if (user && opening?.id) {
       loadUserProgress(opening.id);
     }
@@ -291,7 +290,14 @@ export default function OpeningDetailPage() {
     }
   }, [currentVariation, moveHistory.length, parseMoves, updateBoardPosition]);
 
-  // Progress display component - MEMOIZED
+  // Calculate chessboard size for responsive design
+  const chessboardSize = useMemo(() => {
+    if (isSmallMobile) return 280;
+    if (isMobile) return 320;
+    return 400;
+  }, [isMobile, isSmallMobile]);
+
+  // Progress display component
   const ProgressDisplay = useMemo(() => {
     if (!userProgress) return null;
     
@@ -307,7 +313,7 @@ export default function OpeningDetailPage() {
           </Box>
           <LinearProgress variant="determinate" value={progressPercent} sx={{ height: 8, borderRadius: 4 }} />
         </Box>
-        <Box display="flex" gap={2} flexWrap="wrap">
+        <Box display="flex" gap={1} flexWrap="wrap">
           <Chip label={`${userProgress.practiceCount} practices`} size="small" variant="outlined" />
           <Chip label={`Best: ${userProgress.bestScore}%`} size="small" color="primary" variant="outlined" />
           {userProgress.completed && <Chip label="Mastered" size="small" color="success" />}
@@ -316,7 +322,6 @@ export default function OpeningDetailPage() {
     );
   }, [userProgress]);
 
-  // Memoized computed values
   const moves = useMemo(() => currentVariation ? parseMoves(currentVariation.moves) : [], [currentVariation, parseMoves]);
   const currentMoveIndex = moveHistory.length;
   const canGoBack = currentMoveIndex > 0;
@@ -325,8 +330,10 @@ export default function OpeningDetailPage() {
   // Render different modes
   if (activeMode === 'practice' && selectedVariation && opening) {
     return (
-      <Box sx={{ p: 3 }}>
-        <Button variant="outlined" onClick={handleExitMode} sx={{ mb: 2 }}>← Back to Study</Button>
+      <Box sx={{ p: { xs: 1, sm: 2, md: 3 } }}>
+        <Button variant="outlined" onClick={handleExitMode} sx={{ mb: 2 }} startIcon={<ArrowBack />}>
+          Back to Study
+        </Button>
         <PracticeMode opening={opening} variation={selectedVariation} onComplete={handlePracticeComplete} onExit={handleExitMode} />
       </Box>
     );
@@ -334,8 +341,10 @@ export default function OpeningDetailPage() {
 
   if (activeMode === 'memory-test' && selectedVariation && opening) {
     return (
-      <Box sx={{ p: 3 }}>
-        <Button variant="outlined" onClick={handleExitMode} sx={{ mb: 2 }}>← Back to Study</Button>
+      <Box sx={{ p: { xs: 1, sm: 2, md: 3 } }}>
+        <Button variant="outlined" onClick={handleExitMode} sx={{ mb: 2 }} startIcon={<ArrowBack />}>
+          Back to Study
+        </Button>
         <MemoryTest opening={opening} variation={selectedVariation} onComplete={handlePracticeComplete} onExit={handleExitMode} />
       </Box>
     );
@@ -343,8 +352,10 @@ export default function OpeningDetailPage() {
 
   if (activeMode === 'trap-test' && opening) {
     return (
-      <Box sx={{ p: 3 }}>
-        <Button variant="outlined" onClick={handleExitMode} sx={{ mb: 2 }}>← Back to Study</Button>
+      <Box sx={{ p: { xs: 1, sm: 2, md: 3 } }}>
+        <Button variant="outlined" onClick={handleExitMode} sx={{ mb: 2 }} startIcon={<ArrowBack />}>
+          Back to Study
+        </Button>
         <TrapTest opening={opening} onComplete={handlePracticeComplete} onExit={handleExitMode} />
       </Box>
     );
@@ -352,8 +363,10 @@ export default function OpeningDetailPage() {
 
   if (activeMode === 'explorer' && opening) {
     return (
-      <Box sx={{ p: 3 }}>
-        <Button variant="outlined" onClick={handleExitMode} sx={{ mb: 2 }}>← Back to Study</Button>
+      <Box sx={{ p: { xs: 1, sm: 2, md: 3 } }}>
+        <Button variant="outlined" onClick={handleExitMode} sx={{ mb: 2 }} startIcon={<ArrowBack />}>
+          Back to Study
+        </Button>
         <OpeningExplorer opening={opening} onExit={handleExitMode} />
       </Box>
     );
@@ -361,8 +374,10 @@ export default function OpeningDetailPage() {
 
   if (activeMode === 'progress') {
     return (
-      <Box sx={{ p: 3 }}>
-        <Button variant="outlined" onClick={handleExitMode} sx={{ mb: 2 }}>← Back to Study</Button>
+      <Box sx={{ p: { xs: 1, sm: 2, md: 3 } }}>
+        <Button variant="outlined" onClick={handleExitMode} sx={{ mb: 2 }} startIcon={<ArrowBack />}>
+          Back to Study
+        </Button>
         <ProgressTracker onOpenOpening={handleOpenOpening} />
       </Box>
     );
@@ -370,18 +385,20 @@ export default function OpeningDetailPage() {
 
   if (loading) {
     return (
-      <Box display="flex" justifyContent="center" alignItems="center" minHeight="60vh">
+      <Box display="flex" justifyContent="center" alignItems="center" minHeight="60vh" flexDirection="column" p={2}>
         <CircularProgress />
-        <Typography variant="h6" sx={{ ml: 2 }}>Loading Opening...</Typography>
+        <Typography variant="h6" sx={{ mt: 2 }}>Loading Opening...</Typography>
       </Box>
     );
   }
 
   if (error || !opening) {
     return (
-      <Box sx={{ p: 3 }}>
+      <Box sx={{ p: { xs: 2, sm: 3 } }}>
         <Alert severity="error" sx={{ mb: 2 }}>{error || "Opening not found"}</Alert>
-        <Button variant="contained" onClick={() => router.push("/train/openings")}>Back to Openings</Button>
+        <Button variant="contained" onClick={() => router.push("/train/openings")}>
+          Back to Openings
+        </Button>
       </Box>
     );
   }
@@ -393,42 +410,99 @@ export default function OpeningDetailPage() {
         <meta name="description" content={`Learn and practice the ${opening.name} chess opening`} />
       </Head>
 
-      <Box sx={{ p: 3, maxWidth: 1200, mx: 'auto' }}>
-        {/* Header */}
-        <Box sx={{ mb: 3 }}>
-          <Button variant="outlined" onClick={() => router.push("/train/openings")} sx={{ mb: 2 }}>← Back to Openings</Button>
-          
-          <Box display="flex" justifyContent="space-between" alignItems="flex-start" flexWrap="wrap" gap={2}>
-            <Box sx={{ flex: 1 }}>
-              <Typography variant="h3" fontWeight="bold" gutterBottom>{opening.name}</Typography>
-              <Box display="flex" gap={1} alignItems="center" mb={1} flexWrap="wrap">
-                <Chip label={opening.eco} variant="outlined" />
-                <Chip label={opening.difficulty} color={getDifficultyColor(opening.difficulty) as any} />
-                <Chip label={`${opening.popularity}% Popular`} variant="outlined" size="small" />
-              </Box>
-              {opening.aliases && opening.aliases.length > 0 && (
-                <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
-                  <strong>Also known as:</strong> {opening.aliases.join(', ')}
-                </Typography>
-              )}
-            </Box>
+      {/* Mobile App Bar */}
+      {isMobile && (
+        <AppBar position="sticky" color="default" elevation={1}>
+          <Toolbar>
+            <IconButton
+              edge="start"
+              onClick={() => router.push("/train/openings")}
+              sx={{ mr: 2 }}
+            >
+              <ArrowBack />
+            </IconButton>
+            <Typography variant="h6" noWrap sx={{ flexGrow: 1, fontSize: '1rem' }}>
+              {opening.name}
+            </Typography>
+            <IconButton
+              edge="end"
+              onClick={() => setMobileDrawerOpen(!mobileDrawerOpen)}
+            >
+              <Menu />
+            </IconButton>
+          </Toolbar>
+        </AppBar>
+      )}
+
+      <Box sx={{ p: { xs: 1, sm: 2, md: 3 }, maxWidth: 1200, mx: 'auto' }}>
+        {/* Header - Desktop */}
+        {!isMobile && (
+          <Box sx={{ mb: 3 }}>
+            <Button 
+              variant="outlined" 
+              onClick={() => router.push("/train/openings")} 
+              sx={{ mb: 2 }}
+              startIcon={<ArrowBack />}
+            >
+              Back to Openings
+            </Button>
             
-            <Box display="flex" gap={1} flexWrap="wrap">
-              <Button variant="contained" size="large" onClick={handleShowProgress}>View Progress</Button>
-              <Button variant="outlined" size="large" onClick={handleStartExplorer}>Explore Variations</Button>
+            <Box display="flex" justifyContent="space-between" alignItems="flex-start" flexWrap="wrap" gap={2}>
+              <Box sx={{ flex: 1, minWidth: { xs: '100%', sm: '300px' } }}>
+                <Typography variant="h4" fontWeight="bold" gutterBottom sx={{ fontSize: { xs: '1.75rem', sm: '2rem', md: '2.5rem' } }}>
+                  {opening.name}
+                </Typography>
+                <Box display="flex" gap={1} alignItems="center" mb={1} flexWrap="wrap">
+                  <Chip label={opening.eco} variant="outlined" size={isSmallMobile ? "small" : "medium"} />
+                  <Chip 
+                    label={opening.difficulty} 
+                    color={getDifficultyColor(opening.difficulty) as any} 
+                    size={isSmallMobile ? "small" : "medium"}
+                  />
+                  <Chip 
+                    label={`${opening.popularity}% Popular`} 
+                    variant="outlined" 
+                    size={isSmallMobile ? "small" : "medium"} 
+                  />
+                </Box>
+                {opening.aliases && opening.aliases.length > 0 && (
+                  <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+                    <strong>Also known as:</strong> {opening.aliases.join(', ')}
+                  </Typography>
+                )}
+              </Box>
+              
+              <Box display="flex" gap={1} flexWrap="wrap" sx={{ mt: { xs: 2, sm: 0 } }}>
+                <Button 
+                  variant="contained" 
+                  size={isSmallMobile ? "small" : "medium"}
+                  onClick={handleShowProgress}
+                >
+                  View Progress
+                </Button>
+                <Button 
+                  variant="outlined" 
+                  size={isSmallMobile ? "small" : "medium"}
+                  onClick={handleStartExplorer}
+                >
+                  Explore
+                </Button>
+              </Box>
             </Box>
+
+            {/* Progress Display */}
+            {user && ProgressDisplay}
           </Box>
+        )}
 
-          {/* Progress Display */}
-          {user && ProgressDisplay}
-        </Box>
-
-        <Grid container spacing={3}>
+        <Grid container spacing={2}>
           {/* Left Column - Chessboard and Variations */}
-          <Grid item xs={12} md={6}>
-            <Paper sx={{ p: 3, mb: 3 }}>
+          <Grid item xs={12} md={6} order={{ xs: 2, md: 1 }}>
+            <Paper sx={{ p: { xs: 2, sm: 3 }, mb: 2 }}>
               <Box sx={{ mb: 2 }}>
-                <Typography variant="h5" gutterBottom>Interactive Board</Typography>
+                <Typography variant="h6" gutterBottom sx={{ fontSize: { xs: '1.25rem', sm: '1.5rem' } }}>
+                  Interactive Board
+                </Typography>
                 <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
                   Current variation: {currentVariation?.name}
                 </Typography>
@@ -437,7 +511,7 @@ export default function OpeningDetailPage() {
               <Box sx={{ mb: 2, display: 'flex', justifyContent: 'center' }}>
                 <Chessboard 
                   position={currentPosition}
-                  boardWidth={400}
+                  boardWidth={chessboardSize}
                   customBoardStyle={{
                     borderRadius: "8px",
                     boxShadow: "0 2px 12px rgba(0, 0, 0, 0.25)",
@@ -445,10 +519,38 @@ export default function OpeningDetailPage() {
                 />
               </Box>
               
-              <Box display="flex" gap={1} flexWrap="wrap" justifyContent="center">
-                <Button variant="outlined" onClick={handleResetBoard}>Reset to Main Line</Button>
-                <Button variant="text" onClick={() => navigateMove('back')} disabled={!canGoBack}>← Back</Button>
-                <Button variant="text" onClick={() => navigateMove('forward')} disabled={!canGoForward}>Next →</Button>
+              {/* Navigation Controls */}
+              <Box display="flex" gap={1} flexWrap="wrap" justifyContent="center" sx={{ mb: 2 }}>
+                <Button 
+                  variant="outlined" 
+                  size="small"
+                  onClick={handleResetBoard}
+                  fullWidth={isSmallMobile}
+                >
+                  Reset
+                </Button>
+                <Box display="flex" gap={1} sx={{ width: isSmallMobile ? '100%' : 'auto' }}>
+                  <Button 
+                    variant="text" 
+                    size="small"
+                    onClick={() => navigateMove('back')} 
+                    disabled={!canGoBack}
+                    startIcon={<NavigateBefore />}
+                    fullWidth={isSmallMobile}
+                  >
+                    Back
+                  </Button>
+                  <Button 
+                    variant="text" 
+                    size="small"
+                    onClick={() => navigateMove('forward')} 
+                    disabled={!canGoForward}
+                    endIcon={<NavigateNext />}
+                    fullWidth={isSmallMobile}
+                  >
+                    Next
+                  </Button>
+                </Box>
               </Box>
 
               {/* Move History */}
@@ -456,8 +558,8 @@ export default function OpeningDetailPage() {
                 <Typography variant="subtitle2" gutterBottom>
                   Move History ({currentMoveIndex}/{moves.length}):
                 </Typography>
-                <Paper variant="outlined" sx={{ p: 1, bgcolor: 'background.default', maxHeight: 120, overflow: 'auto' }}>
-                  <Typography variant="body2" fontFamily="monospace">
+                <Paper variant="outlined" sx={{ p: 1, bgcolor: 'background.default', maxHeight: 80, overflow: 'auto' }}>
+                  <Typography variant="body2" fontFamily="monospace" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
                     {moveHistory.map((move, index) => (
                       <span key={index}>
                         <span style={{ 
@@ -475,10 +577,15 @@ export default function OpeningDetailPage() {
               </Box>
             </Paper>
 
-            {/* Variations */}
-            <Paper sx={{ p: 3 }}>
+            {/* Variations Panel */}
+            <Paper 
+              sx={{ 
+                p: { xs: 2, sm: 3 },
+                display: { xs: mobileDrawerOpen ? 'block' : 'none', md: 'block' }
+              }}
+            >
               <Typography variant="h6" gutterBottom>Variations</Typography>
-              <List dense sx={{ maxHeight: 400, overflow: 'auto' }}>
+              <List dense sx={{ maxHeight: { xs: '60vh', md: 400 }, overflow: 'auto' }}>
                 {opening.variations.map((variation, index) => (
                   <ListItemButton
                     key={`${variation.name}-${index}`}
@@ -487,13 +594,34 @@ export default function OpeningDetailPage() {
                     sx={{ mb: 1 }}
                   >
                     <ListItemText
-                      primary={variation.name}
+                      primary={
+                        <Typography variant="subtitle2" noWrap>
+                          {variation.name}
+                        </Typography>
+                      }
                       secondary={
                         <React.Fragment>
-                          <Typography variant="body2" color="text.secondary" fontFamily="monospace" component="span" display="block">
-                            {variation.moves.split(' ').slice(0, 6).join(' ')}...
+                          <Typography 
+                            variant="body2" 
+                            color="text.secondary" 
+                            fontFamily="monospace" 
+                            component="span" 
+                            sx={{ 
+                              display: 'block',
+                              fontSize: { xs: '0.7rem', sm: '0.875rem' }
+                            }}
+                          >
+                            {variation.moves.split(' ').slice(0, 4).join(' ')}...
                           </Typography>
-                          <Typography variant="caption" color="text.secondary" component="span" display="block">
+                          <Typography 
+                            variant="caption" 
+                            color="text.secondary" 
+                            component="span" 
+                            sx={{ 
+                              display: 'block',
+                              fontSize: { xs: '0.65rem', sm: '0.75rem' }
+                            }}
+                          >
                             {variation.description}
                           </Typography>
                         </React.Fragment>
@@ -505,106 +633,234 @@ export default function OpeningDetailPage() {
             </Paper>
           </Grid>
 
-          {/* Right Column - Information */}
-          <Grid item xs={12} md={6}>
-            <Paper sx={{ p: 3, mb: 3 }}>
-              <Tabs value={activeTab} onChange={(_, newValue) => setActiveTab(newValue)} sx={{ mb: 2 }}>
+          {/* Right Column - Information and Exercises */}
+          <Grid item xs={12} md={6} order={{ xs: 1, md: 2 }}>
+            {/* Mobile Header */}
+            {isMobile && (
+              <Paper sx={{ p: 2, mb: 2, display: { xs: 'block', md: 'none' } }}>
+                <Box sx={{ mb: 2 }}>
+                  <Box display="flex" gap={1} alignItems="center" mb={1} flexWrap="wrap">
+                    <Chip label={opening.eco} variant="outlined" size="small" />
+                    <Chip 
+                      label={opening.difficulty} 
+                      color={getDifficultyColor(opening.difficulty) as any} 
+                      size="small"
+                    />
+                    <Chip 
+                      label={`${opening.popularity}% Popular`} 
+                      variant="outlined" 
+                      size="small" 
+                    />
+                  </Box>
+                  {opening.aliases && opening.aliases.length > 0 && (
+                    <Typography variant="caption" color="text.secondary">
+                      <strong>Also known as:</strong> {opening.aliases.join(', ')}
+                    </Typography>
+                  )}
+                </Box>
+
+                {/* Progress Display for Mobile */}
+                {user && ProgressDisplay}
+
+                <Box display="flex" gap={1} flexWrap="wrap">
+                  <Button 
+                    variant="contained" 
+                    size="small"
+                    onClick={handleShowProgress}
+                    fullWidth
+                  >
+                    View Progress
+                  </Button>
+                  <Button 
+                    variant="outlined" 
+                    size="small"
+                    onClick={handleStartExplorer}
+                    fullWidth
+                  >
+                    Explore Variations
+                  </Button>
+                </Box>
+              </Paper>
+            )}
+
+            {/* Information Tabs */}
+            <Paper sx={{ p: { xs: 2, sm: 3 }, mb: 2 }}>
+              <Tabs 
+                value={activeTab} 
+                onChange={(_, newValue) => setActiveTab(newValue)} 
+                sx={{ mb: 2 }}
+                variant={isSmallMobile ? "scrollable" : "standard"}
+                scrollButtons={isSmallMobile ? "auto" : false}
+                allowScrollButtonsMobile
+              >
                 <Tab label="Overview" />
                 <Tab label="Key Ideas" />
                 <Tab label="Traps & Tricks" />
               </Tabs>
 
-              {activeTab === 0 && (
-                <Box>
-                  <Typography variant="h6" gutterBottom>Description</Typography>
-                  <Typography variant="body1" paragraph>{opening.description}</Typography>
-                  
-                  {currentVariation && currentVariation.description && (
-                    <>
-                      <Divider sx={{ my: 2 }} />
-                      <Typography variant="h6" gutterBottom>{currentVariation.name}</Typography>
-                      <Typography variant="body1">{currentVariation.description}</Typography>
-                    </>
-                  )}
-                </Box>
-              )}
+              {/* Tab Content */}
+              <Box sx={{ maxHeight: { xs: '40vh', md: 'auto' }, overflow: 'auto' }}>
+                {activeTab === 0 && (
+                  <Box>
+                    <Typography variant="h6" gutterBottom sx={{ fontSize: { xs: '1.1rem', sm: '1.25rem' } }}>
+                      Description
+                    </Typography>
+                    <Typography variant="body1" paragraph sx={{ fontSize: { xs: '0.9rem', sm: '1rem' } }}>
+                      {opening.description}
+                    </Typography>
+                    
+                    {currentVariation && currentVariation.description && (
+                      <>
+                        <Divider sx={{ my: 2 }} />
+                        <Typography variant="h6" gutterBottom sx={{ fontSize: { xs: '1.1rem', sm: '1.25rem' } }}>
+                          {currentVariation.name}
+                        </Typography>
+                        <Typography variant="body1" sx={{ fontSize: { xs: '0.9rem', sm: '1rem' } }}>
+                          {currentVariation.description}
+                        </Typography>
+                      </>
+                    )}
+                  </Box>
+                )}
 
-              {activeTab === 1 && (
-                <Box>
-                  <Typography variant="h6" gutterBottom>Key Strategic Ideas</Typography>
-                  <List>
-                    {opening.keyIdeas.map((idea, index) => (
-                      <ListItem key={index} sx={{ py: 1 }}>
-                        <ListItemText primary={`${index + 1}. ${idea}`} />
-                      </ListItem>
-                    ))}
-                  </List>
-                </Box>
-              )}
+                {activeTab === 1 && (
+                  <Box>
+                    <Typography variant="h6" gutterBottom sx={{ fontSize: { xs: '1.1rem', sm: '1.25rem' } }}>
+                      Key Strategic Ideas
+                    </Typography>
+                    <List dense>
+                      {opening.keyIdeas.map((idea, index) => (
+                        <ListItem key={index} sx={{ py: 0.5 }}>
+                          <ListItemText 
+                            primary={`${index + 1}. ${idea}`} 
+                            sx={{ '& .MuiListItemText-primary': { fontSize: { xs: '0.9rem', sm: '1rem' } } }}
+                          />
+                        </ListItem>
+                      ))}
+                    </List>
+                  </Box>
+                )}
 
-              {activeTab === 2 && (
-                <Box>
-                  <Typography variant="h6" gutterBottom>Common Traps & Tactical Ideas</Typography>
-                  {opening.commonTraps.length > 0 ? (
-                    opening.commonTraps.map((trap, index) => (
-                      <Card key={index} variant="outlined" sx={{ mb: 2 }}>
-                        <CardContent>
-                          <Typography variant="subtitle1" gutterBottom>{trap.name}</Typography>
-                          <Typography variant="body2" color="text.secondary" paragraph>{trap.description}</Typography>
-                          <Paper variant="outlined" sx={{ p: 1, bgcolor: 'background.default' }}>
-                            <Typography variant="body2" fontFamily="monospace">{trap.moves}</Typography>
-                          </Paper>
-                        </CardContent>
-                      </Card>
-                    ))
-                  ) : (
-                    <Typography color="text.secondary">No specific traps documented for this opening.</Typography>
-                  )}
-                </Box>
-              )}
+                {activeTab === 2 && (
+                  <Box>
+                    <Typography variant="h6" gutterBottom sx={{ fontSize: { xs: '1.1rem', sm: '1.25rem' } }}>
+                      Common Traps & Tactical Ideas
+                    </Typography>
+                    {opening.commonTraps.length > 0 ? (
+                      opening.commonTraps.map((trap, index) => (
+                        <Card key={index} variant="outlined" sx={{ mb: 2 }}>
+                          <CardContent sx={{ p: 2 }}>
+                            <Typography variant="subtitle1" gutterBottom sx={{ fontSize: { xs: '0.95rem', sm: '1rem' } }}>
+                              {trap.name}
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary" paragraph sx={{ fontSize: { xs: '0.8rem', sm: '0.875rem' } }}>
+                              {trap.description}
+                            </Typography>
+                            <Paper variant="outlined" sx={{ p: 1, bgcolor: 'background.default' }}>
+                              <Typography variant="body2" fontFamily="monospace" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
+                                {trap.moves}
+                              </Typography>
+                            </Paper>
+                          </CardContent>
+                        </Card>
+                      ))
+                    ) : (
+                      <Typography color="text.secondary" sx={{ fontSize: { xs: '0.9rem', sm: '1rem' } }}>
+                        No specific traps documented for this opening.
+                      </Typography>
+                    )}
+                  </Box>
+                )}
+              </Box>
             </Paper>
 
             {/* Practice Exercises */}
-            <Paper sx={{ p: 3 }}>
-              <Typography variant="h6" gutterBottom>Practice Exercises</Typography>
-              <Grid container spacing={2}>
-                <Grid item xs={12} sm={6}>
-                  <Card variant="outlined" sx={{ textAlign: 'center', cursor: 'pointer', transition: 'all 0.2s', '&:hover': { transform: 'translateY(-2px)', boxShadow: 2 } }} 
-                    onClick={() => opening.variations[0] && handleStartPractice(opening.variations[0])}>
-                    <CardContent sx={{ py: 3 }}>
-                      <Typography variant="h4" gutterBottom>🎯</Typography>
-                      <Typography variant="subtitle1" gutterBottom>Interactive Practice</Typography>
-                      <Typography variant="body2" color="text.secondary">Practice moves with feedback</Typography>
+            <Paper sx={{ p: { xs: 2, sm: 3 } }}>
+              <Typography variant="h6" gutterBottom sx={{ fontSize: { xs: '1.1rem', sm: '1.25rem' } }}>
+                Practice Exercises
+              </Typography>
+              <Grid container spacing={1}>
+                <Grid item xs={6} sm={6} md={6}>
+                  <Card 
+                    variant="outlined" 
+                    sx={{ 
+                      textAlign: 'center', 
+                      cursor: 'pointer', 
+                      transition: 'all 0.2s', 
+                      height: '100%',
+                      '&:hover': { transform: 'translateY(-2px)', boxShadow: 2 } 
+                    }} 
+                    onClick={() => opening.variations[0] && handleStartPractice(opening.variations[0])}
+                  >
+                    <CardContent sx={{ py: 2, px: 1 }}>
+                      <Typography variant="h4" gutterBottom sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }}>🎯</Typography>
+                      <Typography variant="subtitle2" gutterBottom noWrap>Practice</Typography>
+                      <Typography variant="caption" color="text.secondary" sx={{ fontSize: { xs: '0.7rem', sm: '0.75rem' } }}>
+                        Interactive moves
+                      </Typography>
                     </CardContent>
                   </Card>
                 </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Card variant="outlined" sx={{ textAlign: 'center', cursor: 'pointer', transition: 'all 0.2s', '&:hover': { transform: 'translateY(-2px)', boxShadow: 2 } }} 
-                    onClick={() => opening.variations[0] && handleStartMemoryTest(opening.variations[0])}>
-                    <CardContent sx={{ py: 3 }}>
-                      <Typography variant="h4" gutterBottom>🧠</Typography>
-                      <Typography variant="subtitle1" gutterBottom>Memory Test</Typography>
-                      <Typography variant="body2" color="text.secondary">Test your knowledge</Typography>
+                <Grid item xs={6} sm={6} md={6}>
+                  <Card 
+                    variant="outlined" 
+                    sx={{ 
+                      textAlign: 'center', 
+                      cursor: 'pointer', 
+                      transition: 'all 0.2s',
+                      height: '100%',
+                      '&:hover': { transform: 'translateY(-2px)', boxShadow: 2 } 
+                    }} 
+                    onClick={() => opening.variations[0] && handleStartMemoryTest(opening.variations[0])}
+                  >
+                    <CardContent sx={{ py: 2, px: 1 }}>
+                      <Typography variant="h4" gutterBottom sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }}>🧠</Typography>
+                      <Typography variant="subtitle2" gutterBottom noWrap>Memory Test</Typography>
+                      <Typography variant="caption" color="text.secondary" sx={{ fontSize: { xs: '0.7rem', sm: '0.75' } }}>
+                        Test knowledge
+                      </Typography>
                     </CardContent>
                   </Card>
                 </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Card variant="outlined" sx={{ textAlign: 'center', cursor: 'pointer', transition: 'all 0.2s', '&:hover': { transform: 'translateY(-2px)', boxShadow: 2 } }} 
-                    onClick={handleStartTrapTest}>
-                    <CardContent sx={{ py: 3 }}>
-                      <Typography variant="h4" gutterBottom>⚡</Typography>
-                      <Typography variant="subtitle1" gutterBottom>Trap Test</Typography>
-                      <Typography variant="body2" color="text.secondary">Spot tactical opportunities</Typography>
+                <Grid item xs={6} sm={6} md={6}>
+                  <Card 
+                    variant="outlined" 
+                    sx={{ 
+                      textAlign: 'center', 
+                      cursor: 'pointer', 
+                      transition: 'all 0.2s',
+                      height: '100%',
+                      '&:hover': { transform: 'translateY(-2px)', boxShadow: 2 } 
+                    }} 
+                    onClick={handleStartTrapTest}
+                  >
+                    <CardContent sx={{ py: 2, px: 1 }}>
+                      <Typography variant="h4" gutterBottom sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }}>⚡</Typography>
+                      <Typography variant="subtitle2" gutterBottom noWrap>Trap Test</Typography>
+                      <Typography variant="caption" color="text.secondary" sx={{ fontSize: { xs: '0.7rem', sm: '0.75rem' } }}>
+                        Spot tactics
+                      </Typography>
                     </CardContent>
                   </Card>
                 </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Card variant="outlined" sx={{ textAlign: 'center', cursor: 'pointer', transition: 'all 0.2s', '&:hover': { transform: 'translateY(-2px)', boxShadow: 2 } }} 
-                    onClick={handleStartExplorer}>
-                    <CardContent sx={{ py: 3 }}>
-                      <Typography variant="h4" gutterBottom>🌳</Typography>
-                      <Typography variant="subtitle1" gutterBottom>Explore Variations</Typography>
-                      <Typography variant="body2" color="text.secondary">Study move trees</Typography>
+                <Grid item xs={6} sm={6} md={6}>
+                  <Card 
+                    variant="outlined" 
+                    sx={{ 
+                      textAlign: 'center', 
+                      cursor: 'pointer', 
+                      transition: 'all 0.2s',
+                      height: '100%',
+                      '&:hover': { transform: 'translateY(-2px)', boxShadow: 2 } 
+                    }} 
+                    onClick={handleStartExplorer}
+                  >
+                    <CardContent sx={{ py: 2, px: 1 }}>
+                      <Typography variant="h4" gutterBottom sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }}>🌳</Typography>
+                      <Typography variant="subtitle2" gutterBottom noWrap>Explore</Typography>
+                      <Typography variant="caption" color="text-secondary" sx={{ fontSize: { xs: '0.7rem', sm: '0.75rem' } }}>
+                        Study variations
+                      </Typography>
                     </CardContent>
                   </Card>
                 </Grid>
