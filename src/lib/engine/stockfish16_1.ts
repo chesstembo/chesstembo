@@ -11,7 +11,7 @@ export class Stockfish16_1 {
     const multiThreadIsSupported = isMultiThreadSupported();
     if (!multiThreadIsSupported) console.log("Single thread mode");
 
-    const enginePath = `engines/stockfish-16.1/stockfish-16.1${
+    const enginePath = `/engines/stockfish-16.1/stockfish-16.1${
       lite ? "-lite" : ""
     }${multiThreadIsSupported ? "" : "-single"}.js`;
 

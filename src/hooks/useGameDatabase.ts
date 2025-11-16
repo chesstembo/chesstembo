@@ -22,6 +22,18 @@ const gamesAtom = atom<Game[]>([]);
 const onlineGamesAtom = atom<Game[]>([]);
 const fetchGamesAtom = atom<boolean>(false);
 
+// Helper function to get game result from PGN
+const getGameResultFromPgn = (pgnString: string): string => {
+  try {
+    const game = new Chess();
+    game.loadPgn(pgnString);
+    const headers = game.header();
+    return headers.Result || '*';
+  } catch (e) {
+    return '*';
+  }
+};
+
 export const useGameDatabase = (shouldFetchGames?: boolean) => {
   const [db, setDb] = useState<IDBPDatabase<GameDatabaseSchema> | null>(null);
   const [games, setGames] = useAtom(gamesAtom);
@@ -36,29 +48,29 @@ export const useGameDatabase = (shouldFetchGames?: boolean) => {
     }
   }, [shouldFetchGames, setFetchGames]);
 
-  // FIXED: IndexedDB initialization with proper version handling
+  // FIXED: Simplified IndexedDB initialization
   useEffect(() => {
     const initDatabase = async () => {
       try {
-        // Check if database exists and get current version
-        const existingDB = await openDB<GameDatabaseSchema>("games");
-        const currentVersion = existingDB.version;
-        existingDB.close();
-
-        // Open with current version to avoid recreation issues
-        const idb = await openDB<GameDatabaseSchema>("games", currentVersion, {
-          upgrade(db, oldVersion) {
-            console.log(`Upgrading database from version ${oldVersion} to ${currentVersion}`);
+        console.log("🔄 Initializing IndexedDB...");
+        
+        // Always use version 1 and recreate if needed
+        const idb = await openDB<GameDatabaseSchema>("ChessGamesDB", 1, {
+          upgrade(db) {
+            console.log("📦 Creating database stores...");
             
-            // Only create stores if they don't exist
+            // Create games store if it doesn't exist
             if (!db.objectStoreNames.contains('games')) {
+              console.log("➕ Creating 'games' store");
               db.createObjectStore("games", { 
                 keyPath: "id", 
                 autoIncrement: true 
               });
             }
             
+            // Create onlineGames store if it doesn't exist
             if (!db.objectStoreNames.contains('onlineGames')) {
+              console.log("➕ Creating 'onlineGames' store");
               const onlineStore = db.createObjectStore("onlineGames", { 
                 keyPath: "id" 
               });
@@ -66,31 +78,40 @@ export const useGameDatabase = (shouldFetchGames?: boolean) => {
             }
           },
         });
+
+        console.log("✅ Database initialized successfully");
         setDb(idb);
       } catch (error) {
-        console.error("Error initializing database:", error);
-        // Fallback: try to create fresh database
+        console.error("❌ Database initialization failed:", error);
+        
+        // Last resort: try to delete and recreate the database
         try {
-          const idb = await openDB<GameDatabaseSchema>("games", 1, {
-            upgrade(db) {
-              if (!db.objectStoreNames.contains('games')) {
-                db.createObjectStore("games", { 
-                  keyPath: "id", 
-                  autoIncrement: true 
-                });
-              }
-              
-              if (!db.objectStoreNames.contains('onlineGames')) {
-                const onlineStore = db.createObjectStore("onlineGames", { 
-                  keyPath: "id" 
-                });
-                onlineStore.createIndex("byDate", "date");
-              }
-            },
-          });
-          setDb(idb);
-        } catch (fallbackError) {
-          console.error("Fallback database initialization failed:", fallbackError);
+          console.log("🔄 Attempting database reset...");
+          indexedDB.deleteDatabase("ChessGamesDB");
+          
+          // Wait a bit and try again
+          setTimeout(async () => {
+            try {
+              const idb = await openDB<GameDatabaseSchema>("ChessGamesDB", 1, {
+                upgrade(db) {
+                  db.createObjectStore("games", { 
+                    keyPath: "id", 
+                    autoIncrement: true 
+                  });
+                  const onlineStore = db.createObjectStore("onlineGames", { 
+                    keyPath: "id" 
+                  });
+                  onlineStore.createIndex("byDate", "date");
+                },
+              });
+              setDb(idb);
+              console.log("✅ Database reset successful");
+            } catch (resetError) {
+              console.error("❌ Database reset failed:", resetError);
+            }
+          }, 1000);
+        } catch (deleteError) {
+          console.error("❌ Database deletion failed:", deleteError);
         }
       }
     };
@@ -102,15 +123,27 @@ export const useGameDatabase = (shouldFetchGames?: boolean) => {
     if (db && fetchGames) {
       setIsLoading(true);
       try {
+        console.log("📥 Loading games from database...");
+        
         const [localGames, onlineGamesList] = await Promise.all([
-          db.getAll("games"),
-          db.getAll("onlineGames")
+          db.getAll("games").catch(() => {
+            console.warn("⚠️ Could not load local games");
+            return [];
+          }),
+          db.getAll("onlineGames").catch(() => {
+            console.warn("⚠️ Could not load online games");
+            return [];
+          })
         ]);
         
+        console.log(`✅ Loaded ${localGames.length} local games and ${onlineGamesList.length} online games`);
         setGames(localGames);
         setOnlineGames(onlineGamesList);
       } catch (error) {
-        console.error("Error loading games:", error);
+        console.error("❌ Error loading games:", error);
+        // Set empty arrays to prevent UI errors
+        setGames([]);
+        setOnlineGames([]);
       } finally {
         setIsLoading(false);
       }
@@ -121,7 +154,7 @@ export const useGameDatabase = (shouldFetchGames?: boolean) => {
     loadGames();
   }, [loadGames]);
 
-  // SIMPLIFIED: Save PGN to onlineGames collection (uses existing structure)
+  // Save PGN to onlineGames collection
   const addOnlineGame = useCallback(async (
     pgnString: string, 
     gameId: string, 
@@ -129,17 +162,19 @@ export const useGameDatabase = (shouldFetchGames?: boolean) => {
     terminationReason?: string
   ) => {
     if (!db) {
-      console.error("Database not initialized");
-      return gameId; // Return the ID so analysis can continue
+      console.warn("⚠️ Database not initialized - caching game ID for later");
+      return gameId;
     }
 
     try {
+      console.log(`💾 Saving online game: ${gameId}`);
+      
       // Extract game info from PGN
       const chess = new Chess();
       try {
         chess.loadPgn(pgnString);
       } catch (e) {
-        console.error("Failed to load PGN for analysis:", e);
+        console.warn("⚠️ Failed to load PGN, creating basic game record");
       }
 
       const headers = chess.header();
@@ -163,52 +198,40 @@ export const useGameDatabase = (shouldFetchGames?: boolean) => {
           rating: headers.BlackElo ? parseInt(headers.BlackElo) : undefined
         },
         timeControl: headers.TimeControl || "10+0",
-        // Add FEN and moves for compatibility with existing analysis
         fen: chess.fen(),
         moves: moves
       };
 
       await db.put("onlineGames", gameToAdd);
       
-      // Refresh the games list
+      console.log("✅ Online game saved successfully");
       loadGames();
       
-      return gameId; // Return the game ID for analysis
+      return gameId;
     } catch (error) {
-      console.error("Error saving online game to IndexedDB:", error);
-      return gameId; // STILL return the ID so analysis can continue
+      console.warn("⚠️ Error saving online game - continuing without save:", error);
+      return gameId;
     }
   }, [db, loadGames]);
 
-  // Helper function to extract result from PGN
-  const getGameResultFromPgn = (pgnString: string): string => {
-    try {
-      const game = new Chess();
-      game.loadPgn(pgnString);
-      const headers = game.header();
-      return headers.Result || '*';
-    } catch (e) {
-      return '*';
-    }
-  };
-
-  // COMPLETELY FIXED: setGameEval function - NO MORE THROWING ERRORS
+  // Set game evaluation with robust error handling
   const setGameEval = useCallback(
     async (gameId: number | string, evaluation: GameEval, isOnlineGame: boolean = false) => {
       if (!db) {
-        console.warn("Database not initialized - skipping evaluation save");
+        console.warn("⚠️ Database not initialized - skipping evaluation save");
         return;
       }
 
       const storeName = isOnlineGame ? "onlineGames" : "games";
       
       try {
+        console.log(`💾 Saving evaluation for game: ${gameId}`);
+        
         const game = await db.get(storeName, gameId as any);
         
         if (!game) {
-          console.warn(`Game not found in ${storeName}: ${gameId}. Creating basic record...`);
+          console.warn(`⚠️ Game ${gameId} not found in ${storeName}. Creating basic record.`);
           
-          // Create a basic game record for evaluation storage
           const basicGame: Game = {
             id: gameId as string,
             pgn: "",
@@ -220,38 +243,29 @@ export const useGameDatabase = (shouldFetchGames?: boolean) => {
             white: { name: "White" },
             black: { name: "Black" },
             timeControl: "10+0",
-            eval: evaluation // Add evaluation directly
+            eval: evaluation
           };
           
           await db.put(storeName, basicGame);
         } else {
-          // Update existing game with evaluation
           await db.put(storeName, { ...game, eval: evaluation });
         }
         
-        // Refresh games list
+        console.log("✅ Evaluation saved successfully");
         loadGames();
         
       } catch (error) {
-        console.warn("Error setting game evaluation - analysis can continue without saving:", error);
-        // DON'T throw the error - just log it and continue
-        // This prevents the analysis from breaking entirely
+        console.warn("⚠️ Error setting game evaluation - analysis continues:", error);
       }
     },
     [db, loadGames]
   );
 
-  // FIXED: getGame function with better error handling
+  // Get game with proper error handling
   const getGame = useCallback(
     async (gameId: number | string, isOnlineGame: boolean = false) => {
       if (!db) {
-        console.error("Database not initialized");
-        return undefined;
-      }
-      
-      if ((isOnlineGame && typeof gameId !== 'string') || 
-          (!isOnlineGame && typeof gameId !== 'number')) {
-        console.error("Invalid game ID type:", gameId, isOnlineGame);
+        console.warn("⚠️ Database not initialized");
         return undefined;
       }
 
@@ -260,12 +274,12 @@ export const useGameDatabase = (shouldFetchGames?: boolean) => {
         const game = await db.get(storeName, gameId as any);
         
         if (!game) {
-          console.warn(`Game not found: ${gameId} in ${storeName}`);
+          console.warn(`⚠️ Game ${gameId} not found in ${storeName}`);
         }
         
         return game;
       } catch (error) {
-        console.error("Error getting game:", error);
+        console.error("❌ Error getting game:", error);
         return undefined;
       }
     },
@@ -276,17 +290,18 @@ export const useGameDatabase = (shouldFetchGames?: boolean) => {
   const addGame = useCallback(
     async (game: Chess) => {
       if (!db) {
-        console.error("Database not initialized");
+        console.error("❌ Database not initialized");
         return null;
       }
 
       try {
         const gameToAdd = formatGameToDatabase(game);
         const gameId = await db.add("games", gameToAdd as Game);
+        console.log("✅ Local game saved with ID:", gameId);
         loadGames();
         return gameId;
       } catch (error) {
-        console.error("Error adding game:", error);
+        console.error("❌ Error adding local game:", error);
         return null;
       }
     },
@@ -296,32 +311,36 @@ export const useGameDatabase = (shouldFetchGames?: boolean) => {
   const deleteGame = useCallback(
     async (gameId: number | string, isOnlineGame: boolean = false) => {
       if (!db) {
-        console.error("Database not initialized");
+        console.error("❌ Database not initialized");
         return;
       }
 
       try {
         const storeName = isOnlineGame ? "onlineGames" : "games";
         await db.delete(storeName, gameId as any);
+        console.log("🗑️ Game deleted:", gameId);
         loadGames();
       } catch (error) {
-        console.error("Error deleting game:", error);
+        console.error("❌ Error deleting game:", error);
       }
     },
     [db, loadGames]
   );
 
   const getAllGames = useCallback(async () => {
-    if (!db) return { localGames: [], onlineGames: [] };
+    if (!db) {
+      console.warn("⚠️ Database not initialized");
+      return { localGames: [], onlineGames: [] };
+    }
 
     try {
       const [localGames, onlineGames] = await Promise.all([
-        db.getAll("games"),
-        db.getAll("onlineGames")
+        db.getAll("games").catch(() => []),
+        db.getAll("onlineGames").catch(() => [])
       ]);
       return { localGames, onlineGames };
     } catch (error) {
-      console.error("Error getting all games:", error);
+      console.error("❌ Error getting all games:", error);
       return { localGames: [], onlineGames: [] };
     }
   }, [db]);
@@ -347,7 +366,7 @@ export const useGameDatabase = (shouldFetchGames?: boolean) => {
           const onlineGame = await getGame(gameId, true);
           setGameFromUrl(onlineGame || undefined);
         } catch (error) {
-          console.error("Error loading game from URL:", error);
+          console.error("❌ Error loading game from URL:", error);
           setGameFromUrl(undefined);
         }
       } else {
