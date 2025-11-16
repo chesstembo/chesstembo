@@ -72,7 +72,7 @@ Thank you for your help!`;
   };
 
   const handleSupportUs = () => {
-    alert("Donation link will be added soon! Thank you for your support.");
+    window.open('https://buymeacoffee.com/chesstembo', '_blank');
     handleHelpClose();
   };
 
