@@ -4,20 +4,41 @@ import { isIosDevice, isMobileDevice } from "./shared";
 export const getEngineWorker = (enginePath: string): EngineWorker => {
   console.log(`Creating worker from ${enginePath}`);
 
-  const worker = new window.Worker(enginePath);
+  // FIXED: Ensure the path is correct for public folder structure
+  const fullPath = enginePath.startsWith('/') ? enginePath : `/${enginePath}`;
+  
+  // FIXED: Add /play/ prefix if not already present for engines
+  const correctedPath = fullPath.includes('/play/engines/') 
+    ? fullPath 
+    : fullPath.replace('/engines/', '/play/engines/');
 
-  const engineWorker: EngineWorker = {
-    isReady: false,
-    uci: (command: string) => worker.postMessage(command),
-    listen: () => null,
-    terminate: () => worker.terminate(),
-  };
+  console.log(`🔄 Corrected engine path: ${correctedPath}`);
 
-  worker.onmessage = (event) => {
-    engineWorker.listen(event.data);
-  };
+  try {
+    const worker = new window.Worker(correctedPath);
 
-  return engineWorker;
+    const engineWorker: EngineWorker = {
+      isReady: false,
+      uci: (command: string) => worker.postMessage(command),
+      listen: () => null,
+      terminate: () => worker.terminate(),
+    };
+
+    worker.onmessage = (event) => {
+      if (engineWorker.listen) {
+        engineWorker.listen(event.data);
+      }
+    };
+
+    worker.onerror = (error) => {
+      console.error(`❌ Worker error for ${correctedPath}:`, error);
+    };
+
+    return engineWorker;
+  } catch (error) {
+    console.error(`❌ Failed to create worker from ${correctedPath}:`, error);
+    throw new Error(`Unable to load chess engine from ${correctedPath}`);
+  }
 };
 
 export const sendCommandsToWorker = (
@@ -45,22 +66,29 @@ export const sendCommandsToWorker = (
 };
 
 export const getRecommendedWorkersNb = (): number => {
+  // FIXED: More conservative worker calculation for better stability
   const maxWorkersNbFromThreads = Math.max(
     1,
-    Math.round(navigator.hardwareConcurrency - 4),
-    Math.floor((navigator.hardwareConcurrency * 2) / 3)
+    Math.min(
+      Math.floor(navigator.hardwareConcurrency / 2),
+      Math.round(navigator.hardwareConcurrency - 2)
+    )
   );
 
   const maxWorkersNbFromMemory =
     "deviceMemory" in navigator && typeof navigator.deviceMemory === "number"
-      ? Math.max(1, Math.round(navigator.deviceMemory))
-      : 4;
+      ? Math.max(1, Math.floor(navigator.deviceMemory))
+      : 2;
 
-  const maxWorkersNbFromDevice = isIosDevice() ? 2 : isMobileDevice() ? 4 : 8;
+  const maxWorkersNbFromDevice = isIosDevice() ? 1 : isMobileDevice() ? 2 : 4;
 
-  return Math.min(
+  const recommended = Math.min(
     maxWorkersNbFromThreads,
     maxWorkersNbFromMemory,
     maxWorkersNbFromDevice
   );
+
+  console.log(`🔄 Recommended workers: ${recommended} (threads: ${navigator.hardwareConcurrency}, memory: ${navigator.deviceMemory || 'unknown'})`);
+  
+  return recommended;
 };

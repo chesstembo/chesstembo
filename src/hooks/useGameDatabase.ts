@@ -6,6 +6,14 @@ import { openDB, DBSchema, IDBPDatabase } from "idb";
 import { atom, useAtom } from "jotai";
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useState, useMemo } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "@/lib/firebaseClient";
+import { 
+  getUserData, 
+  getUserPuzzleHistory,
+  savePuzzleResult,
+  PuzzleHistory 
+} from "@/lib/firebaseClient";
 
 interface GameDatabaseSchema extends DBSchema {
   games: {
@@ -20,6 +28,7 @@ interface GameDatabaseSchema extends DBSchema {
 
 const gamesAtom = atom<Game[]>([]);
 const onlineGamesAtom = atom<Game[]>([]);
+const userGamesAtom = atom<Game[]>([]);
 const fetchGamesAtom = atom<boolean>(false);
 
 // Helper function to get game result from PGN
@@ -38,9 +47,13 @@ export const useGameDatabase = (shouldFetchGames?: boolean) => {
   const [db, setDb] = useState<IDBPDatabase<GameDatabaseSchema> | null>(null);
   const [games, setGames] = useAtom(gamesAtom);
   const [onlineGames, setOnlineGames] = useAtom(onlineGamesAtom);
+  const [userGames, setUserGames] = useAtom(userGamesAtom);
   const [fetchGames, setFetchGames] = useAtom(fetchGamesAtom);
   const [gameFromUrl, setGameFromUrl] = useState<Game | undefined>(undefined);
   const [isLoading, setIsLoading] = useState(false);
+
+  // Firebase auth integration
+  const [user, userLoading] = useAuthState(auth);
 
   useEffect(() => {
     if (shouldFetchGames !== undefined) {
@@ -119,36 +132,89 @@ export const useGameDatabase = (shouldFetchGames?: boolean) => {
     initDatabase();
   }, []);
 
+  // NEW: Load user games from Firebase
+  const loadUserGamesFromFirebase = useCallback(async () => {
+    if (!user) {
+      setUserGames([]);
+      return;
+    }
+
+    try {
+      console.log("🔥 Loading user games from Firebase...");
+      
+      // Get user puzzle history (this contains game data)
+      const puzzleHistory = await getUserPuzzleHistory(user.uid, { limit: 100 });
+      
+      // Convert puzzle history to game format
+      const userGamesFromFirebase: Game[] = puzzleHistory.map((puzzle, index) => ({
+        id: `firebase_${puzzle.puzzleId}_${index}`,
+        pgn: `[Event "Puzzle"]\n[Site "Tembo Chess"]\n[Date "${puzzle.createdAt?.toDate?.()?.toISOString() || new Date().toISOString()}"]\n[Result "${puzzle.solved ? '1-0' : '0-1'}"]\n[White "You"]\n[Black "Puzzle"]\n\n*`,
+        status: 'finished',
+        result: puzzle.solved ? '1-0' : '0-1',
+        date: puzzle.createdAt?.toDate?.()?.toISOString().split('T')[0] || new Date().toISOString().split('T')[0],
+        event: "Chess Puzzle",
+        site: "Tembo Chess",
+        white: { name: "You" },
+        black: { name: "Puzzle" },
+        timeControl: "Untimed",
+        fen: "",
+        moves: [],
+        puzzleData: puzzle
+      }));
+
+      console.log(`✅ Loaded ${userGamesFromFirebase.length} user games from Firebase`);
+      setUserGames(userGamesFromFirebase);
+    } catch (error) {
+      console.error("❌ Error loading user games from Firebase:", error);
+      setUserGames([]);
+    }
+  }, [user]);
+
   const loadGames = useCallback(async () => {
     if (db && fetchGames) {
       setIsLoading(true);
       try {
         console.log("📥 Loading games from database...");
         
-        const [localGames, onlineGamesList] = await Promise.all([
-          db.getAll("games").catch(() => {
-            console.warn("⚠️ Could not load local games");
-            return [];
-          }),
-          db.getAll("onlineGames").catch(() => {
-            console.warn("⚠️ Could not load online games");
-            return [];
-          })
+        await Promise.all([
+          // Load local IndexedDB games
+          (async () => {
+            try {
+              const [localGames, onlineGamesList] = await Promise.all([
+                db.getAll("games").catch(() => {
+                  console.warn("⚠️ Could not load local games");
+                  return [];
+                }),
+                db.getAll("onlineGames").catch(() => {
+                  console.warn("⚠️ Could not load online games");
+                  return [];
+                })
+              ]);
+              
+              console.log(`✅ Loaded ${localGames.length} local games and ${onlineGamesList.length} online games`);
+              setGames(localGames);
+              setOnlineGames(onlineGamesList);
+            } catch (error) {
+              console.error("❌ Error loading local games:", error);
+              setGames([]);
+              setOnlineGames([]);
+            }
+          })(),
+          
+          // Load Firebase user games
+          loadUserGamesFromFirebase()
         ]);
         
-        console.log(`✅ Loaded ${localGames.length} local games and ${onlineGamesList.length} online games`);
-        setGames(localGames);
-        setOnlineGames(onlineGamesList);
       } catch (error) {
         console.error("❌ Error loading games:", error);
-        // Set empty arrays to prevent UI errors
         setGames([]);
         setOnlineGames([]);
+        setUserGames([]);
       } finally {
         setIsLoading(false);
       }
     }
-  }, [db, fetchGames, setGames, setOnlineGames]);
+  }, [db, fetchGames, setGames, setOnlineGames, loadUserGamesFromFirebase]);
 
   useEffect(() => {
     loadGames();
@@ -330,7 +396,7 @@ export const useGameDatabase = (shouldFetchGames?: boolean) => {
   const getAllGames = useCallback(async () => {
     if (!db) {
       console.warn("⚠️ Database not initialized");
-      return { localGames: [], onlineGames: [] };
+      return { localGames: [], onlineGames: [], userGames: [] };
     }
 
     try {
@@ -338,12 +404,49 @@ export const useGameDatabase = (shouldFetchGames?: boolean) => {
         db.getAll("games").catch(() => []),
         db.getAll("onlineGames").catch(() => [])
       ]);
-      return { localGames, onlineGames };
+      
+      return { 
+        localGames, 
+        onlineGames, 
+        userGames 
+      };
     } catch (error) {
       console.error("❌ Error getting all games:", error);
-      return { localGames: [], onlineGames: [] };
+      return { localGames: [], onlineGames: [], userGames: [] };
     }
-  }, [db]);
+  }, [db, userGames]);
+
+  // NEW: Function to save user game to Firebase
+  const saveUserGameToFirebase = useCallback(async (
+    gameData: Partial<Game>,
+    puzzleId?: string
+  ) => {
+    if (!user) {
+      console.warn("⚠️ User not authenticated - cannot save to Firebase");
+      return null;
+    }
+
+    try {
+      // If it's a puzzle, save to puzzle history
+      if (puzzleId) {
+        await savePuzzleResult(user.uid, {
+          id: puzzleId,
+          rating: 1200, // Default rating
+          theme: gameData.event || "General",
+          fen: gameData.fen || "",
+          moves: gameData.moves || []
+        }, gameData.result === '1-0', 0);
+      }
+      
+      // Reload user games to include the new one
+      await loadUserGamesFromFirebase();
+      
+      return puzzleId;
+    } catch (error) {
+      console.error("❌ Error saving user game to Firebase:", error);
+      return null;
+    }
+  }, [user, loadUserGamesFromFirebase]);
 
   const router = useRouter();
   const { gameId } = router.query;
@@ -377,21 +480,32 @@ export const useGameDatabase = (shouldFetchGames?: boolean) => {
     loadGameFromUrl();
   }, [gameId, db, getGame]);
 
-  const isReady = db !== null;
+  const isReady = db !== null && !userLoading;
 
   const allGames = useMemo(() => {
     const localWithType = games.map(game => ({ 
       ...game, 
       gameType: "Local",
-      displayId: game.id
+      displayId: game.id,
+      source: "indexeddb"
     }));
+    
     const onlineWithType = onlineGames.map(game => ({ 
       ...game, 
       gameType: "Online",
-      displayId: game.id
+      displayId: game.id,
+      source: "indexeddb"
     }));
-    return [...localWithType, ...onlineWithType];
-  }, [games, onlineGames]);
+    
+    const userWithType = userGames.map(game => ({
+      ...game,
+      gameType: "Puzzle",
+      displayId: game.id,
+      source: "firebase"
+    }));
+
+    return [...localWithType, ...onlineWithType, ...userWithType];
+  }, [games, onlineGames, userGames]);
 
   return {
     addGame,
@@ -403,8 +517,11 @@ export const useGameDatabase = (shouldFetchGames?: boolean) => {
     games: allGames,
     localGames: games,
     onlineGames,
-    isLoading,
+    userGames,
+    isLoading: isLoading || userLoading,
     isReady,
     gameFromUrl,
+    saveUserGameToFirebase,
+    loadUserGamesFromFirebase
   };
 };

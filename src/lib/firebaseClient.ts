@@ -98,16 +98,27 @@ const firebaseConfig = {
 };
 
 // ✅ Initialize Firebase
-export const app: FirebaseApp =
-  getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
+let app: FirebaseApp;
+let auth: ReturnType<typeof getAuth>;
+let db: ReturnType<typeof getFirestore>;
+let analytics: ReturnType<typeof getAnalytics> | null = null;
 
-// Initialize services
-export const auth = getAuth(app);
+// Initialize Firebase only on client side
+if (typeof window !== 'undefined') {
+  app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
+  auth = getAuth(app);
+  db = getFirestore(app);
+  analytics = getAnalytics(app);
+} else {
+  // Server-side fallback
+  app = {} as FirebaseApp;
+  auth = {} as ReturnType<typeof getAuth>;
+  db = {} as ReturnType<typeof getFirestore>;
+}
+
+export { app, auth, db, analytics };
+
 export const googleProvider = new GoogleAuthProvider();
-export const db = getFirestore(app);
-
-// Initialize Analytics (client-side only)
-export const analytics = typeof window !== 'undefined' ? getAnalytics(app) : null;
 
 // Configure Google Provider
 googleProvider.setCustomParameters({
@@ -115,7 +126,7 @@ googleProvider.setCustomParameters({
 });
 
 //
-// ✅ NEW: Clear authentication storage function
+// ✅ Authentication helpers
 //
 
 /**
@@ -123,7 +134,6 @@ googleProvider.setCustomParameters({
  */
 export const clearAuthStorage = (): void => {
   if (typeof window !== 'undefined') {
-    // Clear magic link authentication data
     const keysToRemove = [
       'emailForSignIn',
       'auth_email',
@@ -133,20 +143,13 @@ export const clearAuthStorage = (): void => {
       'magic_link_email',
     ];
     
-    // Remove each key from localStorage
     keysToRemove.forEach(key => {
       localStorage.removeItem(key);
     });
     
-    // Also clear sessionStorage for auth data
     sessionStorage.clear();
-    
   }
 };
-
-//
-// ✅ Authentication helpers
-//
 
 /**
  * Ensure user is authenticated and user document exists
@@ -244,12 +247,11 @@ export async function ensureUserDoc(uid: string, userInfo?: Partial<UserData>): 
       logEvent(analytics, 'user_created');
     }
   } else {
-    // Update last seen and any provided user info
     const updateData: Partial<UserData> = {
       lastSeen: serverTimestamp(),
       ...userInfo,
     };
-    // Remove undefined values
+    
     Object.keys(updateData).forEach(key => {
       if (updateData[key as keyof UserData] === undefined) {
         delete updateData[key as keyof UserData];
@@ -328,7 +330,6 @@ export async function savePuzzleResult(
   timeSpent?: number
 ): Promise<void> {
   try {
-    // Save to puzzle history
     const historyRef = doc(db, "users", uid, "puzzleHistory", puzzle.id);
     const historyData: PuzzleHistory = {
       puzzleId: puzzle.id,
@@ -340,7 +341,6 @@ export async function savePuzzleResult(
     
     await setDoc(historyRef, historyData);
 
-    // Update puzzles solved count if solved
     if (solved) {
       const userRef = doc(db, "users", uid);
       await updateDoc(userRef, {
@@ -349,7 +349,6 @@ export async function savePuzzleResult(
       });
     }
 
-    // Log analytics
     if (analytics) {
       logEvent(analytics, 'puzzle_completed', {
         puzzle_id: puzzle.id,
@@ -425,13 +424,11 @@ export async function saveOpeningProgress(
   try {
     const userRef = doc(db, "users", uid);
     
-    // Use setDoc with merge to update the specific opening progress
     await updateDoc(userRef, {
       [`openingProgress.${progress.openingId}`]: progress,
       lastSeen: serverTimestamp(),
     });
 
-    // Log analytics
     if (analytics) {
       logEvent(analytics, 'opening_progress_updated', {
         opening_id: progress.openingId,
@@ -544,12 +541,15 @@ export async function updateOpeningProgressAfterPractice(
 export async function sendMagicLink(email: string): Promise<void> {
   try {
     const actionCodeSettings = {
-      url: `${window.location.origin}/auth/verify?email=${encodeURIComponent(email)}`,
+      url: `${window.location.origin}/login?email=${encodeURIComponent(email)}`,
       handleCodeInApp: true,
     };
     
     await sendSignInLinkToEmail(auth, email, actionCodeSettings);
-    window.localStorage.setItem("emailForSignIn", email);
+    
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem("emailForSignIn", email);
+    }
     
     if (analytics) {
       logEvent(analytics, 'magic_link_sent');
@@ -558,7 +558,6 @@ export async function sendMagicLink(email: string): Promise<void> {
     console.error("Error sending magic link:", error);
     const authError = error as AuthError;
     
-    // Provide more user-friendly error messages
     switch (authError.code) {
       case 'auth/invalid-email':
         throw new Error('Invalid email address');
@@ -573,15 +572,13 @@ export async function sendMagicLink(email: string): Promise<void> {
 /**
  * Confirm magic link authentication
  */
-export async function confirmMagicLink(url: string): Promise<User> {
+export async function confirmMagicLink(email: string, url: string): Promise<User> {
   try {
-    const email = window.localStorage.getItem("emailForSignIn");
-    if (!email) {
-      throw new Error("Email not found in local storage. Please try the login process again.");
-    }
-    
     const result = await signInWithEmailLink(auth, email, url);
-    window.localStorage.removeItem("emailForSignIn");
+    
+    if (typeof window !== 'undefined') {
+      window.localStorage.removeItem("emailForSignIn");
+    }
     
     await ensureUserDoc(result.user.uid, {
       email: result.user.email!,
@@ -621,7 +618,8 @@ export function isMagicLink(): boolean {
   
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.has('apiKey') || 
-         urlParams.has('mode') && urlParams.get('mode') === 'signIn';
+         (urlParams.has('mode') && urlParams.get('mode') === 'signIn') ||
+         window.location.href.includes('__/auth/action');
 }
 
 /**
@@ -662,6 +660,8 @@ export function getAuthErrorMessage(error: any): string {
       return 'The login link has expired. Please request a new one.';
     case 'auth/invalid-action-code':
       return 'Invalid login link. Please request a new one.';
+    case 'auth/operation-not-allowed':
+      return 'Email/password accounts are not enabled. Please use Google sign-in.';
     default:
       return 'Authentication failed. Please try again.';
   }
@@ -719,7 +719,7 @@ export async function getUserStats(uid: string): Promise<UserStats> {
     const puzzleHistory = await getUserPuzzleHistory(uid, { limit: 100 });
     const openingProgress = await getOpeningProgress(uid);
     
-    // Calculate statistics from puzzle history
+    // Calculate statistics
     const now = new Date();
     const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     const weekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
@@ -746,7 +746,7 @@ export async function getUserStats(uid: string): Promise<UserStats> {
       ? (solvedPuzzles.length / puzzleHistory.length) * 100 
       : 0;
     
-    // Find favorite opening (most practiced)
+    // Find favorite opening
     const openingPracticeCounts: { [key: string]: number } = {};
     Object.values(openingProgress).forEach(progress => {
       openingPracticeCounts[progress.openingName] = (openingPracticeCounts[progress.openingName] || 0) + progress.practiceCount;
@@ -758,7 +758,7 @@ export async function getUserStats(uid: string): Promise<UserStats> {
         )
       : undefined;
     
-    // Calculate current streak (consecutive days with puzzle activity)
+    // Calculate current streak
     let currentStreak = 0;
     const sortedHistory = [...puzzleHistory].sort((a, b) => {
       const dateA = a.createdAt?.toDate ? a.createdAt.toDate() : new Date(a.createdAt);
@@ -770,7 +770,7 @@ export async function getUserStats(uid: string): Promise<UserStats> {
       let currentDate = new Date();
       let streakBroken = false;
       
-      for (let i = 0; i < 30; i++) { // Check up to 30 days back
+      for (let i = 0; i < 30; i++) {
         const checkDate = new Date(currentDate);
         const hasActivity = sortedHistory.some(history => {
           const historyDate = history.createdAt?.toDate ? history.createdAt.toDate() : new Date(history.createdAt);
@@ -779,7 +779,7 @@ export async function getUserStats(uid: string): Promise<UserStats> {
         
         if (hasActivity && !streakBroken) {
           currentStreak++;
-        } else if (i > 0) { // Don't break streak on first day if no activity
+        } else if (i > 0) {
           streakBroken = true;
         }
         
@@ -792,7 +792,7 @@ export async function getUserStats(uid: string): Promise<UserStats> {
       puzzlesSolvedCount: userData?.puzzlesSolvedCount || 0,
       premium: userData?.premium || false,
       currentStreak,
-      bestRating: Math.max(...puzzleHistory.map(h => h.solved ? 1 : 0), 0), // Simplified - you might want to track actual ratings
+      bestRating: Math.max(...puzzleHistory.map(h => h.solved ? 1 : 0), 0),
       successRate,
       lastPlayed: puzzleHistory.length > 0 ? puzzleHistory[0].createdAt : null,
       puzzlesToday,
@@ -803,7 +803,6 @@ export async function getUserStats(uid: string): Promise<UserStats> {
     };
   } catch (error) {
     console.error('Error fetching user stats:', error);
-    // Return default stats
     return {
       totalPuzzlesCompleted: 0,
       puzzlesSolvedCount: 0,
@@ -818,49 +817,3 @@ export async function getUserStats(uid: string): Promise<UserStats> {
     };
   }
 }
-
-// Default export
-export default {
-  app,
-  auth,
-  db,
-  analytics,
-  
-  // Auth
-  ensureUser,
-  signInWithGoogle,
-  signOutUser,
-  onAuthChange,
-  clearAuthStorage,
-  
-  // User management
-  ensureUserDoc,
-  getUserData,
-  getUserPuzzlesSolvedCount,
-  updateUserProfile,
-  isUserPremium,
-  getUserStats,
-  
-  // Puzzle management
-  savePuzzleResult,
-  getUserPuzzleHistory,
-  getPuzzleAttempt,
-  
-  // Opening progress management
-  saveOpeningProgress,
-  getOpeningProgress,
-  getSpecificOpeningProgress,
-  updateOpeningProgressAfterPractice,
-  
-  // Email auth
-  sendMagicLink,
-  confirmMagicLink,
-  isMagicLink,
-  getStoredEmail,
-  getAuthErrorMessage,
-  
-  // Analytics
-  logAnalyticsEvent,
-  logPuzzleStart,
-  logPageView,
-};
