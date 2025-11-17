@@ -213,7 +213,7 @@ export default function GameDatabase() {
       gap={4}
       marginTop={6}
     >
-      <PageTitle title="Chesskit Game Database" />
+      <PageTitle title="Tembo Game Database" />
 
       <Grid container justifyContent="center" alignItems="center" size={12}>
         <LoadGameButton />
