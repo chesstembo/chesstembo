@@ -87,6 +87,27 @@ export interface UserStats {
   premium: boolean;
 }
 
+// Updated Interface to match your Root Collection structure
+export interface SavedGame {
+  id: string;
+  pgn: string;
+  fen: string;
+  createdAt: any; // Timestamp from your DB
+  startedAt?: any;
+  event?: string;
+  site?: string;
+  // In your DB, these are strings (UIDs), but we handle that in the hook
+  white: string | { name: string; rating?: number }; 
+  black: string | { name: string; rating?: number };
+  result: string;
+  timeControl?: string;
+  termination?: string;
+  status: string;
+  moves?: string[];
+  rated?: boolean;
+  winner?: string;
+}
+
 // Firebase configuration
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY!,
@@ -103,14 +124,12 @@ let auth: ReturnType<typeof getAuth>;
 let db: ReturnType<typeof getFirestore>;
 let analytics: ReturnType<typeof getAnalytics> | null = null;
 
-// Initialize Firebase only on client side
 if (typeof window !== 'undefined') {
   app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
   auth = getAuth(app);
   db = getFirestore(app);
   analytics = getAnalytics(app);
 } else {
-  // Server-side fallback
   app = {} as FirebaseApp;
   auth = {} as ReturnType<typeof getAuth>;
   db = {} as ReturnType<typeof getFirestore>;
@@ -119,8 +138,6 @@ if (typeof window !== 'undefined') {
 export { app, auth, db, analytics };
 
 export const googleProvider = new GoogleAuthProvider();
-
-// Configure Google Provider
 googleProvider.setCustomParameters({
   prompt: "select_account",
 });
@@ -129,9 +146,6 @@ googleProvider.setCustomParameters({
 // ✅ Authentication helpers
 //
 
-/**
- * Clears all authentication-related data from storage
- */
 export const clearAuthStorage = (): void => {
   if (typeof window !== 'undefined') {
     const keysToRemove = [
@@ -151,9 +165,6 @@ export const clearAuthStorage = (): void => {
   }
 };
 
-/**
- * Ensure user is authenticated and user document exists
- */
 export async function ensureUser(): Promise<User> {
   return new Promise((resolve, reject) => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -176,9 +187,6 @@ export async function ensureUser(): Promise<User> {
   });
 }
 
-/**
- * Sign in with Google
- */
 export async function signInWithGoogle(): Promise<User> {
   try {
     const result = await signInWithPopup(auth, googleProvider);
@@ -199,9 +207,6 @@ export async function signInWithGoogle(): Promise<User> {
   }
 }
 
-/**
- * Sign out user
- */
 export async function signOutUser(): Promise<void> {
   try {
     await signOut(auth);
@@ -214,9 +219,32 @@ export async function signOutUser(): Promise<void> {
   }
 }
 
-/**
- * Auth state observer
- */
+export async function getDetailedUserStats(uid: string): Promise<{
+  basicStats: UserStats;
+  openingProgress: { [key: string]: OpeningProgress };
+  puzzleHistory: PuzzleHistory[];
+  userData: UserData | null;
+}> {
+  try {
+    const [basicStats, openingProgress, puzzleHistory, userData] = await Promise.all([
+      getUserStats(uid),
+      getOpeningProgress(uid),
+      getUserPuzzleHistory(uid, { limit: 100 }),
+      getUserData(uid)
+    ]);
+
+    return {
+      basicStats,
+      openingProgress,
+      puzzleHistory,
+      userData
+    };
+  } catch (error) {
+    console.error('Error getting detailed user stats:', error);
+    throw error;
+  }
+}
+
 export function onAuthChange(callback: (user: User | null) => void): () => void {
   return onAuthStateChanged(auth, callback);
 }
@@ -225,9 +253,6 @@ export function onAuthChange(callback: (user: User | null) => void): () => void 
 // ✅ User management
 //
 
-/**
- * Ensure user document exists
- */
 export async function ensureUserDoc(uid: string, userInfo?: Partial<UserData>): Promise<void> {
   const ref = doc(db, "users", uid);
   const snap = await getDoc(ref);
@@ -264,9 +289,6 @@ export async function ensureUserDoc(uid: string, userInfo?: Partial<UserData>): 
   }
 }
 
-/**
- * Get user document
- */
 export async function getUserDoc(uid: string): Promise<{
   ref: ReturnType<typeof doc>;
   snap: DocumentSnapshot<DocumentData>;
@@ -276,9 +298,6 @@ export async function getUserDoc(uid: string): Promise<{
   return { ref, snap };
 }
 
-/**
- * Get user data
- */
 export async function getUserData(uid: string): Promise<UserData | null> {
   try {
     const { snap } = await getUserDoc(uid);
@@ -289,9 +308,6 @@ export async function getUserData(uid: string): Promise<UserData | null> {
   }
 }
 
-/**
- * Get user's total puzzles solved count
- */
 export async function getUserPuzzlesSolvedCount(uid: string): Promise<number> {
   try {
     const userData = await getUserData(uid);
@@ -302,9 +318,6 @@ export async function getUserPuzzlesSolvedCount(uid: string): Promise<number> {
   }
 }
 
-/**
- * Update user profile
- */
 export async function updateUserProfile(
   uid: string, 
   updates: Partial<Pick<UserData, 'displayName' | 'photoURL'>>
@@ -320,9 +333,6 @@ export async function updateUserProfile(
 // ✅ Puzzle management
 //
 
-/**
- * Save puzzle result
- */
 export async function savePuzzleResult(
   uid: string,
   puzzle: Puzzle,
@@ -364,9 +374,6 @@ export async function savePuzzleResult(
   }
 }
 
-/**
- * Get user's puzzle history
- */
 export async function getUserPuzzleHistory(
   uid: string, 
   options: { limit?: number; theme?: string } = {}
@@ -393,9 +400,6 @@ export async function getUserPuzzleHistory(
   }
 }
 
-/**
- * Check if puzzle was already attempted
- */
 export async function getPuzzleAttempt(
   uid: string, 
   puzzleId: string
@@ -414,9 +418,6 @@ export async function getPuzzleAttempt(
 // ✅ Opening Progress Management
 //
 
-/**
- * Save or update opening progress
- */
 export async function saveOpeningProgress(
   uid: string,
   progress: OpeningProgress
@@ -444,9 +445,6 @@ export async function saveOpeningProgress(
   }
 }
 
-/**
- * Get user's opening progress
- */
 export async function getOpeningProgress(
   uid: string
 ): Promise<{ [openingId: string]: OpeningProgress }> {
@@ -459,9 +457,6 @@ export async function getOpeningProgress(
   }
 }
 
-/**
- * Get specific opening progress
- */
 export async function getSpecificOpeningProgress(
   uid: string,
   openingId: string
@@ -475,9 +470,6 @@ export async function getSpecificOpeningProgress(
   }
 }
 
-/**
- * Update opening progress after practice session
- */
 export async function updateOpeningProgressAfterPractice(
   uid: string,
   openingId: string,
@@ -535,9 +527,6 @@ export async function updateOpeningProgressAfterPractice(
 // ✅ Email link (OTP) authentication
 //
 
-/**
- * Send magic link for email authentication
- */
 export async function sendMagicLink(email: string): Promise<void> {
   try {
     const actionCodeSettings = {
@@ -569,9 +558,6 @@ export async function sendMagicLink(email: string): Promise<void> {
   }
 }
 
-/**
- * Confirm magic link authentication
- */
 export async function confirmMagicLink(email: string, url: string): Promise<User> {
   try {
     const result = await signInWithEmailLink(auth, email, url);
@@ -610,9 +596,6 @@ export async function confirmMagicLink(email: string, url: string): Promise<User
 // ✅ NEW: Email authentication helper functions
 //
 
-/**
- * Check if current URL is a magic link
- */
 export function isMagicLink(): boolean {
   if (typeof window === 'undefined') return false;
   
@@ -622,17 +605,11 @@ export function isMagicLink(): boolean {
          window.location.href.includes('__/auth/action');
 }
 
-/**
- * Get stored email from localStorage
- */
 export function getStoredEmail(): string | null {
   if (typeof window === 'undefined') return null;
   return localStorage.getItem('emailForSignIn');
 }
 
-/**
- * Get authentication error message
- */
 export function getAuthErrorMessage(error: any): string {
   if (error instanceof Error) {
     return error.message;
@@ -671,18 +648,12 @@ export function getAuthErrorMessage(error: any): string {
 // ✅ Analytics helpers
 //
 
-/**
- * Log custom analytics event
- */
 export function logAnalyticsEvent(eventName: string, params?: Record<string, any>): void {
   if (analytics) {
     logEvent(analytics, eventName, params);
   }
 }
 
-/**
- * Log puzzle start event
- */
 export function logPuzzleStart(puzzle: Puzzle): void {
   logAnalyticsEvent('puzzle_start', {
     puzzle_id: puzzle.id,
@@ -691,9 +662,6 @@ export function logPuzzleStart(puzzle: Puzzle): void {
   });
 }
 
-/**
- * Log page view event
- */
 export function logPageView(pageName: string): void {
   logAnalyticsEvent('page_view', { page: pageName });
 }
@@ -702,17 +670,11 @@ export function logPageView(pageName: string): void {
 // ✅ Utility functions
 //
 
-/**
- * Check if user has premium status
- */
 export async function isUserPremium(uid: string): Promise<boolean> {
   const userData = await getUserData(uid);
   return userData?.premium ?? false;
 }
 
-/**
- * Get comprehensive user statistics
- */
 export async function getUserStats(uid: string): Promise<UserStats> {
   try {
     const userData = await getUserData(uid);
@@ -815,5 +777,151 @@ export async function getUserStats(uid: string): Promise<UserStats> {
       puzzlesThisWeek: 0,
       puzzlesThisMonth: 0,
     };
+  }
+}
+
+//
+// ✅ Game Management (Updated for Root Collection)
+//
+
+/**
+ * Save a played game (Not strictly needed if game engine saves it, but good for manual saves)
+ */
+export async function savePlayerGame(uid: string, game: SavedGame): Promise<void> {
+  try {
+    // If your game engine already saves to /games, this might be redundant
+    // But if you want to manually update it, this points to the root collection
+    const gameRef = doc(db, "games", game.id);
+    
+    const cleanGame = JSON.parse(JSON.stringify(game));
+
+    await setDoc(gameRef, {
+      ...cleanGame,
+      createdAt: serverTimestamp(), 
+    }, { merge: true }); // Merge to avoid overwriting existing fields
+
+    if (analytics) {
+      logEvent(analytics, 'game_saved', { game_id: game.id });
+    }
+  } catch (error) {
+    console.error("Error saving player game to Firestore:", error);
+    throw error;
+  }
+}
+
+/**
+ * Get all games played by the user from the root 'games' collection
+ */
+export async function getPlayerGames(uid: string, limitCount: number = 50): Promise<SavedGame[]> {
+  try {
+    const gamesRef = collection(db, "games");
+    
+    // Firestore cannot do "OR" queries across fields (white == uid OR black == uid) easily.
+    // We must do two queries and merge them.
+
+    // 1. Query games where user is White
+    const whiteQuery = query(
+      gamesRef, 
+      where("white", "==", uid),
+      orderBy("createdAt", "desc"), 
+      limit(limitCount)
+    );
+
+    // 2. Query games where user is Black
+    const blackQuery = query(
+      gamesRef, 
+      where("black", "==", uid),
+      orderBy("createdAt", "desc"), 
+      limit(limitCount)
+    );
+
+    // Execute both queries
+    const [whiteSnap, blackSnap] = await Promise.all([
+      getDocs(whiteQuery),
+      getDocs(blackQuery)
+    ]);
+
+    // Combine results
+    const allDocs = [...whiteSnap.docs, ...blackSnap.docs];
+    
+    // Deduplicate based on ID (just in case) and Map data
+    const uniqueGamesMap = new Map();
+    
+    allDocs.forEach(doc => {
+      if (!uniqueGamesMap.has(doc.id)) {
+        const data = doc.data();
+        
+        // Handle Date conversion safely
+        let gameDate = new Date().toISOString().split('T')[0];
+        if (data.createdAt?.toDate) {
+          gameDate = data.createdAt.toDate().toISOString().split('T')[0];
+        } else if (data.startedAt?.toDate) {
+          gameDate = data.startedAt.toDate().toISOString().split('T')[0];
+        }
+
+        uniqueGamesMap.set(doc.id, {
+          ...data,
+          id: doc.id,
+          date: gameDate,
+          // Ensure standard fields exist even if DB has variations
+          white: data.white || "Unknown",
+          black: data.black || "Unknown",
+          pgn: data.pgn || "",
+          result: data.result || "*"
+        } as SavedGame);
+      }
+    });
+
+    // Convert map to array and sort by date descending again (since we merged two lists)
+    const sortedGames = Array.from(uniqueGamesMap.values()).sort((a, b) => {
+      const dateA = new Date(a.createdAt?.toDate ? a.createdAt.toDate() : a.date || 0);
+      const dateB = new Date(b.createdAt?.toDate ? b.createdAt.toDate() : b.date || 0);
+      return dateB.getTime() - dateA.getTime();
+    });
+
+    return sortedGames.slice(0, limitCount);
+
+  } catch (error) {
+    console.error("Error fetching player games:", error);
+    return [];
+  }
+}
+// src/lib/firebaseClient.ts
+
+// ... (after getPlayerGames)
+
+/**
+ * Get a single game by its ID from the root 'games' collection.
+ */
+export async function getSingleGameById(gameId: string): Promise<SavedGame | null> {
+  try {
+    const gameRef = doc(db, "games", gameId);
+    const docSnap = await getDoc(gameRef);
+
+    if (docSnap.exists()) {
+      const data = docSnap.data();
+      
+      let gameDate = new Date().toISOString().split('T')[0];
+      if (data.createdAt?.toDate) {
+        gameDate = data.createdAt.toDate().toISOString().split('T')[0];
+      } else if (data.startedAt?.toDate) {
+        gameDate = data.startedAt.toDate().toISOString().split('T')[0];
+      }
+
+      return {
+        ...data,
+        id: docSnap.id,
+        date: gameDate,
+        white: data.white || "Unknown",
+        black: data.black || "Unknown",
+        pgn: data.pgn || "",
+        result: data.result || "*"
+      } as SavedGame;
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error("Error fetching single game:", error);
+    return null;
   }
 }
