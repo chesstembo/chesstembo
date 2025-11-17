@@ -1,4 +1,5 @@
-import { formatGameToDatabase, getGameFromPgn } from "@/lib/chess";
+// src/hooks/useGameDatabase.ts
+import { formatGameToDatabase } from "@/lib/chess";
 import { GameEval } from "@/types/eval";
 import { Game } from "@/types/game";
 import { Chess } from "chess.js";
@@ -7,13 +8,22 @@ import { atom, useAtom } from "jotai";
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useState, useMemo } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "@/lib/firebaseClient";
-import { 
-  getUserData, 
-  getUserPuzzleHistory,
-  savePuzzleResult,
-  PuzzleHistory 
-} from "@/lib/firebaseClient";
+import { auth, savePlayerGame, getPlayerGames, savePuzzleResult, getSingleGameById } from "@/lib/firebaseClient"; // 🛠️ UPDATED IMPORT
+
+// 🛠️ PGN CLEANING HELPER FUNCTION: This fixes the "but "\"" found" SyntaxError
+const cleanPgnString = (pgn: string): string => {
+  if (typeof pgn !== 'string') return "";
+  
+  // Strip potential leading/trailing quotes that cause the parser error
+  let cleanedPgn = pgn.trim();
+  if (cleanedPgn.startsWith('"') && cleanedPgn.endsWith('"')) {
+    cleanedPgn = cleanedPgn.substring(1, cleanedPgn.length - 1);
+  }
+  
+  // Clean up any escaped quotes or extra whitespace that might remain
+  return cleanedPgn.replace(/\\"/g, '"').trim();
+};
+
 
 interface GameDatabaseSchema extends DBSchema {
   games: {
@@ -35,7 +45,8 @@ const fetchGamesAtom = atom<boolean>(false);
 const getGameResultFromPgn = (pgnString: string): string => {
   try {
     const game = new Chess();
-    game.loadPgn(pgnString);
+    // 🛠️ USE CLEANED PGN HERE TOO FOR SAFETY
+    game.loadPgn(cleanPgnString(pgnString));
     const headers = game.header();
     return headers.Result || '*';
   } catch (e) {
@@ -61,7 +72,7 @@ export const useGameDatabase = (shouldFetchGames?: boolean) => {
     }
   }, [shouldFetchGames, setFetchGames]);
 
-  // FIXED: Simplified IndexedDB initialization
+  // Simplified IndexedDB initialization
   useEffect(() => {
     const initDatabase = async () => {
       try {
@@ -132,7 +143,7 @@ export const useGameDatabase = (shouldFetchGames?: boolean) => {
     initDatabase();
   }, []);
 
-  // NEW: Load user games from Firebase
+  // NEW: Load actual user games from Root 'games' collection
   const loadUserGamesFromFirebase = useCallback(async () => {
     if (!user) {
       setUserGames([]);
@@ -142,25 +153,63 @@ export const useGameDatabase = (shouldFetchGames?: boolean) => {
     try {
       console.log("🔥 Loading user games from Firebase...");
       
-      // Get user puzzle history (this contains game data)
-      const puzzleHistory = await getUserPuzzleHistory(user.uid, { limit: 100 });
+      // Get actual games from Firestore Root Collection
+      const firebaseGames = await getPlayerGames(user.uid, 50);
       
-      // Convert puzzle history to game format
-      const userGamesFromFirebase: Game[] = puzzleHistory.map((puzzle, index) => ({
-        id: `firebase_${puzzle.puzzleId}_${index}`,
-        pgn: `[Event "Puzzle"]\n[Site "Tembo Chess"]\n[Date "${puzzle.createdAt?.toDate?.()?.toISOString() || new Date().toISOString()}"]\n[Result "${puzzle.solved ? '1-0' : '0-1'}"]\n[White "You"]\n[Black "Puzzle"]\n\n*`,
-        status: 'finished',
-        result: puzzle.solved ? '1-0' : '0-1',
-        date: puzzle.createdAt?.toDate?.()?.toISOString().split('T')[0] || new Date().toISOString().split('T')[0],
-        event: "Chess Puzzle",
-        site: "Tembo Chess",
-        white: { name: "You" },
-        black: { name: "Puzzle" },
-        timeControl: "Untimed",
-        fen: "",
-        moves: [],
-        puzzleData: puzzle
-      }));
+      // Convert SavedGame to application Game format
+      const userGamesFromFirebase: Game[] = firebaseGames.map((fGame) => {
+        
+        // 🛠️ DATA MAPPING FIX:
+        // Your DB stores UIDs in 'white' and 'black'. 
+        // We need to extract the real Names from the PGN headers.
+        let whiteName = "White";
+        let blackName = "Black";
+        let whiteRating = undefined;
+        let blackRating = undefined;
+        
+        // 🛠️ CLEAN PGN BEFORE PARSING
+        const cleanedPgn = cleanPgnString(fGame.pgn);
+        
+        if (cleanedPgn) {
+          try {
+            const chess = new Chess();
+            chess.loadPgn(cleanedPgn);
+            const headers = chess.header();
+            whiteName = headers.White || "White";
+            blackName = headers.Black || "Black";
+            if (headers.WhiteElo) whiteRating = parseInt(headers.WhiteElo);
+            if (headers.BlackElo) blackRating = parseInt(headers.BlackElo);
+          } catch (e) {
+            // If PGN parse fails, use defaults
+             console.warn("⚠️ Failed to parse PGN during game list load:", e);
+          }
+        }
+
+        return {
+          id: fGame.id,
+          pgn: cleanedPgn, // 🛠️ Use the cleaned PGN
+          status: 'finished', // Root games are usually finished if in history
+          result: fGame.result,
+          date: fGame.date,
+          event: fGame.event || "Online Game",
+          site: fGame.site || "Tembo Chess",
+          
+          // Use parsed names, fallback to what might be in the object if it's not a string
+          white: { 
+            name: typeof fGame.white === 'object' && fGame.white.name ? fGame.white.name : whiteName,
+            rating: typeof fGame.white === 'object' && fGame.white.rating ? fGame.white.rating : whiteRating 
+          },
+          black: { 
+            name: typeof fGame.black === 'object' && fGame.black.name ? fGame.black.name : blackName,
+            rating: typeof fGame.black === 'object' && fGame.black.rating ? fGame.black.rating : blackRating 
+          },
+          
+          timeControl: fGame.timeControl || "Standard",
+          fen: fGame.fen,
+          moves: fGame.moves || [], 
+          source: 'firebase'
+        };
+      });
 
       console.log(`✅ Loaded ${userGamesFromFirebase.length} user games from Firebase`);
       setUserGames(userGamesFromFirebase);
@@ -201,7 +250,7 @@ export const useGameDatabase = (shouldFetchGames?: boolean) => {
             }
           })(),
           
-          // Load Firebase user games
+          // Load Firebase user games (Syncs across devices)
           loadUserGamesFromFirebase()
         ]);
         
@@ -220,65 +269,91 @@ export const useGameDatabase = (shouldFetchGames?: boolean) => {
     loadGames();
   }, [loadGames]);
 
-  // Save PGN to onlineGames collection
+  // Save PGN to onlineGames collection AND Cloud Firestore
   const addOnlineGame = useCallback(async (
     pgnString: string, 
     gameId: string, 
     status: 'finished' | 'active',
     terminationReason?: string
   ) => {
-    if (!db) {
-      console.warn("⚠️ Database not initialized - caching game ID for later");
-      return gameId;
-    }
-
+    // Extract game info from PGN
+    const chess = new Chess();
+    // 🛠️ CLEAN PGN BEFORE LOADING FOR ADDonlineGame
+    const cleanedPgn = cleanPgnString(pgnString);
     try {
-      console.log(`💾 Saving online game: ${gameId}`);
-      
-      // Extract game info from PGN
-      const chess = new Chess();
-      try {
-        chess.loadPgn(pgnString);
-      } catch (e) {
-        console.warn("⚠️ Failed to load PGN, creating basic game record");
-      }
-
-      const headers = chess.header();
-      const moves = chess.history();
-      
-      const gameToAdd: Game = {
-        id: gameId,
-        pgn: pgnString,
-        status: status,
-        termination: terminationReason,
-        result: headers.Result || getGameResultFromPgn(pgnString),
-        date: headers.Date || new Date().toISOString().split('T')[0],
-        event: headers.Event || "Online Game",
-        site: headers.Site || "Tembo Chess Online",
-        white: { 
-          name: headers.White || "White",
-          rating: headers.WhiteElo ? parseInt(headers.WhiteElo) : undefined
-        },
-        black: { 
-          name: headers.Black || "Black", 
-          rating: headers.BlackElo ? parseInt(headers.BlackElo) : undefined
-        },
-        timeControl: headers.TimeControl || "10+0",
-        fen: chess.fen(),
-        moves: moves
-      };
-
-      await db.put("onlineGames", gameToAdd);
-      
-      console.log("✅ Online game saved successfully");
-      loadGames();
-      
-      return gameId;
-    } catch (error) {
-      console.warn("⚠️ Error saving online game - continuing without save:", error);
-      return gameId;
+      chess.loadPgn(cleanedPgn);
+    } catch (e) {
+      console.warn("⚠️ Failed to load PGN, creating basic game record");
     }
-  }, [db, loadGames]);
+
+    const headers = chess.header();
+    const moves = chess.history();
+    
+    const gameToAdd: Game = {
+      id: gameId,
+      pgn: cleanedPgn, // 🛠️ Save the cleaned PGN
+      status: status,
+      termination: terminationReason,
+      result: headers.Result || getGameResultFromPgn(pgnString),
+      date: headers.Date || new Date().toISOString().split('T')[0],
+      event: headers.Event || "Online Game",
+      site: headers.Site || "Tembo Chess Online",
+      white: { 
+        name: headers.White || "White",
+        rating: headers.WhiteElo ? parseInt(headers.WhiteElo) : undefined
+      },
+      black: { 
+        name: headers.Black || "Black", 
+        rating: headers.BlackElo ? parseInt(headers.BlackElo) : undefined
+      },
+      timeControl: headers.TimeControl || "10+0",
+      fen: chess.fen(),
+      moves: moves
+    };
+
+    // 1. Save to Local Database (IndexedDB)
+    if (db) {
+      try {
+        console.log(`💾 Saving online game locally: ${gameId}`);
+        await db.put("onlineGames", gameToAdd);
+        console.log("✅ Online game saved locally");
+      } catch (error) {
+        console.warn("⚠️ Error saving online game locally:", error);
+      }
+    } else {
+      console.warn("⚠️ Database not initialized - skipping local save");
+    }
+
+    // 2. Save to Cloud Database (Firebase) for cross-device sync
+    if (user) {
+      try {
+        console.log(`☁️ Syncing game to Firebase: ${gameId}`);
+        
+        // Use the cleaned PGN for the Firebase record
+        await savePlayerGame(user.uid, {
+          id: gameToAdd.id,
+          pgn: gameToAdd.pgn, // 🛠️ Use the cleaned PGN
+          fen: gameToAdd.fen,
+          date: gameToAdd.date,
+          event: gameToAdd.event || "Online Game",
+          site: gameToAdd.site || "Tembo Chess",
+          white: user.uid, // Ideally this should be the actual White UID
+          black: "Opponent", // And this the Black UID
+          result: gameToAdd.result,
+          timeControl: gameToAdd.timeControl,
+          termination: gameToAdd.termination,
+          status: gameToAdd.status as 'finished' | 'active',
+          moves: gameToAdd.moves
+        });
+        console.log("✅ Game synced to cloud successfully");
+      } catch (error) {
+        console.error("❌ Failed to sync game to cloud:", error);
+      }
+    }
+    
+    loadGames();
+    return gameId;
+  }, [db, loadGames, user]);
 
   // Set game evaluation with robust error handling
   const setGameEval = useCallback(
@@ -416,7 +491,7 @@ export const useGameDatabase = (shouldFetchGames?: boolean) => {
     }
   }, [db, userGames]);
 
-  // NEW: Function to save user game to Firebase
+  // Function to save user game to Firebase (Used for puzzles mostly now)
   const saveUserGameToFirebase = useCallback(async (
     gameData: Partial<Game>,
     puzzleId?: string
@@ -434,7 +509,7 @@ export const useGameDatabase = (shouldFetchGames?: boolean) => {
           rating: 1200, // Default rating
           theme: gameData.event || "General",
           fen: gameData.fen || "",
-          moves: gameData.moves || []
+          moves: gameData.moves as string[] || []
         }, gameData.result === '1-0', 0);
       }
       
@@ -458,16 +533,45 @@ export const useGameDatabase = (shouldFetchGames?: boolean) => {
       if (typeof gameId === "string") {
         try {
           const numericId = parseInt(gameId);
+          let gameToLoad: Game | undefined = undefined;
+
+          // 1. Check Local IndexedDB (numeric ID)
           if (!isNaN(numericId)) {
-            const localGame = await getGame(numericId, false);
-            if (localGame) {
-              setGameFromUrl(localGame);
-              return;
+            gameToLoad = await getGame(numericId, false);
+          }
+          
+          // 2. Check Online IndexedDB (string ID)
+          if (!gameToLoad) {
+            gameToLoad = await getGame(gameId, true);
+          }
+
+          // 3. Check Firebase (for games loaded from the root collection) 🛠️ NEW FIREBASE FALLBACK
+          if (!gameToLoad) {
+            console.log(`Attempting to fetch game ${gameId} from Firebase...`);
+            const firebaseGame = await getSingleGameById(gameId);
+            
+            if (firebaseGame) {
+              // Map the SavedGame from Firebase to the app's Game type
+              gameToLoad = {
+                id: firebaseGame.id,
+                pgn: cleanPgnString(firebaseGame.pgn), // 🛠️ PGN CLEANING HERE
+                status: firebaseGame.status as 'finished' | 'active',
+                result: firebaseGame.result,
+                date: firebaseGame.date,
+                event: firebaseGame.event || "Online Game",
+                site: firebaseGame.site || "Tembo Chess",
+                // Note: The usePlayersData hook will resolve the player details later
+                white: { name: "White", rating: undefined }, 
+                black: { name: "Black", rating: undefined },
+                timeControl: firebaseGame.timeControl || "Standard",
+                fen: firebaseGame.fen,
+                moves: firebaseGame.moves || [],
+                source: 'firebase'
+              } as Game;
             }
           }
           
-          const onlineGame = await getGame(gameId, true);
-          setGameFromUrl(onlineGame || undefined);
+          setGameFromUrl(gameToLoad);
         } catch (error) {
           console.error("❌ Error loading game from URL:", error);
           setGameFromUrl(undefined);
@@ -499,7 +603,7 @@ export const useGameDatabase = (shouldFetchGames?: boolean) => {
     
     const userWithType = userGames.map(game => ({
       ...game,
-      gameType: "Puzzle",
+      gameType: game.event?.includes("Puzzle") ? "Puzzle" : "Online",
       displayId: game.id,
       source: "firebase"
     }));
