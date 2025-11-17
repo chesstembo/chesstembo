@@ -4,10 +4,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import {
   auth,
-  ensureUserDoc,
-  getAuthErrorMessage,
-  getUserStats,
-  UserStats
+  getAuthErrorMessage
 } from "../lib/firebaseClient";
 import {
   onAuthStateChanged,
@@ -33,29 +30,24 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  ListItemButton,
   Chip,
   Grid,
-  Avatar
+  Avatar,
+  Container
 } from "@mui/material";
 import {
   Logout,
   AccountCircle,
-  BarChart,
-  TrendingUp,
-  CalendarToday,
-  Star,
-  EmojiEvents,
   Settings,
   Delete,
-  Download,
-  Security
+  Download
 } from "@mui/icons-material";
 
 export default function ProfilePage() {
   const router = useRouter();
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
-  const [stats, setStats] = useState<UserStats | null>(null);
   const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
   const [showLogoutDialog, setShowLogoutDialog] = useState(false);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
@@ -65,27 +57,10 @@ export default function ProfilePage() {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
       
-      if (currentUser) {
-        try {
-          // Ensure user document exists
-          await ensureUserDoc(currentUser.uid, {
-            email: currentUser.email || undefined,
-            displayName: currentUser.displayName || undefined,
-            photoURL: currentUser.photoURL || undefined,
-          });
-          
-          // Load user stats
-          const userStats = await getUserStats(currentUser.uid);
-          setStats(userStats);
-        } catch (error) {
-          console.error('Error loading user data:', error);
-          setMessage({ type: 'error', text: 'Failed to load user statistics' });
-        }
-      } else {
+      if (!currentUser) {
         // No user, redirect to login
         router.push('/login');
       }
-      
       setLoading(false);
     });
 
@@ -107,27 +82,22 @@ export default function ProfilePage() {
   };
 
   const handleDeleteAccount = async () => {
-    // Note: This is a placeholder - actual account deletion requires additional security steps
     setMessage({ type: 'error', text: 'Account deletion feature coming soon. Please contact support for now.' });
     setShowDeleteDialog(false);
   };
 
   const formatDate = (timestamp: any) => {
     if (!timestamp) return 'Unknown';
-    const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
-    return date.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-  };
-
-  const getJoinDuration = (creationTime: string) => {
-    const joinDate = new Date(creationTime);
-    const today = new Date();
-    const diffTime = Math.abs(today.getTime() - joinDate.getTime());
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    return `${diffDays} days`;
+    try {
+      const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
+      return date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      });
+    } catch {
+      return 'Unknown';
+    }
   };
 
   if (loading) {
@@ -251,9 +221,8 @@ export default function ProfilePage() {
         minHeight="100vh"
         bgcolor="#f8f9fa"
         py={4}
-        px={2}
       >
-        <Box maxWidth="800px" margin="0 auto">
+        <Container maxWidth="lg">
           {/* Header */}
           <Paper
             elevation={2}
@@ -265,7 +234,7 @@ export default function ProfilePage() {
               mb: 3
             }}
           >
-            <Box display="flex" alignItems="center" gap={3}>
+            <Box display="flex" alignItems="center" gap={3} flexWrap="wrap">
               <Avatar
                 src={user.photoURL || undefined}
                 sx={{
@@ -277,21 +246,13 @@ export default function ProfilePage() {
               >
                 <AccountCircle sx={{ fontSize: 60 }} />
               </Avatar>
-              <Box>
+              <Box flex={1}>
                 <Typography variant="h4" fontWeight="bold" gutterBottom>
                   {user.displayName || 'Chess Player'}
                 </Typography>
                 <Typography variant="body1" sx={{ opacity: 0.9 }}>
                   {user.email}
                 </Typography>
-                <Chip 
-                  label={`Member for ${getJoinDuration(user.metadata.creationTime!)}`}
-                  sx={{ 
-                    mt: 1, 
-                    bgcolor: 'rgba(255,255,255,0.2)',
-                    color: 'white'
-                  }}
-                />
               </Box>
             </Box>
           </Paper>
@@ -306,183 +267,98 @@ export default function ProfilePage() {
             </Alert>
           )}
 
+          {/* Account Settings */}
           <Grid container spacing={3}>
-            {/* Statistics Section */}
             <Grid item xs={12} md={8}>
-              <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <BarChart /> Your Chess Statistics
-              </Typography>
-
-              <Grid container spacing={2}>
-                {/* Puzzle Stats */}
-                <Grid item xs={12} sm={6}>
-                  <Card sx={{ height: '100%' }}>
-                    <CardContent>
-                      <Box display="flex" alignItems="center" gap={1} mb={2}>
-                        <Star color="primary" />
-                        <Typography variant="h6">Puzzle Progress</Typography>
-                      </Box>
-                      <Typography variant="h3" color="primary" fontWeight="bold">
-                        {stats?.totalPuzzlesCompleted || 0}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        Puzzles Completed
-                      </Typography>
-                      <Box mt={1}>
-                        <Chip 
-                          size="small" 
-                          label={`${stats?.currentStreak || 0} day streak`}
-                          color="success"
-                          variant="outlined"
-                        />
-                      </Box>
-                    </CardContent>
-                  </Card>
-                </Grid>
-
-                {/* Performance Stats */}
-                <Grid item xs={12} sm={6}>
-                  <Card sx={{ height: '100%' }}>
-                    <CardContent>
-                      <Box display="flex" alignItems="center" gap={1} mb={2}>
-                        <TrendingUp color="secondary" />
-                        <Typography variant="h6">Performance</Typography>
-                      </Box>
-                      <Typography variant="h3" color="secondary" fontWeight="bold">
-                        {stats?.successRate ? `${Math.round(stats.successRate)}%` : '0%'}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        Success Rate
-                      </Typography>
-                      <Box mt={1}>
-                        <Chip 
-                          size="small" 
-                          label={`Best: ${stats?.bestRating || 0}`}
-                          color="primary"
-                          variant="outlined"
-                        />
-                      </Box>
-                    </CardContent>
-                  </Card>
-                </Grid>
-
-                {/* Recent Activity */}
-                <Grid item xs={12}>
-                  <Card>
-                    <CardContent>
-                      <Typography variant="h6" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                        <CalendarToday /> Recent Activity
-                      </Typography>
-                      {stats?.lastPlayed ? (
-                        <Typography>
-                          Last played: {formatDate(stats.lastPlayed)}
-                        </Typography>
-                      ) : (
-                        <Typography color="text.secondary">
-                          No recent activity
-                        </Typography>
-                      )}
-                      {stats?.favoriteOpening && (
-                        <Typography sx={{ mt: 1 }}>
-                          Favorite Opening: <Chip label={stats.favoriteOpening} size="small" />
-                        </Typography>
-                      )}
-                    </CardContent>
-                  </Card>
-                </Grid>
-              </Grid>
+              <Card>
+                <CardContent>
+                  <Typography variant="h6" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                    <AccountCircle /> Account Information
+                  </Typography>
+                  <List>
+                    <ListItem>
+                      <ListItemText
+                        primary="Display Name"
+                        secondary={user.displayName || 'Not set'}
+                      />
+                      <Button size="small" variant="outlined">
+                        Edit
+                      </Button>
+                    </ListItem>
+                    <Divider />
+                    <ListItem>
+                      <ListItemText
+                        primary="Email"
+                        secondary={user.email}
+                      />
+                    </ListItem>
+                    <Divider />
+                    <ListItem>
+                      <ListItemText
+                        primary="Member Since"
+                        secondary={formatDate(user.metadata.creationTime)}
+                      />
+                    </ListItem>
+                    <Divider />
+                    <ListItem>
+                      <ListItemText
+                        primary="Last Sign In"
+                        secondary={formatDate(user.metadata.lastSignInTime)}
+                      />
+                    </ListItem>
+                  </List>
+                </CardContent>
+              </Card>
             </Grid>
 
-            {/* Account Actions */}
             <Grid item xs={12} md={4}>
-              <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <Settings /> Account
-              </Typography>
-
               <Card>
-                <List>
-                  <ListItem>
-                    <ListItemIcon>
-                      <Security color="info" />
-                    </ListItemIcon>
-                    <ListItemText 
-                      primary="Account Security" 
-                      secondary="Manage your login methods"
-                    />
-                  </ListItem>
-                  <Divider />
-
-                  <ListItem>
-                    <ListItemIcon>
-                      <Download color="action" />
-                    </ListItemIcon>
-                    <ListItemText 
-                      primary="Export Data" 
-                      secondary="Download your progress"
-                    />
-                  </ListItem>
-                  <Divider />
-
-                  <ListItem 
-                    button 
-                    onClick={() => setShowLogoutDialog(true)}
-                    sx={{ color: 'primary.main' }}
-                  >
-                    <ListItemIcon>
-                      <Logout color="primary" />
-                    </ListItemIcon>
-                    <ListItemText 
-                      primary="Logout" 
-                      secondary="Sign out of your account"
-                    />
-                  </ListItem>
-                  <Divider />
-
-                  <ListItem 
-                    button 
-                    onClick={() => setShowDeleteDialog(true)}
-                    sx={{ color: 'error.main' }}
-                  >
-                    <ListItemIcon>
-                      <Delete color="error" />
-                    </ListItemIcon>
-                    <ListItemText 
-                      primary="Delete Account" 
-                      secondary="Permanently remove your account"
-                    />
-                  </ListItem>
-                </List>
-              </Card>
-
-              {/* Quick Stats */}
-              <Card sx={{ mt: 2 }}>
                 <CardContent>
-                  <Typography variant="h6" gutterBottom>
-                    Quick Stats
+                  <Typography variant="h6" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                    <Settings /> Actions
                   </Typography>
-                  <Box display="flex" justifyContent="space-between" mb={1}>
-                    <Typography variant="body2">Puzzles Today:</Typography>
-                    <Typography variant="body2" fontWeight="bold">
-                      {stats?.puzzlesToday || 0}
-                    </Typography>
-                  </Box>
-                  <Box display="flex" justifyContent="space-between" mb={1}>
-                    <Typography variant="body2">This Week:</Typography>
-                    <Typography variant="body2" fontWeight="bold">
-                      {stats?.puzzlesThisWeek || 0}
-                    </Typography>
-                  </Box>
-                  <Box display="flex" justifyContent="space-between">
-                    <Typography variant="body2">This Month:</Typography>
-                    <Typography variant="body2" fontWeight="bold">
-                      {stats?.puzzlesThisMonth || 0}
-                    </Typography>
-                  </Box>
+                  <List dense>
+                    <ListItemButton 
+                      onClick={() => setShowLogoutDialog(true)}
+                      sx={{ color: 'primary.main' }}
+                    >
+                      <ListItemIcon>
+                        <Logout color="primary" />
+                      </ListItemIcon>
+                      <ListItemText 
+                        primary="Logout" 
+                        secondary="Sign out of your account"
+                      />
+                    </ListItemButton>
+                    <Divider />
+                    <ListItemButton>
+                      <ListItemIcon>
+                        <Download color="action" />
+                      </ListItemIcon>
+                      <ListItemText 
+                        primary="Export Data" 
+                        secondary="Download your progress"
+                      />
+                    </ListItemButton>
+                    <Divider />
+                    <ListItemButton 
+                      onClick={() => setShowDeleteDialog(true)}
+                      sx={{ color: 'error.main' }}
+                    >
+                      <ListItemIcon>
+                        <Delete color="error" />
+                      </ListItemIcon>
+                      <ListItemText 
+                        primary="Delete Account" 
+                        secondary="Permanently remove account"
+                      />
+                    </ListItemButton>
+                  </List>
                 </CardContent>
               </Card>
             </Grid>
           </Grid>
-        </Box>
+        </Container>
       </Box>
     </>
   );
