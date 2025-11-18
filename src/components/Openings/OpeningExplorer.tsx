@@ -216,40 +216,42 @@ export default function OpeningExplorer({ opening, onExit }: OpeningExplorerProp
   };
 
   return (
-    <Paper sx={{ p: 3, maxWidth: 1200, mx: 'auto' }}>
-      <Box display="flex" justifyContent="between" alignItems="center" mb={3}>
-        <Typography variant="h4" gutterBottom>
+    <Paper sx={{ p: { xs: 2, sm: 3 }, width: '100%', mx: 'auto', boxSizing: 'border-box' }}>
+      <Box display="flex" justifyContent="space-between" alignItems="flex-start" mb={3} flexDirection={{ xs: 'column', sm: 'row' }} gap={2}>
+        <Typography variant="h4" gutterBottom sx={{ fontSize: { xs: '1.75rem', sm: '2.125rem' } }}>
           Opening Explorer: {opening.name}
         </Typography>
-        <Button variant="outlined" onClick={onExit}>
+        <Button variant="outlined" onClick={onExit} sx={{ width: { xs: '100%', sm: 'auto' } }}>
           Back to Study
         </Button>
       </Box>
 
-      <Grid container spacing={3}>
+      <Grid container spacing={2}>
         {/* Left Column - Chessboard and Move History */}
         <Grid item xs={12} md={6}>
-          <Paper sx={{ p: 3, mb: 3 }}>
-            <Box sx={{ mb: 2, display: 'flex', justifyContent: 'center' }}>
-              <Chessboard
-                position={position}
-                onSquareClick={onSquareClick}
-                onSquareRightClick={onSquareRightClick}
-                boardWidth={350}
-                customBoardStyle={{
-                  borderRadius: "8px",
-                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
-                }}
-                customSquareStyles={customSquareStyles()}
-                arePiecesDraggable={false}
-              />
+          <Paper sx={{ p: { xs: 2, sm: 3 }, mb: 3 }}>
+            <Box sx={{ mb: 2, display: 'flex', justifyContent: 'center', width: '100%' }}>
+              <Box sx={{ width: '100%', maxWidth: { xs: '300px', sm: '350px' } }}>
+                <Chessboard
+                  position={position}
+                  onSquareClick={onSquareClick}
+                  onSquareRightClick={onSquareRightClick}
+                  boardWidth={Math.min(300, window.innerWidth - 40)}
+                  customBoardStyle={{
+                    borderRadius: "8px",
+                    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+                  }}
+                  customSquareStyles={customSquareStyles()}
+                  arePiecesDraggable={false}
+                />
+              </Box>
             </Box>
 
-            <Box display="flex" gap={1} justifyContent="center" mb={2}>
-              <Button variant="outlined" onClick={resetToOpening}>
+            <Box display="flex" gap={1} justifyContent="center" mb={2} flexDirection={{ xs: 'column', sm: 'row' }} width="100%">
+              <Button variant="outlined" onClick={resetToOpening} sx={{ width: { xs: '100%', sm: 'auto' } }}>
                 Reset to Start
               </Button>
-              <Button variant="text" onClick={goBack} disabled={moveHistory.length === 0}>
+              <Button variant="text" onClick={goBack} disabled={moveHistory.length === 0} sx={{ width: { xs: '100%', sm: 'auto' } }}>
                 ← Back
               </Button>
             </Box>
@@ -265,7 +267,7 @@ export default function OpeningExplorer({ opening, onExit }: OpeningExplorerProp
                   Move History
                 </Typography>
                 <Box sx={{ maxHeight: 200, overflow: 'auto' }}>
-                  <Typography variant="body2" fontFamily="monospace">
+                  <Typography variant="body2" fontFamily="monospace" sx={{ wordBreak: 'break-word' }}>
                     {moveHistory.map((move, index) => (
                       <span key={index}>
                         {index % 2 === 0 && <strong>{Math.floor(index/2) + 1}.</strong>}
@@ -288,8 +290,14 @@ export default function OpeningExplorer({ opening, onExit }: OpeningExplorerProp
 
         {/* Right Column - Move Explorer */}
         <Grid item xs={12} md={6}>
-          <Paper sx={{ p: 3 }}>
-            <Tabs value={activeTab} onChange={(_, newValue) => setActiveTab(newValue)} sx={{ mb: 2 }}>
+          <Paper sx={{ p: { xs: 2, sm: 3 } }}>
+            <Tabs 
+              value={activeTab} 
+              onChange={(_, newValue) => setActiveTab(newValue)} 
+              sx={{ mb: 2 }}
+              variant="scrollable"
+              scrollButtons="auto"
+            >
               <Tab label="Next Moves" />
               <Tab label="Full Tree" />
               <Tab label="Statistics" />
@@ -321,8 +329,8 @@ export default function OpeningExplorer({ opening, onExit }: OpeningExplorerProp
                     >
                       <ListItemText
                         primary={
-                          <Box display="flex" justifyContent="space-between" alignItems="center">
-                            <Typography variant="body1" fontFamily="monospace" fontWeight="bold">
+                          <Box display="flex" justifyContent="space-between" alignItems="center" flexDirection={{ xs: 'column', sm: 'row' }} gap={1}>
+                            <Typography variant="body1" fontFamily="monospace" fontWeight="bold" sx={{ fontSize: { xs: '0.9rem', sm: '1rem' } }}>
                               {moveOption.move}
                             </Typography>
                             <Box display="flex" gap={1} alignItems="center">
@@ -330,11 +338,13 @@ export default function OpeningExplorer({ opening, onExit }: OpeningExplorerProp
                                 label={`${moveOption.frequency.toFixed(0)}%`}
                                 size="small"
                                 variant="outlined"
+                                sx={{ fontSize: { xs: '0.7rem', sm: '0.8125rem' } }}
                               />
                               <Chip 
                                 label={`${moveOption.winRate.toFixed(1)}%`}
                                 size="small"
                                 color={getWinRateColor(moveOption.winRate) as any}
+                                sx={{ fontSize: { xs: '0.7rem', sm: '0.8125rem' } }}
                               />
                             </Box>
                           </Box>
@@ -361,24 +371,24 @@ export default function OpeningExplorer({ opening, onExit }: OpeningExplorerProp
                 </Alert>
                 <Box sx={{ maxHeight: 400, overflow: 'auto' }}>
                   {moveTree.map((moveNode, index) => (
-                    <Box key={index} sx={{ ml: 2, mb: 1 }}>
-                      <Typography variant="body2" fontFamily="monospace">
+                    <Box key={index} sx={{ ml: { xs: 0, sm: 2 }, mb: 1 }}>
+                      <Typography variant="body2" fontFamily="monospace" sx={{ fontSize: { xs: '0.8rem', sm: '0.875rem' } }}>
                         <strong>{index + 1}.</strong> {moveNode.san}
                         <Chip 
                           label={`${moveNode.winRate.toFixed(1)}%`}
                           size="small"
                           color={getWinRateColor(moveNode.winRate) as any}
-                          sx={{ ml: 1 }}
+                          sx={{ ml: 1, fontSize: { xs: '0.6rem', sm: '0.7rem' } }}
                         />
                       </Typography>
                       {moveNode.children.map((child, childIndex) => (
-                        <Typography key={childIndex} variant="body2" fontFamily="monospace" sx={{ ml: 3 }}>
+                        <Typography key={childIndex} variant="body2" fontFamily="monospace" sx={{ ml: { xs: 1, sm: 3 }, fontSize: { xs: '0.8rem', sm: '0.875rem' } }}>
                           {childIndex + 1}... {child.san}
                           <Chip 
                             label={`${child.winRate.toFixed(1)}%`}
                             size="small"
                             variant="outlined"
-                            sx={{ ml: 1 }}
+                            sx={{ ml: 1, fontSize: { xs: '0.6rem', sm: '0.7rem' } }}
                           />
                         </Typography>
                       ))}
@@ -396,8 +406,8 @@ export default function OpeningExplorer({ opening, onExit }: OpeningExplorerProp
                 <Grid container spacing={2}>
                   <Grid item xs={6}>
                     <Card variant="outlined">
-                      <CardContent sx={{ textAlign: 'center' }}>
-                        <Typography variant="h4" color="primary">
+                      <CardContent sx={{ textAlign: 'center', p: { xs: 1, sm: 2 } }}>
+                        <Typography variant="h4" color="primary" sx={{ fontSize: { xs: '1.5rem', sm: '2.125rem' } }}>
                           {opening.popularity}%
                         </Typography>
                         <Typography variant="body2">
@@ -408,8 +418,8 @@ export default function OpeningExplorer({ opening, onExit }: OpeningExplorerProp
                   </Grid>
                   <Grid item xs={6}>
                     <Card variant="outlined">
-                      <CardContent sx={{ textAlign: 'center' }}>
-                        <Typography variant="h4" color="success.main">
+                      <CardContent sx={{ textAlign: 'center', p: { xs: 1, sm: 2 } }}>
+                        <Typography variant="h4" color="success.main" sx={{ fontSize: { xs: '1.5rem', sm: '2.125rem' } }}>
                           {opening.difficulty}
                         </Typography>
                         <Typography variant="body2">
@@ -420,13 +430,13 @@ export default function OpeningExplorer({ opening, onExit }: OpeningExplorerProp
                   </Grid>
                   <Grid item xs={12}>
                     <Card variant="outlined">
-                      <CardContent>
+                      <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
                         <Typography variant="h6" gutterBottom>
                           Key Ideas
                         </Typography>
                         <List dense>
                           {opening.keyIdeas.map((idea: string, index: number) => (
-                            <Typography key={index} variant="body2" sx={{ mb: 1 }}>
+                            <Typography key={index} variant="body2" sx={{ mb: 1, fontSize: { xs: '0.8rem', sm: '0.875rem' } }}>
                               • {idea}
                             </Typography>
                           ))}
