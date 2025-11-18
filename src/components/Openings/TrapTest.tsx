@@ -173,7 +173,7 @@ export default function TrapTest({ opening, onComplete, onExit }: TrapTestProps)
 
   if (questions.length === 0) {
     return (
-      <Paper sx={{ p: 3, textAlign: 'center' }}>
+      <Paper sx={{ p: 3, textAlign: 'center', width: '100%', minHeight: '200px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <Typography variant="h6" gutterBottom>
           Generating tactical questions...
         </Typography>
@@ -186,11 +186,17 @@ export default function TrapTest({ opening, onComplete, onExit }: TrapTestProps)
 
   if (isComplete) {
     return (
-      <Paper sx={{ p: 4, textAlign: 'center', maxWidth: 600, mx: 'auto' }}>
-        <Typography variant="h4" gutterBottom color="primary">
+      <Paper sx={{ 
+        p: { xs: 2, sm: 4 }, 
+        textAlign: 'center', 
+        width: '100%', 
+        mx: 'auto',
+        boxSizing: 'border-box'
+      }}>
+        <Typography variant="h4" gutterBottom color="primary" sx={{ fontSize: { xs: '1.75rem', sm: '2.125rem' } }}>
           Trap Test Complete! 🎯
         </Typography>
-        <Typography variant="h3" gutterBottom>
+        <Typography variant="h3" gutterBottom sx={{ fontSize: { xs: '2.5rem', sm: '3rem' } }}>
           {score}/{questions.length}
         </Typography>
         <Typography variant="h6" color="text.secondary" gutterBottom>
@@ -199,7 +205,7 @@ export default function TrapTest({ opening, onComplete, onExit }: TrapTestProps)
         <Typography variant="body1" sx={{ mt: 2, mb: 3 }}>
           You've learned key tactical ideas in the {opening.name}!
         </Typography>
-        <Box display="flex" gap={2} justifyContent="center">
+        <Box display="flex" gap={2} justifyContent="center" flexDirection={{ xs: 'column', sm: 'row' }}>
           <Button variant="contained" onClick={generateQuestions} size="large">
             Try Again
           </Button>
@@ -214,11 +220,16 @@ export default function TrapTest({ opening, onComplete, onExit }: TrapTestProps)
   const currentQ = questions[currentQuestion];
 
   return (
-    <Paper sx={{ p: 3, maxWidth: 900, mx: 'auto' }}>
-      <Typography variant="h4" gutterBottom align="center">
+    <Paper sx={{ 
+      p: { xs: 2, sm: 3 }, 
+      width: '100%', 
+      mx: 'auto',
+      boxSizing: 'border-box'
+    }}>
+      <Typography variant="h4" gutterBottom align="center" sx={{ fontSize: { xs: '1.75rem', sm: '2.125rem' } }}>
         Tactical Test: {opening.name}
       </Typography>
-      <Typography variant="subtitle1" align="center" color="text.secondary" gutterBottom>
+      <Typography variant="subtitle1" align="center" color="text.secondary" gutterBottom sx={{ fontSize: { xs: '0.8rem', sm: '1rem' } }}>
         Spot the traps and tactical opportunities
       </Typography>
       
@@ -228,7 +239,7 @@ export default function TrapTest({ opening, onComplete, onExit }: TrapTestProps)
           value={progress} 
           sx={{ height: 8, borderRadius: 4, mb: 2 }}
         />
-        <Box display="flex" justifyContent="space-between" alignItems="center">
+        <Box display="flex" justifyContent="space-between" alignItems="center" flexDirection={{ xs: 'column', sm: 'row' }} gap={1}>
           <Typography variant="body2" color="text.secondary">
             Question {currentQuestion + 1} of {questions.length}
           </Typography>
@@ -240,27 +251,29 @@ export default function TrapTest({ opening, onComplete, onExit }: TrapTestProps)
         </Box>
       </Box>
 
-      <Box display="flex" flexDirection={{ xs: 'column', lg: 'row' }} gap={3}>
+      <Box display="flex" flexDirection="column" gap={3}>
         {/* Chessboard */}
-        <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <Chessboard
-            position={currentQ.position}
-            boardWidth={320}
-            customBoardStyle={{
-              borderRadius: "8px",
-              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
-            }}
-          />
-          <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }} align="center">
+        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+          <Box sx={{ width: '100%', maxWidth: { xs: '280px', sm: '320px' }, display: 'flex', justifyContent: 'center' }}>
+            <Chessboard
+              position={currentQ.position}
+              boardWidth={Math.min(280, window.innerWidth - 40)}
+              customBoardStyle={{
+                borderRadius: "8px",
+                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+              }}
+            />
+          </Box>
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1, textAlign: 'center' }}>
             {currentQ.trapName}
           </Typography>
         </Box>
 
         {/* Questions */}
-        <Box sx={{ flex: 1 }}>
+        <Box sx={{ width: '100%' }}>
           <Card variant="outlined" sx={{ mb: 2 }}>
             <CardContent>
-              <Typography variant="h6" gutterBottom>
+              <Typography variant="h6" gutterBottom sx={{ fontSize: { xs: '1.1rem', sm: '1.25rem' } }}>
                 {currentQ.question}
               </Typography>
             </CardContent>
@@ -268,7 +281,7 @@ export default function TrapTest({ opening, onComplete, onExit }: TrapTestProps)
 
           <FormControl component="fieldset" fullWidth>
             <FormLabel component="legend">
-              <Typography variant="subtitle1" gutterBottom>
+              <Typography variant="subtitle1" gutterBottom sx={{ fontSize: { xs: '0.9rem', sm: '1rem' } }}>
                 Choose the best move:
               </Typography>
             </FormLabel>
@@ -282,11 +295,12 @@ export default function TrapTest({ opening, onComplete, onExit }: TrapTestProps)
                   value={option}
                   control={<Radio />}
                   label={
-                    <Typography variant="body1" fontFamily="monospace">
+                    <Typography variant="body1" fontFamily="monospace" sx={{ fontSize: { xs: '0.9rem', sm: '1rem' } }}>
                       {option}
                     </Typography>
                   }
                   disabled={showResult}
+                  sx={{ mb: 1 }}
                 />
               ))}
             </RadioGroup>
@@ -311,7 +325,7 @@ export default function TrapTest({ opening, onComplete, onExit }: TrapTestProps)
             </Alert>
           )}
 
-          <Box display="flex" gap={1} mt={3}>
+          <Box display="flex" gap={1} mt={3} flexDirection={{ xs: 'column', sm: 'row' }}>
             {!showResult ? (
               <Button 
                 variant="contained" 
@@ -332,7 +346,7 @@ export default function TrapTest({ opening, onComplete, onExit }: TrapTestProps)
                 {currentQuestion < questions.length - 1 ? 'Next Question' : 'See Results'}
               </Button>
             )}
-            <Button variant="outlined" onClick={onExit} size="large">
+            <Button variant="outlined" onClick={onExit} size="large" sx={{ width: { xs: '100%', sm: 'auto' } }}>
               Exit Test
             </Button>
           </Box>
