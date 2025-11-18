@@ -134,7 +134,7 @@ export default function MemoryTest({ opening, variation, onComplete, onExit }: M
 
   if (questions.length === 0) {
     return (
-      <Paper sx={{ p: 3, textAlign: 'center' }}>
+      <Paper sx={{ p: 3, textAlign: 'center', width: '100%', minHeight: '200px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <Typography variant="h6" gutterBottom>
           Generating test questions...
         </Typography>
@@ -147,7 +147,13 @@ export default function MemoryTest({ opening, variation, onComplete, onExit }: M
 
   if (isComplete) {
     return (
-      <Paper sx={{ p: 4, textAlign: 'center', maxWidth: 600, mx: 'auto' }}>
+      <Paper sx={{ 
+        p: { xs: 2, sm: 4 }, 
+        textAlign: 'center', 
+        width: '100%', 
+        mx: 'auto',
+        boxSizing: 'border-box'
+      }}>
         <Typography variant="h4" gutterBottom color="primary">
           Test Complete! 🎉
         </Typography>
@@ -157,7 +163,7 @@ export default function MemoryTest({ opening, variation, onComplete, onExit }: M
         <Typography variant="h6" color="text.secondary" gutterBottom>
           {((score / questions.length) * 100).toFixed(1)}% Accuracy
         </Typography>
-        <Box display="flex" gap={2} justifyContent="center" mt={3}>
+        <Box display="flex" gap={2} justifyContent="center" mt={3} flexDirection={{ xs: 'column', sm: 'row' }}>
           <Button variant="contained" onClick={generateQuestions} size="large">
             Try Again
           </Button>
@@ -172,8 +178,13 @@ export default function MemoryTest({ opening, variation, onComplete, onExit }: M
   const currentQ = questions[currentQuestion];
 
   return (
-    <Paper sx={{ p: 3, maxWidth: 800, mx: 'auto' }}>
-      <Typography variant="h4" gutterBottom align="center">
+    <Paper sx={{ 
+      p: { xs: 2, sm: 3 }, 
+      width: '100%', 
+      mx: 'auto',
+      boxSizing: 'border-box'
+    }}>
+      <Typography variant="h4" gutterBottom align="center" sx={{ fontSize: { xs: '1.75rem', sm: '2.125rem' } }}>
         Memory Test: {variation.name}
       </Typography>
       
@@ -183,7 +194,7 @@ export default function MemoryTest({ opening, variation, onComplete, onExit }: M
           value={progress} 
           sx={{ height: 8, borderRadius: 4, mb: 2 }}
         />
-        <Box display="flex" justifyContent="space-between" alignItems="center">
+        <Box display="flex" justifyContent="space-between" alignItems="center" flexDirection={{ xs: 'column', sm: 'row' }} gap={1}>
           <Typography variant="body2" color="text.secondary">
             Question {currentQuestion + 1} of {questions.length}
           </Typography>
@@ -195,27 +206,29 @@ export default function MemoryTest({ opening, variation, onComplete, onExit }: M
         </Box>
       </Box>
 
-      <Box display="flex" flexDirection={{ xs: 'column', md: 'row' }} gap={3}>
+      <Box display="flex" flexDirection="column" gap={3}>
         {/* Chessboard */}
-        <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <Chessboard
-            position={currentQ.position}
-            boardWidth={300}
-            customBoardStyle={{
-              borderRadius: "8px",
-              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
-            }}
-          />
-          <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+          <Box sx={{ width: '100%', maxWidth: { xs: '300px', sm: '350px' }, display: 'flex', justifyContent: 'center' }}>
+            <Chessboard
+              position={currentQ.position}
+              boardWidth={Math.min(300, window.innerWidth - 40)}
+              customBoardStyle={{
+                borderRadius: "8px",
+                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+              }}
+            />
+          </Box>
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1, textAlign: 'center' }}>
             What's the next move in this position?
           </Typography>
         </Box>
 
         {/* Questions */}
-        <Box sx={{ flex: 1 }}>
+        <Box sx={{ width: '100%' }}>
           <FormControl component="fieldset" fullWidth>
             <FormLabel component="legend">
-              <Typography variant="h6" gutterBottom>
+              <Typography variant="h6" gutterBottom sx={{ fontSize: { xs: '1.1rem', sm: '1.25rem' } }}>
                 Select the correct move:
               </Typography>
             </FormLabel>
@@ -229,11 +242,12 @@ export default function MemoryTest({ opening, variation, onComplete, onExit }: M
                   value={option}
                   control={<Radio />}
                   label={
-                    <Typography variant="body1" fontFamily="monospace">
+                    <Typography variant="body1" fontFamily="monospace" sx={{ fontSize: { xs: '0.9rem', sm: '1rem' } }}>
                       {option}
                     </Typography>
                   }
                   disabled={showResult}
+                  sx={{ mb: 1 }}
                 />
               ))}
             </RadioGroup>
@@ -255,13 +269,14 @@ export default function MemoryTest({ opening, variation, onComplete, onExit }: M
             </Alert>
           )}
 
-          <Box display="flex" gap={1} mt={3}>
+          <Box display="flex" gap={1} mt={3} flexDirection={{ xs: 'column', sm: 'row' }}>
             {!showResult ? (
               <Button 
                 variant="contained" 
                 onClick={handleAnswer}
                 disabled={!selectedOption}
                 fullWidth
+                size="large"
               >
                 Submit Answer
               </Button>
@@ -270,11 +285,12 @@ export default function MemoryTest({ opening, variation, onComplete, onExit }: M
                 variant="contained" 
                 onClick={handleNext}
                 fullWidth
+                size="large"
               >
                 {currentQuestion < questions.length - 1 ? 'Next Question' : 'See Results'}
               </Button>
             )}
-            <Button variant="outlined" onClick={onExit}>
+            <Button variant="outlined" onClick={onExit} size="large" sx={{ width: { xs: '100%', sm: 'auto' } }}>
               Exit Test
             </Button>
           </Box>
