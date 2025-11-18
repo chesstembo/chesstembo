@@ -282,13 +282,18 @@ const onSquareClick = useCallback(async (square: string) => {
   const progress = session.totalMoves > 0 ? (session.currentMoveIndex / session.totalMoves) * 100 : 0;
 
   return (
-    <Paper sx={{ p: 3, maxWidth: 800, mx: 'auto' }}>
-      <Typography variant="h4" gutterBottom align="center">
+    <Paper sx={{ 
+      p: { xs: 2, sm: 3 }, 
+      width: '100%', 
+      mx: 'auto',
+      boxSizing: 'border-box'
+    }}>
+      <Typography variant="h4" gutterBottom align="center" sx={{ fontSize: { xs: '1.75rem', sm: '2.125rem' } }}>
         Practice: {variation.name}
       </Typography>
       
       <Box sx={{ mb: 3 }}>
-        <Typography variant="body1" gutterBottom align="center">
+        <Typography variant="body1" gutterBottom align="center" sx={{ fontSize: { xs: '0.9rem', sm: '1rem' } }}>
           Make the correct moves for this variation
         </Typography>
         <LinearProgress 
@@ -296,22 +301,24 @@ const onSquareClick = useCallback(async (square: string) => {
           value={progress} 
           sx={{ height: 8, borderRadius: 4, mb: 1 }}
         />
-        <Box display="flex" justifyContent="space-between" alignItems="center">
+        <Box display="flex" justifyContent="space-between" alignItems="center" flexDirection={{ xs: 'column', sm: 'row' }} gap={1}>
           <Typography variant="body2" color="text.secondary">
             Progress: {session.currentMoveIndex}/{session.totalMoves}
           </Typography>
-          <Box display="flex" gap={1}>
+          <Box display="flex" gap={1} flexDirection={{ xs: 'column', sm: 'row' }} width={{ xs: '100%', sm: 'auto' }}>
             <Chip 
               label={`Correct: ${session.correctMoves}`} 
               color="success" 
               variant="outlined"
               size="small"
+              sx={{ width: { xs: '100%', sm: 'auto' }, mb: { xs: 0.5, sm: 0 } }}
             />
             <Chip 
               label={`Mistakes: ${session.mistakes}`} 
               color="error" 
               variant="outlined"
               size="small"
+              sx={{ width: { xs: '100%', sm: 'auto' } }}
             />
           </Box>
         </Box>
@@ -327,42 +334,44 @@ const onSquareClick = useCallback(async (square: string) => {
         </Alert>
       )}
 
-      <Box display="flex" flexDirection={{ xs: 'column', md: 'row' }} gap={3}>
-        <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <Chessboard
-            position={position}
-            onSquareClick={onSquareClick}
-            onSquareRightClick={onSquareRightClick}
-            boardWidth={350}
-            customBoardStyle={{
-              borderRadius: "8px",
-              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
-            }}
-            customSquareStyles={customSquareStyles()}
-            arePiecesDraggable={false}
-            boardOrientation={session.currentMoveIndex % 2 === 0 ? "white" : "black"}
-          />
-          <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+      <Box display="flex" flexDirection="column" gap={3}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+          <Box sx={{ width: '100%', maxWidth: { xs: '300px', sm: '350px' }, display: 'flex', justifyContent: 'center' }}>
+            <Chessboard
+              position={position}
+              onSquareClick={onSquareClick}
+              onSquareRightClick={onSquareRightClick}
+              boardWidth={Math.min(300, window.innerWidth - 40)}
+              customBoardStyle={{
+                borderRadius: "8px",
+                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+              }}
+              customSquareStyles={customSquareStyles()}
+              arePiecesDraggable={false}
+              boardOrientation={session.currentMoveIndex % 2 === 0 ? "white" : "black"}
+            />
+          </Box>
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 1, textAlign: 'center' }}>
             {session.currentMoveIndex % 2 === 0 ? "Your turn (White)" : "Your turn (Black)"}
           </Typography>
-          <Typography variant="caption" color="text.secondary" sx={{ mt: 0.5 }}>
+          <Typography variant="caption" color="text.secondary" sx={{ mt: 0.5, textAlign: 'center' }}>
             Click to select piece, then click destination
           </Typography>
         </Box>
 
-        <Box sx={{ flex: 1 }}>
+        <Box sx={{ width: '100%' }}>
           <Card variant="outlined" sx={{ mb: 2 }}>
             <CardContent>
-              <Typography variant="h6" gutterBottom>
+              <Typography variant="h6" gutterBottom sx={{ fontSize: { xs: '1.1rem', sm: '1.25rem' } }}>
                 Practice Information
               </Typography>
-              <Typography variant="body2" paragraph>
+              <Typography variant="body2" paragraph sx={{ fontSize: { xs: '0.8rem', sm: '0.875rem' } }}>
                 <strong>Opening:</strong> {opening.name}
               </Typography>
-              <Typography variant="body2" paragraph>
+              <Typography variant="body2" paragraph sx={{ fontSize: { xs: '0.8rem', sm: '0.875rem' } }}>
                 <strong>Variation:</strong> {variation.name}
               </Typography>
-              <Typography variant="body2" paragraph>
+              <Typography variant="body2" paragraph sx={{ fontSize: { xs: '0.8rem', sm: '0.875rem' } }}>
                 <strong>Description:</strong> {variation.description}
               </Typography>
               
@@ -374,11 +383,12 @@ const onSquareClick = useCallback(async (square: string) => {
             </CardContent>
           </Card>
 
-          <Box display="flex" gap={1} flexWrap="wrap">
+          <Box display="flex" gap={1} flexWrap="wrap" flexDirection={{ xs: 'column', sm: 'row' }}>
             <Button 
               variant="outlined" 
               onClick={startNewPractice}
               fullWidth
+              sx={{ mb: { xs: 1, sm: 0 } }}
             >
               Restart Practice
             </Button>
@@ -387,6 +397,7 @@ const onSquareClick = useCallback(async (square: string) => {
               onClick={() => setShowHint(!showHint)}
               disabled={session.isComplete}
               fullWidth
+              sx={{ mb: { xs: 1, sm: 0 } }}
             >
               {showHint ? 'Hide Hint' : 'Show Hint'}
             </Button>
@@ -404,32 +415,35 @@ const onSquareClick = useCallback(async (square: string) => {
 
       <Dialog open={showResults} onClose={() => setShowResults(false)} maxWidth="sm" fullWidth>
         <DialogTitle>
-          <Typography variant="h5" align="center">
+          <Typography variant="h5" align="center" sx={{ fontSize: { xs: '1.5rem', sm: '1.75rem' } }}>
             Practice Complete! 🎉
           </Typography>
         </DialogTitle>
         <DialogContent>
           <Box textAlign="center" py={2}>
-            <Typography variant="h4" color="primary" gutterBottom>
+            <Typography variant="h4" color="primary" gutterBottom sx={{ fontSize: { xs: '2rem', sm: '2.125rem' } }}>
               Score: {calculateScore(session).toFixed(1)}%
             </Typography>
             <Typography variant="body1" paragraph>
               You completed the {variation.name} variation!
             </Typography>
-            <Box display="flex" justifyContent="center" gap={2} mt={2}>
+            <Box display="flex" justifyContent="center" gap={1} mt={2} flexWrap="wrap">
               <Chip 
                 label={`${session.correctMoves}/${session.totalMoves} Correct`} 
                 color="success" 
+                sx={{ mb: 1 }}
               />
               <Chip 
                 label={`${session.mistakes} Mistakes`} 
                 color="error" 
                 variant="outlined"
+                sx={{ mb: 1 }}
               />
               <Chip 
                 label={`${Math.floor(session.timeSpent / 60)}m ${session.timeSpent % 60}s`} 
                 color="info" 
                 variant="outlined"
+                sx={{ mb: 1 }}
               />
             </Box>
             {savingProgress && (
@@ -444,11 +458,11 @@ const onSquareClick = useCallback(async (square: string) => {
             )}
           </Box>
         </DialogContent>
-        <DialogActions sx={{ justifyContent: 'center', pb: 3 }}>
-          <Button variant="contained" onClick={startNewPractice} size="large">
+        <DialogActions sx={{ justifyContent: 'center', pb: 3, flexDirection: { xs: 'column', sm: 'row' } }}>
+          <Button variant="contained" onClick={startNewPractice} size="large" sx={{ width: { xs: '100%', sm: 'auto' }, mb: { xs: 1, sm: 0 } }}>
             Practice Again
           </Button>
-          <Button variant="outlined" onClick={onExit} size="large">
+          <Button variant="outlined" onClick={onExit} size="large" sx={{ width: { xs: '100%', sm: 'auto' } }}>
             Back to Study
           </Button>
         </DialogActions>
