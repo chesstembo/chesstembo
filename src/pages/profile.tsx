@@ -82,9 +82,9 @@ export default function ProfilePage() {
   };
 
   const handleDeleteAccount = async () => {
-    setMessage({ type: 'error', text: 'Account deletion feature coming soon. Please contact support for now.' });
-    setShowDeleteDialog(false);
-  };
+  router.push("/delete-account");
+};
+
 
   const formatDate = (timestamp: any) => {
     if (!timestamp) return 'Unknown';
