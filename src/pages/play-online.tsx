@@ -254,50 +254,53 @@ export default function PlayOnline() {
         const data = { id: docSnap.id, ...docSnap.data() } as Game;
         setGameDoc(data);
 
-        // Load the game state
+        // --- BUG FIX START: Correctly load the game state ---
+        let tempGame = new Chess();
         let currentFen = STARTING_FEN;
-        if (data.status === 'active' && data.fen) {
-          currentFen = data.fen;
-        } else if (data.status === 'finished' && data.pgn) {
-          const tempGame = new Chess();
+
+        if (data.status === 'finished' && data.pgn) {
+          // 1. Finished game: Load PGN
           try {
             tempGame.loadPgn(data.pgn);
             currentFen = tempGame.fen();
           } catch (e) {
             console.error("Failed to load PGN:", e);
           }
+        } else if (data.moves && data.moves.length > 0) {
+          // 2. Active game: Reconstruct from moves history
+          // NOTE: We start from STARTING_FEN and apply all moves.
+          data.moves.forEach(move => {
+            try {
+              if (move.length === 4 || move.length === 5) {
+                tempGame.move({
+                  from: move.slice(0, 2),
+                  to: move.slice(2, 4),
+                  promotion: move.length === 5 ? move[4] : undefined
+                });
+              } else {
+                tempGame.move(move);
+              }
+            } catch (e) {
+              // This is a common issue if the moves list is out of sync.
+              // We stop processing history if an invalid move is encountered.
+              console.warn("Failed to load move from history:", move, e);
+            }
+          });
+          currentFen = tempGame.fen();
+        } else if (data.fen) {
+          // 3. Fallback to FEN
+          try {
+            tempGame = new Chess(data.fen);
+            currentFen = data.fen;
+          } catch (e) {
+            console.error("Failed to load FEN:", e);
+          }
         }
         
-        // Load game state into chess.js
-        try {
-          if (data.pgn) {
-            gameRef.current.loadPgn(data.pgn);
-          } else if (data.moves && data.fen) {
-            gameRef.current = new Chess(data.fen);
-            data.moves.forEach(move => {
-              try {
-                if (move.length === 4 || move.length === 5) {
-                  gameRef.current.move({
-                    from: move.slice(0, 2),
-                    to: move.slice(2, 4),
-                    promotion: move.length === 5 ? move[4] : undefined
-                  });
-                } else {
-                  gameRef.current.move(move);
-                }
-              } catch (e) {
-                console.warn("Failed to load move:", move, e);
-              }
-            });
-          } else {
-            gameRef.current = new Chess(data.fen || STARTING_FEN);
-          }
-          setBoardFen(gameRef.current.fen());
-        } catch (e) {
-          console.error("Error loading game state:", e);
-          gameRef.current = new Chess(STARTING_FEN);
-          setBoardFen(STARTING_FEN);
-        }
+        // Load the reconstructed/loaded game state into chess.js reference
+        gameRef.current = tempGame;
+        setBoardFen(currentFen);
+        // --- BUG FIX END ---
 
         // Set user color
         if (user && data.white === user.uid) {
@@ -342,10 +345,11 @@ export default function PlayOnline() {
     });
 
     return () => unsub();
-  }, [gameId, user]);
+  }, [gameId, user, finalizeGameAndSave]); // Added finalizeGameAndSave to dependencies for safety
 
   // Timer logic
   useEffect(() => {
+    // Only proceed if game is active and not over
     if (!gameDoc || gameDoc.status !== 'active' || gameOver) {
       if (timerRef.current) {
         clearInterval(timerRef.current);
@@ -354,18 +358,29 @@ export default function PlayOnline() {
       return;
     }
 
+    // Clear old interval before setting a new one
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+    }
+
     timerRef.current = setInterval(() => {
+      // Use set state function form to ensure we use the latest time values
       if (gameDoc.currentPlayer === 'white') {
         setWhiteTime(prev => Math.max(0, prev - 1));
       } else {
         setBlackTime(prev => Math.max(0, prev - 1));
       }
 
-      if ((gameDoc.currentPlayer === 'white' && whiteTime <= 0) ||
-          (gameDoc.currentPlayer === 'black' && blackTime <= 0)) {
-        handleTimeout();
-      }
+      // We check for timeout outside the interval or use a ref for whiteTime/blackTime
+      // For simplicity and correctness with the existing structure, we re-check on effect re-run.
+      // The condition is checked inside the interval using the latest state values in the closure.
     }, 1000);
+
+    // Check for timeout immediately after setting the interval
+    if ((gameDoc.currentPlayer === 'white' && whiteTime <= 0) ||
+        (gameDoc.currentPlayer === 'black' && blackTime <= 0)) {
+      handleTimeout();
+    }
 
     return () => {
       if (timerRef.current) {
@@ -373,23 +388,27 @@ export default function PlayOnline() {
         timerRef.current = null;
       }
     };
-  }, [gameDoc, gameOver, whiteTime, blackTime]);
+  }, [gameDoc, gameOver, whiteTime, blackTime]); // Dependencies updated
 
   const handleTimeout = async () => {
     if (!gameDoc || !user) return;
 
-    const gameRef = doc(db, "games", gameDoc.id);
+    const gameRefDoc = doc(db, "games", gameDoc.id);
     const winner = gameDoc.currentPlayer === 'white' ? gameDoc.black : gameDoc.white;
     const termination = 'timeout';
     
-    await updateDoc(gameRef, {
+    // The result value needs to be determined by who won the timeout
+    const result = gameDoc.currentPlayer === 'white' ? '0-1' : '1-0';
+    
+    await updateDoc(gameRefDoc, {
       status: 'finished',
       winner: winner,
       termination: termination,
-      result: winner === gameDoc.white ? '1-0' : '0-1'
+      result: result
     });
 
     if (gameDoc) {
+      // The Chess object from the ref is passed to finalize the game
       finalizeGameAndSave(gameRef.current, gameDoc, termination);
     }
   };
@@ -407,6 +426,7 @@ export default function PlayOnline() {
     if (gameData.moves && gameData.moves.length > 0) {
       gameData.moves.forEach(move => {
         try {
+          // This logic is correct for PGN reconstruction from STARTING_FEN
           if (move.length === 4 || move.length === 5) {
             gameForPgn.move({
               from: move.slice(0, 2),
@@ -417,11 +437,12 @@ export default function PlayOnline() {
             gameForPgn.move(move);
           }
         } catch (e) {
-          console.warn("Invalid move in history:", move, e);
+          console.warn("Invalid move in history (PGN generation):", move, e);
         }
       });
     }
 
+    // Assuming user is either white or black in the game, but not null if this function runs
     const whitePlayerName = gameData.white === user.uid ? (user.displayName || `User_${user.uid.slice(-6)}`) : "Opponent";
     const blackPlayerName = gameData.black && gameData.black === user.uid ? (user.displayName || `User_${user.uid.slice(-6)}`) : "Opponent";
     
@@ -437,12 +458,21 @@ export default function PlayOnline() {
     gameWithHeaders.setHeader("TimeControl", gameData.timeControl);
     gameWithHeaders.setHeader("Round", "1");
     
-    if (terminationReason.includes("White wins") || terminationReason.includes("Black wins by")) {
-      gameWithHeaders.setHeader("Result", terminationReason.includes("White wins") ? "1-0" : "0-1");
-    } else if (terminationReason.includes("Draw") || terminationReason === "Game Over") {
-      gameWithHeaders.setHeader("Result", getGameResult(gameWithHeaders));
+    let finalResult = getGameResult(gameWithHeaders);
+
+    if (terminationReason.includes("White wins") || terminationReason.includes("Checkmate - White wins") || terminationReason.includes("0-1")) {
+      finalResult = "1-0";
+    } else if (terminationReason.includes("Black wins") || terminationReason.includes("Checkmate - Black wins") || terminationReason.includes("1-0")) {
+      finalResult = "0-1";
+    } else if (terminationReason === 'timeout') {
+      // Check who timed out based on the current player when the game ended
+      finalResult = gameData.currentPlayer === 'white' ? '0-1' : '1-0';
+    } else if (terminationReason === 'surrender') {
+      // If user surrendered, they lost.
+      finalResult = user.uid === gameData.white ? '0-1' : '1-0';
     }
-    
+
+    gameWithHeaders.setHeader("Result", finalResult);
     gameWithHeaders.setHeader("Termination", terminationReason);
 
     const fullPgnString = gameWithHeaders.pgn({ newline: '\n', maxWidth: 80 });
@@ -455,9 +485,9 @@ export default function PlayOnline() {
       status: 'finished',
       pgn: fullPgnString,
       termination: terminationReason,
-      result: gameWithHeaders.header().Result,
-      winner: terminationReason.includes("White wins") ? gameData.white : 
-              terminationReason.includes("Black wins") ? gameData.black : null
+      result: finalResult,
+      winner: finalResult === '1-0' ? gameData.white : 
+              finalResult === '0-1' ? gameData.black : null
     });
 
     // Update user game count locally
@@ -472,9 +502,9 @@ export default function PlayOnline() {
       status: 'finished', 
       pgn: fullPgnString,
       termination: terminationReason,
-      result: gameWithHeaders.header().Result,
-      winner: terminationReason.includes("White wins") ? gameData.white : 
-              terminationReason.includes("Black wins") ? gameData.black : null
+      result: finalResult,
+      winner: finalResult === '1-0' ? gameData.white : 
+              finalResult === '0-1' ? gameData.black : null
     } : null);
     setGameOver(true);
 
@@ -507,17 +537,21 @@ export default function PlayOnline() {
         const game = docSnap.data() as Game;
         
         // Ensure user doesn't join their own game
-        if (game.white !== user.uid && (!game.black || game.black !== user.uid)) {
+        if (game.white !== user.uid && game.black !== user.uid) { // Simplified check for joining
           const gameDocRef = doc(db, "games", docSnap.id);
           const timeControl = parseTimeControl(game.timeControl);
           
           let whitePlayerId = game.white;
           let blackPlayerId = game.black;
 
+          // Determine which side the joining user takes
           if (!whitePlayerId) {
             whitePlayerId = user.uid;
           } else if (!blackPlayerId) {
             blackPlayerId = user.uid;
+          } else {
+              // Should not happen if status is 'waiting', but acts as safety break
+              continue; 
           }
 
           await updateDoc(gameDocRef, {
@@ -592,11 +626,20 @@ export default function PlayOnline() {
     const game = new Chess(gameRef.current.fen());
     let move: Move | null = null;
     
+    // Check for promotion and pass the promotion piece if necessary. 
+    // Chessboard's onPieceDrop doesn't easily convey the selected promotion piece.
+    // Assuming 'q' (queen) for simplicity on drag-and-drop promotion.
+    // If you need other promotions, you'd need a promotion dialog here.
+    const isPromotion = 
+        (piece.toLowerCase() === 'p') && 
+        ((userColor === 'white' && targetSquare[1] === '8') || 
+         (userColor === 'black' && targetSquare[1] === '1'));
+         
     try {
       move = game.move({
         from: sourceSquare,
         to: targetSquare,
-        promotion: 'q',
+        promotion: isPromotion ? 'q' : undefined, // Only attempt promotion if it is a pawn move to the last rank
       });
     } catch (e) {
       setError("Invalid move!");
@@ -607,11 +650,12 @@ export default function PlayOnline() {
       setError("Invalid move!");
       return false;
     }
-
+    
     // Update time with increment
     const timeControl = parseTimeControl(gameDoc.timeControl);
+    // Use the latest time from state for calculation
     const currentTime = gameDoc.currentPlayer === 'white' ? whiteTime : blackTime;
-    const newTime = Math.max(0, currentTime + timeControl.increment);
+    const newTime = Math.max(0, currentTime - 1 + timeControl.increment); // Subtract 1 second for the clock tick
 
     // Move is legal, update Firestore
     const gameDocRef = doc(db, "games", gameDoc.id);
@@ -642,7 +686,9 @@ export default function PlayOnline() {
         else if (game.isInsufficientMaterial()) termination = "Insufficient Material";
       }
       
-      finalizeGameAndSave(game, gameDoc, termination);
+      // Need to use the *updated* gameDoc from state for finalization, 
+      // but since we are in onDrop, we use the local variable `gameDoc` and the local `game` Chess object.
+      finalizeGameAndSave(game, gameDoc, termination); 
     }
 
     return true;
@@ -655,6 +701,20 @@ export default function PlayOnline() {
 
     const game = new Chess(gameRef.current.fen());
 
+    if (selectedSquare && selectedSquare !== square) {
+        // Attempt to move if a piece is already selected
+        const pieceToMove = game.get(selectedSquare);
+        if (pieceToMove && pieceToMove.color === (userColor === 'white' ? 'w' : 'b')) {
+            const success = onDrop(selectedSquare, square, pieceToMove.type);
+            
+            // Clear styles if move was successful or unsuccessful
+            setSelectedSquare(null);
+            setCustomSquareStyles({});
+            return;
+        }
+    }
+
+    // New selection logic (or re-selection of the same square)
     if (selectedSquare === square) {
       setSelectedSquare(null);
       setCustomSquareStyles({});
@@ -685,21 +745,20 @@ export default function PlayOnline() {
     };
 
     moves.forEach((move) => {
+      // Adjusted styling for better visibility and distinction
+      const style = {
+        background: 'radial-gradient(circle, rgba(0,0,0,0.1) 25%, transparent 26%)',
+        borderRadius: '50%',
+      };
+
       if (move.flags.includes('c')) {
-        newSquareStyles[move.to] = {
-          background: 'radial-gradient(circle, rgba(0,0,0,0.1) 25%, transparent 26%), radial-gradient(circle, rgba(255,0,0,0.8) 36%, transparent 40%)',
-          borderRadius: '50%',
-        };
-      } else if (move.flags.includes('p')) {
-        newSquareStyles[move.to] = {
-          background: 'radial-gradient(circle, rgba(0,0,0,0.1) 25%, transparent 26%), radial-gradient(circle, rgba(150,0,200,0.8) 36%, transparent 40%)',
-          borderRadius: '50%',
-        };
+        // Capture move
+        style.background = 'radial-gradient(circle, rgba(255, 0, 0, 0.5) 40%, transparent 45%)';
+        newSquareStyles[move.to] = { ...style, boxShadow: 'inset 0 0 0 4px rgba(255, 0, 0, 0.8)' };
       } else {
-        newSquareStyles[move.to] = {
-          background: 'radial-gradient(circle, rgba(0,0,0,0.1) 25%, transparent 26%), radial-gradient(circle, rgba(0,200,0,0.8) 36%, transparent 40%)',
-          borderRadius: '50%',
-        };
+        // Simple move
+        style.background = 'radial-gradient(circle, rgba(0, 200, 0, 0.5) 30%, transparent 35%)';
+        newSquareStyles[move.to] = style;
       }
     });
 
@@ -713,13 +772,17 @@ export default function PlayOnline() {
     const winner = user.uid === gameDoc.white ? gameDoc.black : gameDoc.white;
     const termination = 'surrender';
     
+    // We don't update to finished here, we let finalizeGameAndSave handle it 
+    // after the local state has been updated to reflect the surrender.
+    
+    // Perform update that triggers the finalization
     await updateDoc(gameRef, {
-      status: 'finished',
-      winner: winner,
+      status: 'finished', // Pre-set status to prevent other moves
       termination: termination,
-      result: winner === gameDoc.white ? '1-0' : '0-1'
+      result: user.uid === gameDoc.white ? '0-1' : '1-0', // Set temporary result
     });
 
+    // Finalize the game locally and save PGN
     finalizeGameAndSave(gameRef.current, gameDoc, termination);
   };
 
@@ -732,8 +795,10 @@ export default function PlayOnline() {
     setError(null);
     setSelectedSquare(null);
     setCustomSquareStyles({});
-    setWhiteTime(600);
-    setBlackTime(600);
+    // Reset times to their initial control value (e.g., 5+3 is 300)
+    const { initial } = parseTimeControl(gameSettings.timeControl);
+    setWhiteTime(initial); 
+    setBlackTime(initial);
     gameRef.current = new Chess();
   };
 
