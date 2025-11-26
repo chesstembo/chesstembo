@@ -84,15 +84,19 @@ const defaultGameSettings = {
 
 const STARTING_FEN = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1';
 
-// NEW: Tier calculation function
-const getPlayerTier = (gameCount: number): 'beginner' | 'intermediate' | 'experienced' => {
+/**
+ * FIX: Converted to hoisted function declaration to avoid Temporal Dead Zone (TDZ) error
+ */
+function getPlayerTier(gameCount: number): 'beginner' | 'intermediate' | 'experienced' {
   if (gameCount < 10) return 'beginner';
   if (gameCount < 30) return 'intermediate';
   return 'experienced';
 };
 
-// NEW: Get user's game count
-const getUserGameCount = async (userId: string): Promise<number> => {
+/**
+ * FIX: Converted to hoisted function declaration to avoid Temporal Dead Zone (TDZ) error
+ */
+async function getUserGameCount(userId: string): Promise<number> {
   try {
     // Query finished games where user participated
     const gamesQuery = query(
@@ -117,8 +121,10 @@ const getUserGameCount = async (userId: string): Promise<number> => {
   }
 };
 
-// NEW: Backfill existing games with tiers
-const backfillGameTiers = async (): Promise<number> => {
+/**
+ * FIX: Converted to hoisted function declaration to avoid Temporal Dead Zone (TDZ) error
+ */
+async function backfillGameTiers(): Promise<number> {
   try {
     
     const gamesQuery = query(collection(db, "games"));
@@ -159,22 +165,26 @@ const backfillGameTiers = async (): Promise<number> => {
   }
 };
 
-// NEW: Theme-aware Paper component
-const ThemedPaper = ({ children, sx = {}, ...props }: any) => (
-  <Paper
-    {...props}
-    sx={{
-      p: 2,
-      bgcolor: 'background.default',
-      border: 1,
-      borderColor: 'divider',
-      color: 'text.primary',
-      ...sx,
-    }}
-  >
-    {children}
-  </Paper>
-);
+/**
+ * FIX: Converted to hoisted function declaration to avoid Temporal Dead Zone (TDZ) error
+ */
+function ThemedPaper({ children, sx = {}, ...props }: any) {
+  return (
+    <Paper
+      {...props}
+      sx={{
+        p: 2,
+        bgcolor: 'background.default',
+        border: 1,
+        borderColor: 'divider',
+        color: 'text.primary',
+        ...sx,
+      }}
+    >
+      {children}
+    </Paper>
+  );
+}
 
 export default function PlayOnline() {
   const theme = useTheme();
@@ -627,9 +637,7 @@ export default function PlayOnline() {
     let move: Move | null = null;
     
     // Check for promotion and pass the promotion piece if necessary. 
-    // Chessboard's onPieceDrop doesn't easily convey the selected promotion piece.
     // Assuming 'q' (queen) for simplicity on drag-and-drop promotion.
-    // If you need other promotions, you'd need a promotion dialog here.
     const isPromotion = 
         (piece.toLowerCase() === 'p') && 
         ((userColor === 'white' && targetSquare[1] === '8') || 
