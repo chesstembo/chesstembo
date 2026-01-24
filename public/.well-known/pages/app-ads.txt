@@ -1,0 +1,10 @@
+export async function getServerSideProps({ res }) {
+  res.setHeader('Content-Type', 'text/plain');
+  res.write('google.com, pub-9985643897382988, DIRECT, f08c47fec0942fa0');
+  res.end();
+  return { props: {} };
+}
+
+export default function AppAds() {
+  return null;
+}
