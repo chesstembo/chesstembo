@@ -1,17 +1,21 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',          // REQUIRED for Capacitor
+  trailingSlash: false,      // REQUIRED for app-ads.txt, favicon, robots
+
+  reactStrictMode: true,
+
+  images: {
+    unoptimized: true,
+  },
+
   typescript: {
     ignoreBuildErrors: true,
   },
+
   eslint: {
     ignoreDuringBuilds: true,
   },
-  output: 'standalone',
-  images: {
-    domains: ['localhost'],
-    unoptimized: true
-  },
-  trailingSlash: true,
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
