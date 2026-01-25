@@ -3,7 +3,8 @@ import { withSentryConfig } from "@sentry/nextjs";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "export",
-  trailingSlash: false,
+  // This ensures that /privacy-policy.html stays /privacy-policy.html
+  trailingSlash: false, 
   reactStrictMode: true,
   
   images: {
@@ -11,12 +12,10 @@ const nextConfig = {
   },
 
   typescript: {
-    // Skips type checking during the build
     ignoreBuildErrors: true,
   },
 
   eslint: {
-    // Skips linting during the build
     ignoreDuringBuilds: true,
   },
   
@@ -29,4 +28,7 @@ export default withSentryConfig(nextConfig, {
   org: process.env.SENTRY_ORG,
   project: "javascript-nextjs",
   silent: true,
+  sourcemaps: {
+    disable: true,
+  },
 });
