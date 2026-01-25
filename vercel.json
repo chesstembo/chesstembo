@@ -1,9 +1,5 @@
 {
   "version": 2,
-  "buildCommand": "npm run vercel-build",
-  "installCommand": "npm install --legacy-peer-deps",
-  "outputDirectory": ".next",
-  "env": {
-    "NEXT_TELEMETRY_DISABLED": "1"
-  }
+  "buildCommand": "npm run build",
+  "installCommand": "npm install --legacy-peer-deps"
 }
