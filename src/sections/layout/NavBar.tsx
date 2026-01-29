@@ -155,6 +155,16 @@ Thank you for your help!`;
               )}
             </IconButton>
           </Tooltip>
+          <Tooltip title="Download App">
+  <StyledIconButtonLink
+    href="/download"
+    sx={{ ml: "min(0.6rem, 0.8vw)" }}
+  >
+    <IconButton color="inherit" component="span">
+      <Icon icon="mdi:download-circle-outline" />
+    </IconButton>
+  </StyledIconButtonLink>
+</Tooltip>
 
           {/* Help Menu */}
           <Tooltip title="Help & Support">
