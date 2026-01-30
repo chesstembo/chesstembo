@@ -78,21 +78,21 @@ export default function DownloadPage() {
             gap={2}
           >
             <Image
-              src="/screenshot1.jpg"
+              src="/Screenshot1.jpg"
               alt="Chess Tembo Screenshot 1"
               width={300}
               height={600}
               style={{ width: "100%", height: "auto", borderRadius: 12 }}
             />
             <Image
-              src="/screenshot2.jpg"
+              src="/Screenshot2.jpg"
               alt="Chess Tembo Screenshot 2"
               width={300}
               height={600}
               style={{ width: "100%", height: "auto", borderRadius: 12 }}
             />
             <Image
-              src="/screenshot3.jpg"
+              src="/Screenshot3.jpg"
               alt="Chess Tembo Screenshot 3"
               width={300}
               height={600}
