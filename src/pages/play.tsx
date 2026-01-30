@@ -12,7 +12,7 @@ export default function Play() {
 
   return (
     <Grid container gap={4} justifyContent="space-evenly" alignItems="start">
-      <PageTitle title="Tembo Play vs AI" />
+      <PageTitle title="Chess Play vs AI" />
 
       <Board />
 
