@@ -59,7 +59,7 @@ export default function GameAnalysis() {
 
   return (
     <Grid container gap={4} justifyContent="space-evenly" alignItems="start">
-      <PageTitle title="Tembo Game Analysis" />
+      <PageTitle title="Chess Game Analysis" />
 
       <Board />
 
